@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-06-12T15:37:39.802Z</updated>
+  <updated>2020-06-21T01:54:46.675Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- 请介绍下你了解的ThreadLocal，它的底层原理！</title>
+    <link href="https://liuzhihang.com/2020/06/21/source-code-threadlocal.html"/>
+    <id>https://liuzhihang.com/2020/06/21/source-code-threadlocal.html</id>
+    <published>2020-06-21T02:00:00.000Z</published>
+    <updated>2020-06-21T01:54:46.675Z</updated>
+    
+    <summary type="html">
+    
+      什么是红黑树？在HashMap中是怎么应用的？
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 从JUC源码看CAS，我做了个笔记 ......</title>
@@ -430,27 +455,6 @@
     <summary type="html">
     
       Elasticsearch常用cat命令
-    
-    </summary>
-    
-    
-      <category term="ELK" scheme="https://liuzhihang.com/categories/ELK/"/>
-    
-    
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为什么es集群至少需要三个节点</title>
-    <link href="https://liuzhihang.com/2019/03/13/why-does-the-es-cluster-require-at-least-three-nodes.html"/>
-    <id>https://liuzhihang.com/2019/03/13/why-does-the-es-cluster-require-at-least-three-nodes.html</id>
-    <published>2019-03-13T13:01:04.000Z</published>
-    <updated>2020-06-18T08:23:00.411Z</updated>
-    
-    <summary type="html">
-    
-      什么是脑裂? 脑裂后会发生什么? 如何防止脑裂?
     
     </summary>
     

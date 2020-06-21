@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2020/06/21/source-code-threadlocal.html</loc>
+    
+    <lastmod>2020-06-21T01:54:46.675Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2019/07/22/springsecurity-jwt-springboot-project.html</loc>
     
     <lastmod>2020-06-18T08:23:42.361Z</lastmod>
