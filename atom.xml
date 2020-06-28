@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-06-21T03:35:47.932Z</updated>
+  <updated>2020-06-28T15:29:05.376Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- JDK 8 新增的 LongAdder，得过来看一下！</title>
+    <link href="https://liuzhihang.com/2020/06/28/source-code-longadder.html"/>
+    <id>https://liuzhihang.com/2020/06/28/source-code-longadder.html</id>
+    <published>2020-06-28T15:50:20.000Z</published>
+    <updated>2020-06-28T15:29:05.376Z</updated>
+    
+    <summary type="html">
+    
+      在介绍 AtomicInteger 时，已经说明在高并发下大量线程去竞争更新同一个原子变量时，因为只有一个线程能够更新成功，其他的线程在竞争失败后，只能一直循环，不断的进行 CAS 尝试，从而浪费了 CPU 资源。而在 JDK 8 中新增了 LongAdder 用来解决高并发下变量的原子操作。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 请介绍下你了解的ThreadLocal，它的底层原理！</title>
@@ -442,27 +467,6 @@
     
     
       <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>elasticsearch cat API</title>
-    <link href="https://liuzhihang.com/2019/03/14/elasticsearch-cat-api.html"/>
-    <id>https://liuzhihang.com/2019/03/14/elasticsearch-cat-api.html</id>
-    <published>2019-03-14T14:01:00.000Z</published>
-    <updated>2020-04-04T06:17:45.542Z</updated>
-    
-    <summary type="html">
-    
-      Elasticsearch常用cat命令
-    
-    </summary>
-    
-    
-      <category term="ELK" scheme="https://liuzhihang.com/categories/ELK/"/>
-    
-    
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
