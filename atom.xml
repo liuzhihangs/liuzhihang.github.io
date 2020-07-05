@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-06-28T15:29:05.376Z</updated>
+  <updated>2020-07-05T12:53:57.888Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- JUC 包下工具类，它的名字叫 LockSupport ！你造么？</title>
+    <link href="https://liuzhihang.com/2020/07/05/source-code-locksupport.html"/>
+    <id>https://liuzhihang.com/2020/07/05/source-code-locksupport.html</id>
+    <published>2020-07-05T12:20:20.000Z</published>
+    <updated>2020-07-05T12:53:57.888Z</updated>
+    
+    <summary type="html">
+    
+      LockSupport 是 JUC 中常用的一个工具类，主要作用是挂起和唤醒线程。在阅读 JUC 源码中经常看到，所以很有必要了解一下。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- JDK 8 新增的 LongAdder，得过来看一下！</title>
@@ -446,27 +471,6 @@
     
     
       <category term="hexo" scheme="https://liuzhihang.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA插件--Toolkit</title>
-    <link href="https://liuzhihang.com/2019/05/11/idea-plugin-toolkit.html"/>
-    <id>https://liuzhihang.com/2019/05/11/idea-plugin-toolkit.html</id>
-    <published>2019-05-11T06:50:48.000Z</published>
-    <updated>2020-04-20T03:06:54.009Z</updated>
-    
-    <summary type="html">
-    
-      一个小工具包, 支持通过侧栏箭头在MyBatis XML文件和Mapper文件之间相互跳转, Json字符串格式化等功能.
-    
-    </summary>
-    
-    
-      <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
-    
-    
-      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   
