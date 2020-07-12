@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-07-05T12:53:57.888Z</updated>
+  <updated>2020-07-12T05:34:10.034Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- 别走！这里有个笔记：图文讲解 AQS ，一起看看 AQS 的源码……(图文较长)</title>
+    <link href="https://liuzhihang.com/2020/07/12/source-code-aqs.html"/>
+    <id>https://liuzhihang.com/2020/07/12/source-code-aqs.html</id>
+    <published>2020-07-12T05:00:00.000Z</published>
+    <updated>2020-07-12T05:34:10.034Z</updated>
+    
+    <summary type="html">
+    
+      AbstractQueuedSynchronizer 抽象队列同步器，简称 AQS 。是在 JUC 包下面一个非常重要的基础组件，JUC 包下面的并发锁 `ReentrantLock` `CountDownLatch` 等都是基于 AQS 实现的。所以想进一步研究锁的底层原理，非常有必要先了解 AQS 的原理。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- JUC 包下工具类，它的名字叫 LockSupport ！你造么？</title>
@@ -450,27 +475,6 @@
       <category term="JWT" scheme="https://liuzhihang.com/tags/JWT/"/>
     
       <category term="SpringSecurity" scheme="https://liuzhihang.com/tags/SpringSecurity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitalk使用MD5生成Id</title>
-    <link href="https://liuzhihang.com/2019/07/20/gitalk-uses-md5-to-generate-an-id.html"/>
-    <id>https://liuzhihang.com/2019/07/20/gitalk-uses-md5-to-generate-an-id.html</id>
-    <published>2019-07-20T07:43:07.000Z</published>
-    <updated>2020-04-07T11:58:47.380Z</updated>
-    
-    <summary type="html">
-    
-      使用Gitalk作为评论系统, 需要指定文章的id为唯一id, 从而防止多个文章使用同一个issues, 导致互相串的情况.
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="https://liuzhihang.com/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="https://liuzhihang.com/tags/hexo/"/>
     
   </entry>
   
