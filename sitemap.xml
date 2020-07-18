@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/contact/index.html</loc>
+    
+    <lastmod>2020-07-18T04:28:15.613Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/07/12/source-code-aqs.html</loc>
     
     <lastmod>2020-07-12T05:34:10.034Z</lastmod>
@@ -586,13 +593,6 @@
     <loc>https://liuzhihang.com/project/monitor-system.html</loc>
     
     <lastmod>2019-09-30T13:08:23.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/contact/index.html</loc>
-    
-    <lastmod>2019-09-17T04:59:28.759Z</lastmod>
     
   </url>
   
