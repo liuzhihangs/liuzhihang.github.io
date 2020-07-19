@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-07-12T05:34:10.034Z</updated>
+  <updated>2020-07-18T12:21:15.606Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【工作笔记】- 老大说新项目的结构和 xxx 项目一样就可以了，我 ……</title>
+    <link href="https://liuzhihang.com/2020/07/18/work-archetype.html"/>
+    <id>https://liuzhihang.com/2020/07/18/work-archetype.html</id>
+    <published>2020-07-18T05:00:00.000Z</published>
+    <updated>2020-07-18T12:21:15.606Z</updated>
+    
+    <summary type="html">
+    
+      又要开发新项目了，还是创建新项目，怎么办？老大说按照 xxx 项目的结构创建一个新项目就可以了。
+    
+    </summary>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Archetype" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Archetype/"/>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Archetype" scheme="https://liuzhihang.com/tags/Archetype/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 别走！这里有个笔记：图文讲解 AQS ，一起看看 AQS 的源码……(图文较长)</title>
@@ -452,29 +477,6 @@
     
     
       <category term="分布式" scheme="https://liuzhihang.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot项目中使用SpringSecurity和JWT做权限认证</title>
-    <link href="https://liuzhihang.com/2019/07/22/springsecurity-jwt-springboot-project.html"/>
-    <id>https://liuzhihang.com/2019/07/22/springsecurity-jwt-springboot-project.html</id>
-    <published>2019-07-22T05:36:22.000Z</published>
-    <updated>2020-06-18T08:23:42.361Z</updated>
-    
-    <summary type="html">
-    
-      前端和后端使用Json字符串进行交互. 使用JWT生成token, SpringSecurity做权限认证. 在请求某些接口时, 自动做token权限认证和URL拦截请求等操作.
-    
-    </summary>
-    
-    
-      <category term="Spring" scheme="https://liuzhihang.com/categories/Spring/"/>
-    
-    
-      <category term="JWT" scheme="https://liuzhihang.com/tags/JWT/"/>
-    
-      <category term="SpringSecurity" scheme="https://liuzhihang.com/tags/SpringSecurity/"/>
     
   </entry>
   
