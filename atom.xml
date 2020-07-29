@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-07-27T15:53:17.087Z</updated>
+  <updated>2020-07-29T07:14:17.255Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【工具册】- IDEA 插件找不到？看这里！那就自己敲一个！</title>
+    <link href="https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html"/>
+    <id>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</id>
+    <published>2020-07-29T05:00:00.000Z</published>
+    <updated>2020-07-29T07:14:17.255Z</updated>
+    
+    <summary type="html">
+    
+      小伙伴你是否想亲手写一个插件，或者你是否有一些插件的想法，但是找不到插件。那就自己实现一个吧
+    
+    </summary>
+    
+    
+      <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+      <category term="IDEA" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/IDEA/"/>
+    
+    
+      <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+      <category term="IDEA" scheme="https://liuzhihang.com/tags/IDEA/"/>
+    
+      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【JDK源码笔记】- 快进来！花几分钟看一下 ReentrantReadWriteLock 的原理！</title>
     <link href="https://liuzhihang.com/2020/07/27/source-code-reentrant-read-write-lock.html"/>
     <id>https://liuzhihang.com/2020/07/27/source-code-reentrant-read-write-lock.html</id>
     <published>2020-07-27T15:50:00.000Z</published>
-    <updated>2020-07-27T15:53:17.087Z</updated>
+    <updated>2020-07-29T06:12:41.043Z</updated>
     
     <summary type="html">
     
@@ -456,27 +483,6 @@
     <summary type="html">
     
       作业: 如果对自己的系统落地最终一致性事务，如何落地实现？
-    
-    </summary>
-    
-    
-      <category term="分布式" scheme="https://liuzhihang.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-      <category term="分布式" scheme="https://liuzhihang.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>交易系统架构图</title>
-    <link href="https://liuzhihang.com/2019/08/10/trading-system-architecture.html"/>
-    <id>https://liuzhihang.com/2019/08/10/trading-system-architecture.html</id>
-    <published>2019-08-10T03:19:54.000Z</published>
-    <updated>2020-04-04T06:49:14.248Z</updated>
-    
-    <summary type="html">
-    
-      8.6 作业：独立画出自己系统的生产部署架构图，梳理系统和服务的QPS以及扩容方案
     
     </summary>
     

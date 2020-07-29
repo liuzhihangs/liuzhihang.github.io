@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</loc>
+    
+    <lastmod>2020-07-29T07:14:17.255Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/07/27/source-code-reentrant-read-write-lock.html</loc>
     
-    <lastmod>2020-07-27T15:53:17.087Z</lastmod>
+    <lastmod>2020-07-29T06:12:41.043Z</lastmod>
     
   </url>
   
