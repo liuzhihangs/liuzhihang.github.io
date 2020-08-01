@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html</loc>
+    
+    <lastmod>2020-08-01T03:44:23.218Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</loc>
     
     <lastmod>2020-07-29T07:14:17.255Z</lastmod>
@@ -299,13 +306,6 @@
     <loc>https://liuzhihang.com/2019/08/10/trading-system-architecture.html</loc>
     
     <lastmod>2020-04-04T06:49:14.248Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/2020/01/22/idea-plugin-development-common-api.html</loc>
-    
-    <lastmod>2020-04-04T06:47:05.729Z</lastmod>
     
   </url>
   

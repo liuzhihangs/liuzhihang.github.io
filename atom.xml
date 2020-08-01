@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-07-29T07:14:17.255Z</updated>
+  <updated>2020-08-01T03:44:23.218Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDEA插件开发常用API</title>
+    <link href="https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html"/>
+    <id>https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html</id>
+    <published>2020-08-01T03:58:16.000Z</published>
+    <updated>2020-08-01T03:44:23.218Z</updated>
+    
+    <summary type="html">
+    
+      在看完 IDEA 插件开发简易教程后，小伙伴们是否迫不及待的想自己上手整一个插件了？心里规划好了一二三，但是却不知道从哪里开始下手。下面我分享下自己整理的一些常用的 API。 
+    
+    </summary>
+    
+    
+      <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
+    
+    
+      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
+    
+  </entry>
   
   <entry>
     <title>【工具册】- IDEA 插件找不到？看这里！那就自己敲一个！</title>
@@ -384,27 +405,6 @@
     
     
       <category term="error" scheme="https://liuzhihang.com/tags/error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA插件开发常用API</title>
-    <link href="https://liuzhihang.com/2020/01/22/idea-plugin-development-common-api.html"/>
-    <id>https://liuzhihang.com/2020/01/22/idea-plugin-development-common-api.html</id>
-    <published>2020-01-22T06:58:16.000Z</published>
-    <updated>2020-04-04T06:47:05.729Z</updated>
-    
-    <summary type="html">
-    
-      在开发IDEA插件Toolkit过程中遇到的一些问题, 以及查相关资料搜集的
-    
-    </summary>
-    
-    
-      <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
-    
-    
-      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   

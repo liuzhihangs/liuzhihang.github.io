@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html</loc>
+    <lastmod>2020-08-01</lastmod>
+  </url>  <url>
     <loc>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</loc>
     <lastmod>2020-07-29</lastmod>
   </url>  <url>
@@ -116,9 +119,6 @@
     <lastmod>2020-04-04</lastmod>
   </url>  <url>
     <loc>https://liuzhihang.com/2019/08/10/trading-system-architecture.html</loc>
-    <lastmod>2020-04-04</lastmod>
-  </url>  <url>
-    <loc>https://liuzhihang.com/2020/01/22/idea-plugin-development-common-api.html</loc>
     <lastmod>2020-04-04</lastmod>
   </url>  <url>
     <loc>https://liuzhihang.com/2018/05/17/jdk-dynamic-proxy-and-source-code-analysis.html</loc>
