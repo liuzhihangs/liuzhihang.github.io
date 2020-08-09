@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【JDK源码笔记】- 除了读写锁，JUC 下面还有个 StampedLock！还不过来了解一下么？</title>
+      <link href="/2020/08/09/source-code-stamped-lock.html"/>
+      <url>/2020/08/09/source-code-stamped-lock.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><br><p>在了解完 ReentrantLock 和 ReentrantReadWriteLock 之后，惊奇的发现 JUC 下还有一个 StampedLock 。 查阅资料发现是 JDK8 新增的一个锁。现在已经 JDK15 了，原谅我的孤陋寡闻，实在是业务开发中用的太少。那行吧，赶紧来看一下 StampedLock 到底是什么？为什么有了 ReentrantLock 和 ReentrantReadWriteLock 之后还要设计一个 StampedLock ？</p><br><p>公众号：liuzhihangs，记录工作学习中的技术、开发及源码笔记；时不时分享一些生活中的见闻感悟。欢迎大佬来指导！</p></blockquote><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="往期回顾"><a href="#往期回顾" class="headerlink" title="往期回顾"></a>往期回顾</h4><p>在介绍 StampedLock 之前还是先看一下 ReentrantLock 和 ReentrantReadWriteLock。</p><p>ReentrantLock：互斥锁，同时只有一个线程可以持有。支持锁重入。</p><p>ReentrantReadWriteLock：读写锁，分为读锁和写锁，支持重入。其中读读共享，写写独占，读写互斥，写读互斥。支持锁降级，线程获取写锁后可以降级为读锁。适合读多写少的场景。</p><p>那为什么要设计 StampedLock 呢？先来看一下源码上的注释：</p><h4 id="StampedLock"><a href="#StampedLock" class="headerlink" title="StampedLock"></a>StampedLock</h4><p>基于功能的锁，具有三种模式来控制读/写访问。StampedLock的状态由版本和模式组成。锁获取方法返回一个 stamp 用来表示并控制锁状态的访问；这些方法的“try”版本可能会返回特殊值零，以表示无法获取访问权限。<br>锁的释放和转换方法需要使用 stamp 作为参数，如果它们与锁的状态不匹配，则会失败。</p><p>三种模式是：写锁、读锁、乐观读锁。</p><p>并且具有以下特征：</p><ol><li>获取锁的时候（无论读锁还是写锁或者乐观读锁）都会返回一个 stamp，在释放锁的时候需要使用这个 stamp；</li><li>支持三种模式转换；</li><li>不是可重入的，所以获得锁的时候，不要尝试再次获取。</li></ol><h4 id="使用样例"><a href="#使用样例" class="headerlink" title="使用样例"></a>使用样例</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/** * @author liuzhihang * @date 2020/8/6 15:27 */</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Count</span> <span class="token punctuation">{</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> num<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">final</span> StampedLock stampedLock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StampedLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 使用写锁，在对 num 进行写入的时候加锁</span>    <span class="token keyword">void</span> <span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">long</span> stamp <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">writeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">try</span> <span class="token punctuation">{</span>            num <span class="token operator">+=</span> x<span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>            stampedLock<span class="token punctuation">.</span><span class="token function">unlockWrite</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token comment" spellcheck="true">// 乐观读</span>    <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// 获取乐观读锁；返回 stamp</span>        <span class="token keyword">long</span> stamp <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">tryOptimisticRead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">try</span> <span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">// validate 验证是否被写锁持有</span>            <span class="token comment" spellcheck="true">// 没有被写锁持有，可以直接返回</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>stampedLock<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                <span class="token comment" spellcheck="true">// 被写锁持有，那只能获取读锁</span>                stamp <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">readLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>            <span class="token keyword">return</span> num<span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>            stampedLock<span class="token punctuation">.</span><span class="token function">unlockRead</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">void</span> <span class="token function">convertWrite</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// 读</span>        <span class="token keyword">long</span> stamp <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">readLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">try</span> <span class="token punctuation">{</span>            <span class="token keyword">while</span> <span class="token punctuation">(</span>num <span class="token operator">==</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>                <span class="token comment" spellcheck="true">// 满足条件，转换为写锁</span>                <span class="token keyword">long</span> ws <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">tryConvertToWriteLock</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">// 转为写锁成功</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>ws <span class="token operator">!=</span> 0L<span class="token punctuation">)</span> <span class="token punctuation">{</span>                    stamp <span class="token operator">=</span> ws<span class="token punctuation">;</span>                    num <span class="token operator">=</span> x<span class="token punctuation">;</span>                    <span class="token keyword">break</span><span class="token punctuation">;</span>                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>                    <span class="token comment" spellcheck="true">// 转换失败，释放读锁</span>                    stampedLock<span class="token punctuation">.</span><span class="token function">unlockRead</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment" spellcheck="true">// 再次获取写锁</span>                    stamp <span class="token operator">=</span> stampedLock<span class="token punctuation">.</span><span class="token function">writeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">}</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>            stampedLock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span>stamp<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><ol><li>写锁使用方法一样；</li><li>乐观读，可以先去读数据，发现没有改变可以返回，发现改变了，则重新获取读锁，然后再返回；</li><li>读锁可以升级为写锁，通过 tryConvertToWriteLock 方法。</li></ol><h4 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h4><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/StampedLock-uml-Wq0Jz2.png" alt="StampedLock-uml-Wq0Jz2"></p><p>通过 UML 可以看出 StampedLock 和 AQS 并无任何关系。</p><h4 id="StampedLock-和-ReentrantReadWriteLock-的区别？"><a href="#StampedLock-和-ReentrantReadWriteLock-的区别？" class="headerlink" title="StampedLock 和 ReentrantReadWriteLock 的区别？"></a>StampedLock 和 ReentrantReadWriteLock 的区别？</h4><ol><li>StampedLock 也是读写锁，但是和 AQS 没有关系</li><li>StampedLock 除了 读锁和写锁，还有一个乐观读。</li><li>StampedLock 的读锁可以升级为写锁。</li><li>StampedLock 不支持锁重入。</li></ol><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>本文主要介绍 StampedLock 的相关使用及和 ReentrantReadWriteLock 的区别。</p><p>因为工作确实很少使用，阅读源码，内部自旋逻辑等有很多。如果介绍的话会篇幅特别长，这里就省略了。有兴趣的小伙伴可以自己阅读源码。</p><p>因为 StampedLock 提供的乐观读锁支持，所以在多线程多读情况下，性能比 ReentrantReadWriteLock 要更好，但是需要注意的是 StampedLock 是不支持锁重入的。</p><p>另一个需要记住的就是 StampedLock 和 AQS 并没有什么关系，它是在自己内部维护了一个双向阻塞队列。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 源码笔记 </category>
+          
+          <category> JDK </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 源码笔记 </tag>
+            
+            <tag> JDK </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IDEA插件开发常用API</title>
       <link href="/2020/08/01/idea-plugin-development-common-api.html"/>
       <url>/2020/08/01/idea-plugin-development-common-api.html</url>
@@ -47,11 +76,11 @@
       
         <tags>
             
-            <tag> plugin </tag>
-            
             <tag> 工具册 </tag>
             
             <tag> IDEA </tag>
+            
+            <tag> plugin </tag>
             
         </tags>
       
@@ -1685,9 +1714,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> transactional </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
@@ -1739,9 +1768,9 @@
       
         <tags>
             
-            <tag> interceptor </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> interceptor </tag>
             
             <tag> servlet </tag>
             
