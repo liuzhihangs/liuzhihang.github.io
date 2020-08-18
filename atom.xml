@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-08-09T07:43:44.743Z</updated>
+  <updated>2020-08-18T15:19:46.271Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【JDK源码笔记】- 别走！这里有个笔记：图文讲解 AQS ，一起看看 AQS 的源码……(图文较长)</title>
+    <link href="https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html"/>
+    <id>https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html</id>
+    <published>2020-08-18T05:00:00.000Z</published>
+    <updated>2020-08-18T15:19:46.271Z</updated>
+    
+    <summary type="html">
+    
+      Elasticsearch 从入门到进门
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【JDK源码笔记】- 除了读写锁，JUC 下面还有个 StampedLock！还不过来了解一下么？</title>
     <link href="https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html"/>
     <id>https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html</id>
     <published>2020-08-09T07:30:00.000Z</published>
-    <updated>2020-08-09T07:43:44.743Z</updated>
+    <updated>2020-08-10T02:07:40.773Z</updated>
     
     <summary type="html">
     
@@ -474,27 +499,6 @@
     
     
       <category term="hexo" scheme="https://liuzhihang.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis分布式锁的生产问题解决方案</title>
-    <link href="https://liuzhihang.com/2019/08/18/redis-distributed-lock-production-problem-solution.html"/>
-    <id>https://liuzhihang.com/2019/08/18/redis-distributed-lock-production-problem-solution.html</id>
-    <published>2019-08-18T08:36:20.000Z</published>
-    <updated>2020-04-04T06:49:14.275Z</updated>
-    
-    <summary type="html">
-    
-      作业: 自己梳理出来Redis分布式锁的生产问题解决方案
-    
-    </summary>
-    
-    
-      <category term="分布式" scheme="https://liuzhihang.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-      <category term="分布式" scheme="https://liuzhihang.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
