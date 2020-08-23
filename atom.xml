@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-08-23T02:09:33.528Z</updated>
+  <updated>2020-08-23T02:30:52.856Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Elasticsearch 技术分享】—— ES 常用名词及结构</title>
+    <link href="https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html"/>
+    <id>https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html</id>
+    <published>2020-08-23T02:00:00.000Z</published>
+    <updated>2020-08-23T02:30:52.856Z</updated>
+    
+    <summary type="html">
+    
+      Elasticsearch 常用的名词
+    
+    </summary>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    
+    
+      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>【Elasticsearch 技术分享】—— Elasticsearch ？倒排索引？这都是什么？</title>
@@ -478,27 +503,6 @@
       <category term="issue" scheme="https://liuzhihang.com/tags/issue/"/>
     
       <category term="mac" scheme="https://liuzhihang.com/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo中插入Bilibili视频</title>
-    <link href="https://liuzhihang.com/2019/09/14/hexo-inserts-bilibili-video.html"/>
-    <id>https://liuzhihang.com/2019/09/14/hexo-inserts-bilibili-video.html</id>
-    <published>2019-09-14T07:06:54.000Z</published>
-    <updated>2020-04-04T06:49:14.263Z</updated>
-    
-    <summary type="html">
-    
-      1. 修改matery主题首页显示视频为Bilibili视频. &lt;br&gt; 2. 在Hexo中插入Bilibili视频, 并设置大小.
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="https://liuzhihang.com/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="https://liuzhihang.com/tags/hexo/"/>
     
   </entry>
   
