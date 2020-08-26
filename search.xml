@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Elasticsearch 技术分享】—— ES 查询检索数据的过程，是什么样子的？</title>
+      <link href="/2020/08/26/technology-sharing-es-4.html"/>
+      <url>/2020/08/26/technology-sharing-es-4.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><br><p>ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？</p><br><p>公众号：liuzhihangs，记录工作学习中的技术、开发及源码笔记；时不时分享一些生活中的见闻感悟。欢迎大佬来指导！</p></blockquote><h3 id="查询流程"><a href="#查询流程" class="headerlink" title="查询流程"></a>查询流程</h3><pre class=" language-json"><code class="language-json">GET my-index/_doc/<span class="token number">0</span></code></pre><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/fJmmvi-T7hz9J.png" alt="fJmmvi-T7hz9J"></p><ol><li>Client 将请求发送到任意节点 node，此时 node 节点就是<strong>协调节点</strong>（coordinating node）。</li><li>协调节点对 id 进行路由，从而判断该数据在哪个shard。</li><li>在 primary shard 和 replica shard 之间 随机选择一个，请求获取 doc。</li><li>接收请求的节点会将数据返回给<strong>协调节点</strong>，协调节点会将数据返回给Client。</li></ol><p>可以通过 preference 参数指定执行操作的节点或分片。默认为随机。</p><h3 id="检索流程"><a href="#检索流程" class="headerlink" title="检索流程"></a>检索流程</h3><pre class=" language-json"><code class="language-json">GET /my-index/_search </code></pre><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/w1lGEZ-TgHyvN.png" alt="w1lGEZ-TgHyvN"></p><ol><li>Client 将请求发送到任意节点 node，此时 node 节点就是<strong>协调节点</strong>（coordinating node）</li><li>协调节点进行分词等操作后，去查询所有的 shard （primary shard 和 replica shard 选择一个）</li><li>所有 shard 将满足条件的数据 id 排序字段 等信息返回给路由节点</li><li>路由节点重新进行排序，截取数据后，获取到真正需要返回的数据的 id</li><li>路由节点再次请求对应的 shard （此时有 id 了，可以直接定位到对应shard）</li><li>获取到全量数据，返回给 Client</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>主要介绍了 ES 查询以及检索的流程，不足及错误之处欢迎指正。</p><h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><ol><li>协调节点：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.9/modules-node.html#coordinating-node">https://www.elastic.co/guide/en/elasticsearch/reference/7.9/modules-node.html#coordinating-node</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作笔记 </category>
+          
+          <category> ELK </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工作笔记 </tag>
+            
+            <tag> ELK </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Elasticsearch 技术分享】—— Elasticsearch 存储一条数据， put 过程是什么样子的？</title>
       <link href="/2020/08/26/technology-sharing-es-3.html"/>
       <url>/2020/08/26/technology-sharing-es-3.html</url>
@@ -1855,9 +1884,9 @@
       
         <tags>
             
-            <tag> interceptor </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> interceptor </tag>
             
             <tag> servlet </tag>
             

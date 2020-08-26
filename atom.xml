@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-08-25T16:19:28.992Z</updated>
+  <updated>2020-08-26T12:37:02.899Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Elasticsearch 技术分享】—— ES 查询检索数据的过程，是什么样子的？</title>
+    <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html"/>
+    <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html</id>
+    <published>2020-08-26T12:20:00.000Z</published>
+    <updated>2020-08-26T12:37:02.899Z</updated>
+    
+    <summary type="html">
+    
+      ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？
+    
+    </summary>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    
+  </entry>
   
   <entry>
     <title>【Elasticsearch 技术分享】—— Elasticsearch 存储一条数据， put 过程是什么样子的？</title>
@@ -484,27 +509,6 @@
       <category term="流水号" scheme="https://liuzhihang.com/tags/%E6%B5%81%E6%B0%B4%E5%8F%B7/"/>
     
       <category term="雪花算法" scheme="https://liuzhihang.com/tags/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>项目启动失败:java.lang.NoClassDefFoundError</title>
-    <link href="https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html"/>
-    <id>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</id>
-    <published>2020-04-12T05:20:48.000Z</published>
-    <updated>2020-04-12T05:38:39.467Z</updated>
-    
-    <summary type="html">
-    
-      遇到项目启动失败, 报错信息: ... nested exception is java.lang.NoClassDefFoundError: org/apache/shardingsphere/api/config/RuleConfiguration ...
-    
-    </summary>
-    
-    
-      <category term="issue" scheme="https://liuzhihang.com/categories/issue/"/>
-    
-    
-      <category term="error" scheme="https://liuzhihang.com/tags/error/"/>
     
   </entry>
   
