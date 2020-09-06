@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-08-28T17:33:13.785Z</updated>
+  <updated>2020-09-06T04:15:41.913Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【JDK源码笔记】- 快来看看！AQS 和  CountDownLatch 有怎么样的关系？</title>
+    <link href="https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html"/>
+    <id>https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html</id>
+    <published>2020-09-06T04:00:00.000Z</published>
+    <updated>2020-09-06T04:15:41.913Z</updated>
+    
+    <summary type="html">
+    
+      CountDownLatch 一个同步辅助工具，同样是基于 AQS 实现，本篇文件主要是介绍 CountDownLatch 的使用，以及源码。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【Elasticsearch 技术分享】—— 十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！</title>
     <link href="https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html"/>
     <id>https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html</id>
     <published>2020-08-28T17:20:00.000Z</published>
-    <updated>2020-08-28T17:33:13.785Z</updated>
+    <updated>2020-09-01T09:23:03.785Z</updated>
     
     <summary type="html">
     
@@ -206,11 +231,11 @@
       <category term="IDEA" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/IDEA/"/>
     
     
-      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
-    
       <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
       <category term="IDEA" scheme="https://liuzhihang.com/tags/IDEA/"/>
+    
+      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   
@@ -486,29 +511,6 @@
       <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown代码折叠</title>
-    <link href="https://liuzhihang.com/2020/04/20/markdown-code-folding.html"/>
-    <id>https://liuzhihang.com/2020/04/20/markdown-code-folding.html</id>
-    <published>2020-04-20T07:20:20.000Z</published>
-    <updated>2020-04-22T11:58:05.810Z</updated>
-    
-    <summary type="html">
-    
-      在markdown中折叠一部分内容, 点击可以展开.
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="https://liuzhihang.com/categories/markdown/"/>
-    
-    
-      <category term="markdown" scheme="https://liuzhihang.com/tags/markdown/"/>
-    
-      <category term="小技巧" scheme="https://liuzhihang.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
