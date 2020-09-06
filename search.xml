@@ -5,8 +5,8 @@
     
     <entry>
       <title>【工具册】- 给大家介绍下，这是我的流程图软件 —— draw.io</title>
-      <link href="/2020/09/06/source-code-aqs.html"/>
-      <url>/2020/09/06/source-code-aqs.html</url>
+      <link href="/2020/09/06/source-code-drawio.html"/>
+      <url>/2020/09/06/source-code-drawio.html</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><br><p>之前推了一篇文章《<a href="https://mp.weixin.qq.com/s/Ktjcc_7XCPx6fU4Zn8Tmlg">十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！</a>》，很多小伙伴都比较好奇在文章中的图是用的什么画图软件？看那么明显的手绘风格，当然是手画的啦！（开玩笑），其实我用的是 draw.io ，下面分享我的画图软件 —— draw.io 。</p><br><p>公众号：liuzhihangs，记录工作学习中的技术、开发及源码笔记；时不时分享一些生活中的见闻感悟。欢迎大佬来指导！</p></blockquote><h3 id="为什么需要画图？"><a href="#为什么需要画图？" class="headerlink" title="为什么需要画图？"></a>为什么需要画图？</h3><p>俗话说：“一图顶百字！”，好吧！这是我现想的俗话。</p><p>在新项目开发，技术分享，阅读代码笔记，或者面试的时候，画个流程图，架构图等等，比较直观，便于理解等。优点啥的就不多介绍了，这里主要介绍我的画图软件。</p><h4 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h4><ol><li>免费</li><li>使用方便</li><li>支持离线使用</li></ol><h4 id="用过的其他软件"><a href="#用过的其他软件" class="headerlink" title="用过的其他软件"></a>用过的其他软件</h4><ol><li>Visio：使用方便，在最开始的时候就是使用 Visio，不过只能在 Win 系统上使用。</li><li>ProcessOn：在线版，使用方便，很简洁。个人免费，不过限制文件数量。</li><li>OmniGraffle：Mac 客户端，收费，有很多功能，不过对我来说有点玩不熟练。</li><li>语雀：语雀也支持画简单的流程图。</li><li>其他一些，暂时没想起来的。</li></ol><p>体验了很多画图软件，最后还是（暂时）选择了 draw.io 。 原因很简单，支持多平台（网页/Win/Mac/Linux），开源免费，文件存储在本地，也可以选择存储位置。</p><p>下面简单介绍下 draw.io</p><h3 id="draw-io"><a href="#draw-io" class="headerlink" title="draw.io"></a>draw.io</h3><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>在线版可以直接访问 <a href="https://draw.io">https://draw.io</a> 或者 <a href="https://app.diagrams.net/">https://app.diagrams.net/</a> 使用，进去之后如下所示：</p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/draw-web-FlEHBo.png" alt="draw-web-FlEHBo"></p><p>可以选择存储，当然也有离线版本，即 drawio-desktop ，下载地址：<a href="https://github.com/jgraph/drawio-desktop">https://github.com/jgraph/drawio-desktop</a></p><p>选择对应的平台下载安装即可：</p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/drawio-desktop-nj8Mpy.png" alt="drawio-desktop-nj8Mpy"></p><h4 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h4><p>打开 app 或者 进入 app 之后可以设置语言，如下：</p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/drawio-desktop-1-sIyT2d.png" alt="drawio-desktop-1-sIyT2d"></p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/drawio-desktop-2-qmJ3XA.png" alt="drawio-desktop-2-qmJ3XA"></p><h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>都已经到这里了，就不用说怎么使用的了吧！下面展示之前画的图：</p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/draw-1-slJldy.png" alt="draw-1-slJldy"></p><h4 id="手绘风格"><a href="#手绘风格" class="headerlink" title="手绘风格"></a>手绘风格</h4><p>那手绘风格是怎么画的呢？</p><p>秘籍就在右侧工具栏，选中 Sketch 选项，之后图片就会变为手绘风格的了！</p><p><img src="/resources/image/loading.gif" data-original="https://liuzhihang.com/oss/pic/article/draw-2-smWIKE.png" alt="draw-2-smWIKE"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇文章主要分享我常用的画图软件，有兴趣的小伙伴可以使用试一下。软件万万千，自己用的顺手的才是最重要的。不过 draw.io 还是比较推荐的。</p><p>后续我也会分享一些其他软件工具等，有兴趣的小伙伴可以关注以下。如果有什么比较有趣或生产力软件都可以给推荐下。</p>]]></content>
       
@@ -275,11 +275,11 @@
       
         <tags>
             
+            <tag> plugin </tag>
+            
             <tag> 工具册 </tag>
             
             <tag> IDEA </tag>
-            
-            <tag> plugin </tag>
             
         </tags>
       
