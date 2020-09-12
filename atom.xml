@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-06T09:28:51.913Z</updated>
+  <updated>2020-09-12T17:35:43.449Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【JDK源码笔记】- CountDownLatch 瞬间炸裂！同基于 AQS，凭什么 CyclicBarrier 可以这么秀？</title>
+    <link href="https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html"/>
+    <id>https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html</id>
+    <published>2020-09-12T17:30:00.000Z</published>
+    <updated>2020-09-12T17:35:43.449Z</updated>
+    
+    <summary type="html">
+    
+      看完 CountDownLatch 正准备表示一番，突然看到了一个 CyclicBarrier —— 回环屏障。沃特？回环还屏障？说比 CountDownLatch 要多一个回环，那咱可得瞧一瞧，看一看了！
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【工具册】- 给大家介绍下，这是我的流程图软件 —— draw.io</title>
     <link href="https://liuzhihang.com/2020/09/06/source-tool-drawio.html"/>
     <id>https://liuzhihang.com/2020/09/06/source-tool-drawio.html</id>
     <published>2020-09-06T09:00:00.000Z</published>
-    <updated>2020-09-06T09:28:51.913Z</updated>
+    <updated>2020-09-12T17:22:04.211Z</updated>
     
     <summary type="html">
     
@@ -42,7 +67,7 @@
     <link href="https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html"/>
     <id>https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html</id>
     <published>2020-09-06T04:00:00.000Z</published>
-    <updated>2020-09-06T09:19:16.065Z</updated>
+    <updated>2020-09-12T17:22:04.112Z</updated>
     
     <summary type="html">
     
@@ -67,7 +92,7 @@
     <link href="https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html"/>
     <id>https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html</id>
     <published>2020-08-28T17:20:00.000Z</published>
-    <updated>2020-09-01T09:23:03.785Z</updated>
+    <updated>2020-09-12T17:22:04.165Z</updated>
     
     <summary type="html">
     
@@ -92,7 +117,7 @@
     <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html"/>
     <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html</id>
     <published>2020-08-26T12:20:00.000Z</published>
-    <updated>2020-08-26T12:39:43.595Z</updated>
+    <updated>2020-09-12T17:22:04.178Z</updated>
     
     <summary type="html">
     
@@ -117,7 +142,7 @@
     <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html"/>
     <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html</id>
     <published>2020-08-25T16:10:00.000Z</published>
-    <updated>2020-08-27T04:49:01.083Z</updated>
+    <updated>2020-09-12T17:22:04.108Z</updated>
     
     <summary type="html">
     
@@ -142,7 +167,7 @@
     <link href="https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html"/>
     <id>https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html</id>
     <published>2020-08-23T02:00:00.000Z</published>
-    <updated>2020-08-27T04:49:08.180Z</updated>
+    <updated>2020-09-12T17:22:04.123Z</updated>
     
     <summary type="html">
     
@@ -167,7 +192,7 @@
     <link href="https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html"/>
     <id>https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html</id>
     <published>2020-08-18T05:00:00.000Z</published>
-    <updated>2020-08-23T14:44:23.945Z</updated>
+    <updated>2020-09-12T17:22:04.115Z</updated>
     
     <summary type="html">
     
@@ -192,7 +217,7 @@
     <link href="https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html"/>
     <id>https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html</id>
     <published>2020-08-09T07:30:00.000Z</published>
-    <updated>2020-08-10T02:07:40.773Z</updated>
+    <updated>2020-09-12T17:22:04.225Z</updated>
     
     <summary type="html">
     
@@ -217,7 +242,7 @@
     <link href="https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html"/>
     <id>https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html</id>
     <published>2020-08-01T03:58:16.000Z</published>
-    <updated>2020-08-01T04:21:41.219Z</updated>
+    <updated>2020-09-12T17:22:04.188Z</updated>
     
     <summary type="html">
     
@@ -238,7 +263,7 @@
     <link href="https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html"/>
     <id>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</id>
     <published>2020-07-29T05:00:00.000Z</published>
-    <updated>2020-07-29T07:14:17.255Z</updated>
+    <updated>2020-09-12T17:22:04.200Z</updated>
     
     <summary type="html">
     
@@ -265,7 +290,7 @@
     <link href="https://liuzhihang.com/2020/07/27/source-code-reentrant-read-write-lock.html"/>
     <id>https://liuzhihang.com/2020/07/27/source-code-reentrant-read-write-lock.html</id>
     <published>2020-07-27T15:50:00.000Z</published>
-    <updated>2020-07-29T06:12:41.043Z</updated>
+    <updated>2020-09-12T17:22:04.133Z</updated>
     
     <summary type="html">
     
@@ -290,7 +315,7 @@
     <link href="https://liuzhihang.com/2020/07/25/source-code-reentrant-lock.html"/>
     <id>https://liuzhihang.com/2020/07/25/source-code-reentrant-lock.html</id>
     <published>2020-07-25T01:50:00.000Z</published>
-    <updated>2020-07-25T01:52:02.630Z</updated>
+    <updated>2020-09-12T17:22:04.221Z</updated>
     
     <summary type="html">
     
@@ -315,7 +340,7 @@
     <link href="https://liuzhihang.com/2020/07/18/work-archetype.html"/>
     <id>https://liuzhihang.com/2020/07/18/work-archetype.html</id>
     <published>2020-07-18T05:00:00.000Z</published>
-    <updated>2020-07-18T12:21:15.606Z</updated>
+    <updated>2020-09-12T17:22:04.217Z</updated>
     
     <summary type="html">
     
@@ -340,7 +365,7 @@
     <link href="https://liuzhihang.com/2020/07/12/source-code-aqs.html"/>
     <id>https://liuzhihang.com/2020/07/12/source-code-aqs.html</id>
     <published>2020-07-12T05:00:00.000Z</published>
-    <updated>2020-07-12T05:34:10.034Z</updated>
+    <updated>2020-09-12T17:22:04.170Z</updated>
     
     <summary type="html">
     
@@ -365,7 +390,7 @@
     <link href="https://liuzhihang.com/2020/07/05/source-code-locksupport.html"/>
     <id>https://liuzhihang.com/2020/07/05/source-code-locksupport.html</id>
     <published>2020-07-05T12:20:20.000Z</published>
-    <updated>2020-07-05T12:53:57.888Z</updated>
+    <updated>2020-09-12T17:22:04.137Z</updated>
     
     <summary type="html">
     
@@ -390,7 +415,7 @@
     <link href="https://liuzhihang.com/2020/06/28/source-code-longadder.html"/>
     <id>https://liuzhihang.com/2020/06/28/source-code-longadder.html</id>
     <published>2020-06-28T15:50:20.000Z</published>
-    <updated>2020-06-28T15:29:05.376Z</updated>
+    <updated>2020-09-12T17:22:04.161Z</updated>
     
     <summary type="html">
     
@@ -415,7 +440,7 @@
     <link href="https://liuzhihang.com/2020/06/21/source-code-threadlocal.html"/>
     <id>https://liuzhihang.com/2020/06/21/source-code-threadlocal.html</id>
     <published>2020-06-21T02:00:00.000Z</published>
-    <updated>2020-06-21T03:35:47.932Z</updated>
+    <updated>2020-09-12T17:22:04.141Z</updated>
     
     <summary type="html">
     
@@ -440,7 +465,7 @@
     <link href="https://liuzhihang.com/2020/06/12/source-code-cas.html"/>
     <id>https://liuzhihang.com/2020/06/12/source-code-cas.html</id>
     <published>2020-06-12T15:50:20.000Z</published>
-    <updated>2020-06-12T15:37:39.802Z</updated>
+    <updated>2020-09-12T17:22:04.102Z</updated>
     
     <summary type="html">
     
@@ -465,36 +490,11 @@
     <link href="https://liuzhihang.com/2020/05/25/source-code-hashmap-red-black-tree.html"/>
     <id>https://liuzhihang.com/2020/05/25/source-code-hashmap-red-black-tree.html</id>
     <published>2020-05-25T12:50:20.000Z</published>
-    <updated>2020-05-26T07:54:53.710Z</updated>
+    <updated>2020-09-12T17:22:04.073Z</updated>
     
     <summary type="html">
     
       什么是红黑树？在HashMap中是怎么应用的？
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- HashMap扩容</title>
-    <link href="https://liuzhihang.com/2020/05/17/source-code-hashmap-resize.html"/>
-    <id>https://liuzhihang.com/2020/05/17/source-code-hashmap-resize.html</id>
-    <published>2020-05-17T12:50:20.000Z</published>
-    <updated>2020-05-18T06:45:17.866Z</updated>
-    
-    <summary type="html">
-    
-      HashMap初始化参数, 底层实现原理, put()流程, resize()扩容流程等源码阅读记录 ...
     
     </summary>
     
