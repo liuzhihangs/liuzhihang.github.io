@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>【JDK源码笔记】- CountDownLatch 瞬间炸裂！同基于 AQS，凭什么 CyclicBarrier 可以这么秀？</title>
+      <title>【JDK源码笔记】- CyclicBarrier 不就是比 CountDownLatch 多了个回环么？</title>
       <link href="/2020/09/13/source-code-cyclicbarrier.html"/>
       <url>/2020/09/13/source-code-cyclicbarrier.html</url>
       

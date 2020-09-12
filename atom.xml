@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-12T17:35:43.449Z</updated>
+  <updated>2020-09-12T18:05:58.207Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【JDK源码笔记】- CountDownLatch 瞬间炸裂！同基于 AQS，凭什么 CyclicBarrier 可以这么秀？</title>
+    <title>【JDK源码笔记】- CyclicBarrier 不就是比 CountDownLatch 多了个回环么？</title>
     <link href="https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html"/>
     <id>https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html</id>
     <published>2020-09-12T17:30:00.000Z</published>
-    <updated>2020-09-12T17:35:43.449Z</updated>
+    <updated>2020-09-12T18:05:58.207Z</updated>
     
     <summary type="html">
     
