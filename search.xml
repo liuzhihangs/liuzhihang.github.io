@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【工作笔记】- 你有没有想过为什么交易和退款要拆开不同的表？</title>
+      <link href="/2020/09/19/work-trans-refund-table.html"/>
+      <url>/2020/09/19/work-trans-refund-table.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><br><p>近期做新项目，在设计表结构的时候，突然想起来之前面试的时候遇到的一个问题，那时候也是初出茅庐，对很多东西一知半解（当然现在也是），当时那个小哥哥问我为什么交易和退款要拆成两个表？是基于什么考虑？有什么好处和优点么？</p><br><p>公众号：liuzhihangs，记录工作学习中的技术、开发及源码笔记；时不时分享一些生活中的见闻感悟。欢迎大佬来指导！</p></blockquote><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>那是一个风和日丽的下午，当然，风和日丽的下午应该配点其他的形容词，实在是我才疏学浅，只能用这个词充当了下开头…… （此处省略小五千字）</p><p>赶紧进入正文！</p><p>因为之前一直做<strong>聚合支付</strong>，而在使用过程中，也是支付和退款表拆开的，一直这么用，并没有觉得不妥。</p><p>比如一个交易表基本就是这样的：</p><table><thead><tr><th>字段</th><th>类型</th><th>含义</th></tr></thead><tbody><tr><td>id</td><td>bigint</td><td>主键 id</td></tr><tr><td>trans_id</td><td>varchar</td><td>交易订单号</td></tr><tr><td>trans_amount</td><td>bigint</td><td>订单金额</td></tr><tr><td>trans_status</td><td>tinyint</td><td>交易状态</td></tr><tr><td>……</td><td>……</td><td>……</td></tr><tr><td>create_time</td><td>datetime</td><td>创建时间</td></tr><tr><td>update_time</td><td>datetime</td><td>更新时间</td></tr></tbody></table><table><thead><tr><th>字段</th><th>类型</th><th>含义</th></tr></thead><tbody><tr><td>id</td><td>bigint</td><td>主键 id</td></tr><tr><td>refund_id</td><td>varchar</td><td>退款订单号</td></tr><tr><td>origin_trans_id</td><td>varchar</td><td>原始交易订单号</td></tr><tr><td>refund_status</td><td>tinyint</td><td>退款状态</td></tr><tr><td>refund_amount</td><td>bigint</td><td>退款金额</td></tr><tr><td>……</td><td>……</td><td>……</td></tr><tr><td>create_time</td><td>datetime</td><td>创建时间</td></tr><tr><td>update_time</td><td>datetime</td><td>更新时间</td></tr></tbody></table><p>大概两个表就是这样子的吧！像一些其他字段就先省略了，平常用着也觉得没什么。</p><p>但是恰好那次那个小哥哥就问了这个问题，支付和退款为什么要分开记录？</p><p>当时也是确实是实力不允许，我只是说了就是这么用的，把正向流程和逆向流程拆开，分开实现逻辑，比较方便。</p><h3 id="个人见解"><a href="#个人见解" class="headerlink" title="个人见解"></a>个人见解</h3><p>这里说的不仅仅是交易和退款，同时泛指正向交易和逆向交易，比如充值和消费，借款和贷款，账户出账入账等等，下面仅说说个人见解，<strong>只做讨论</strong>，如果小伙伴有更好的说法，希望可以留言指出，共同学习。</p><h4 id="对账需要"><a href="#对账需要" class="headerlink" title="对账需要"></a>对账需要</h4><p>对账户而言，出款表和入款表最后两方的金额是能对的上的，也就是说<strong>收支平衡</strong>。</p><p>当然这个记在一个表里也是完全可以的。毕竟对出入账只是流水没有状态变化，比如出账中，入账中，等等，流水表完全可以记在一个里面，然后用字段进行标识是出账还是入账。</p><h4 id="拆表需要"><a href="#拆表需要" class="headerlink" title="拆表需要"></a>拆表需要</h4><p>在网上看资料经常会说<strong>分库分表</strong>，而像订单这种（交易/退款）完全两种业务，使用两张表相对而言比较合适，毕竟<strong>交易</strong>的订单相比退款订单要多的多。</p><h4 id="字段设计"><a href="#字段设计" class="headerlink" title="字段设计"></a>字段设计</h4><p>交易和退款是完全不同的两种业务，不像账户流水就是资金记录。</p><p>交易除了订单状态还有一些交易信息比如商户号、优惠金额、实付金额、交易渠道、商品 id 名称、备注等各种信息。</p><p>退款则是根据原单进行退款，需要记录原始订单号、退款金额（部分退款）、退款信息等。</p><p>虽然交易和退款总体上都包含 订单号、状态、金额等，但是如果强行放在一个表，就会导致以下问题：</p><ol><li>很多字段为空的情况，比如交易不需要原始订单号，退款需要存储原始订单号。本来可以设置索引来提高查询效率的字段也不太合适设置了。</li><li>状态也不一定可以完全兼容，像交易状态和退款状态就很难互相兼容。</li></ol><h4 id="开发效率"><a href="#开发效率" class="headerlink" title="开发效率"></a>开发效率</h4><p>交易和退款分开之后，两个人负责不同的业务进行开发，包括业务逻辑和查询展示。如果放在一起，就很多字段不能保证别人知道有还是没有，是存储还是不存储，毕竟表里设置的都可以为空。这种情况下需要很多沟通，或者干脆一个人进行开发。</p><h4 id="设计模式及原则"><a href="#设计模式及原则" class="headerlink" title="设计模式及原则"></a>设计模式及原则</h4><p>其他从设计模式及原则的角度上来说，可以说是职责单一，当然再高大上偏理论的我这就扯不出来了。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h4><p><strong>Q: 那前端要将两种甚至多种在一个列表展示该如何处理？</strong></p><p><strong>A:</strong> 在很多 APP 中大家看到的多种订单都是在一个列表里面展示出来的，比如：支付宝的账单页面。</p><p>当然，如果前端分 tab 页，分开展示不同的业务，那对后端来说简直不要太友好。不过实际往往不是这样，这时候就需要将订单统一存储。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihangs/oss/pic/loading.gif" data-lazy-src="/resources/image/loading.gif" data-original="https://cdn.jsdelivr.net/gh/liuzhihangs/oss/pic/article/LDZJYc-IFUqcP.png" alt="LDZJYc-IFUqcP"></p><p>在订单成功的时候存储到一个公共存储中，可以通过 MQ 等，将数据保送到另一张表/库，或者 ES 中用来存储。这样订单查询还可以和业务逻辑的表/库分开。也可以通过 binlog 进行处理，这里的方案只做参考。</p><h4 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h4><p>之所以写这篇文章，也是为了总结一下最近工作中遇到的问题，以及处理方法。同时一瞬间想起来了很久前遇到的相同的问题。</p><p>如果小伙伴们还有别的看法，欢迎留言，发表自己的意见及看法，共同讨论。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工作笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【JDK源码笔记】- CyclicBarrier 不就是比 CountDownLatch 多了个回环么？</title>
       <link href="/2020/09/13/source-code-cyclicbarrier.html"/>
       <url>/2020/09/13/source-code-cyclicbarrier.html</url>
@@ -1996,9 +2021,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> interceptor </tag>
+            
+            <tag> Spring </tag>
             
             <tag> servlet </tag>
             

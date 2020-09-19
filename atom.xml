@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-12T18:05:58.207Z</updated>
+  <updated>2020-09-19T02:00:46.215Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【工作笔记】- 你有没有想过为什么交易和退款要拆开不同的表？</title>
+    <link href="https://liuzhihang.com/2020/09/19/work-trans-refund-table.html"/>
+    <id>https://liuzhihang.com/2020/09/19/work-trans-refund-table.html</id>
+    <published>2020-09-19T02:00:00.000Z</published>
+    <updated>2020-09-19T02:00:46.215Z</updated>
+    
+    <summary type="html">
+    
+      近期做新项目，在设计表结构的时候，突然想起来之前面试的时候遇到的一个问题，那时候也是初出茅庐，对很多东西一知半解（当然现在也是），当时那个小哥哥问我为什么交易和退款要拆成两个表？是基于什么考虑？有什么好处和优点么？
+    
+    </summary>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- CyclicBarrier 不就是比 CountDownLatch 多了个回环么？</title>
@@ -470,31 +491,6 @@
     <summary type="html">
     
       JUC包下大量使用了CAS，工作和面试中也经常遇到CAS，包括说到乐观锁，也不可避免的想起CAS，那CAS究竟是什么？
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- HashMap红黑树</title>
-    <link href="https://liuzhihang.com/2020/05/25/source-code-hashmap-red-black-tree.html"/>
-    <id>https://liuzhihang.com/2020/05/25/source-code-hashmap-red-black-tree.html</id>
-    <published>2020-05-25T12:50:20.000Z</published>
-    <updated>2020-09-12T17:22:04.073Z</updated>
-    
-    <summary type="html">
-    
-      什么是红黑树？在HashMap中是怎么应用的？
     
     </summary>
     
