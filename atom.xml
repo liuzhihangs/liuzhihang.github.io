@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-19T02:02:51.081Z</updated>
+  <updated>2020-09-21T00:04:01.368Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- 使用递增计数器的线程同步工具 —— 信号量，它的原理是什么样子的？</title>
+    <link href="https://liuzhihang.com/2020/09/21/source-code-semaphore.html"/>
+    <id>https://liuzhihang.com/2020/09/21/source-code-semaphore.html</id>
+    <published>2020-09-20T23:00:00.000Z</published>
+    <updated>2020-09-21T00:04:01.368Z</updated>
+    
+    <summary type="html">
+    
+      在 JUC 中线程同步器除了 CountDownLatch 和 CycleBarrier ，还有一个叫做 Semaphore （信号量），同样是基于 AQS 实现的。下面来看看信号量的内部原理。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【工作笔记】- 你有没有想过为什么交易和退款要拆开不同的表？</title>
@@ -466,31 +491,6 @@
     <summary type="html">
     
       什么是红黑树？在HashMap中是怎么应用的？
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 从JUC源码看CAS，我做了个笔记 ......</title>
-    <link href="https://liuzhihang.com/2020/06/12/source-code-cas.html"/>
-    <id>https://liuzhihang.com/2020/06/12/source-code-cas.html</id>
-    <published>2020-06-12T15:50:20.000Z</published>
-    <updated>2020-09-12T17:22:04.102Z</updated>
-    
-    <summary type="html">
-    
-      JUC包下大量使用了CAS，工作和面试中也经常遇到CAS，包括说到乐观锁，也不可避免的想起CAS，那CAS究竟是什么？
     
     </summary>
     
