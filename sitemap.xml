@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html</loc>
+    
+    <lastmod>2020-09-27T14:54:57.558Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/09/21/source-code-semaphore.html</loc>
     
     <lastmod>2020-09-21T00:04:01.368Z</lastmod>

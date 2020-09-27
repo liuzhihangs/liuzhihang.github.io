@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-21T00:04:01.368Z</updated>
+  <updated>2020-09-27T14:54:57.558Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- 基于数组的有界阻塞队列 —— ArrayBlockingQueue</title>
+    <link href="https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html"/>
+    <id>https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html</id>
+    <published>2020-09-27T14:50:00.000Z</published>
+    <updated>2020-09-27T14:54:57.558Z</updated>
+    
+    <summary type="html">
+    
+      在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 使用递增计数器的线程同步工具 —— 信号量，它的原理是什么样子的？</title>
@@ -466,31 +491,6 @@
     <summary type="html">
     
       在介绍 AtomicInteger 时，已经说明在高并发下大量线程去竞争更新同一个原子变量时，因为只有一个线程能够更新成功，其他的线程在竞争失败后，只能一直循环，不断的进行 CAS 尝试，从而浪费了 CPU 资源。而在 JDK 8 中新增了 LongAdder 用来解决高并发下变量的原子操作。
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 请介绍下你了解的ThreadLocal，它的底层原理！</title>
-    <link href="https://liuzhihang.com/2020/06/21/source-code-threadlocal.html"/>
-    <id>https://liuzhihang.com/2020/06/21/source-code-threadlocal.html</id>
-    <published>2020-06-21T02:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.141Z</updated>
-    
-    <summary type="html">
-    
-      什么是红黑树？在HashMap中是怎么应用的？
     
     </summary>
     
