@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-09-27T14:54:57.558Z</updated>
+  <updated>2020-10-01T10:16:48.650Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- AQS 都看完了，Condition 原理可不能少！</title>
+    <link href="https://liuzhihang.com/2020/10/01/source-code-condition.html"/>
+    <id>https://liuzhihang.com/2020/10/01/source-code-condition.html</id>
+    <published>2020-10-01T10:00:00.000Z</published>
+    <updated>2020-10-01T10:16:48.650Z</updated>
+    
+    <summary type="html">
+    
+      在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？
+    
+    </summary>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 基于数组的有界阻塞队列 —— ArrayBlockingQueue</title>
@@ -466,31 +491,6 @@
     <summary type="html">
     
       LockSupport 是 JUC 中常用的一个工具类，主要作用是挂起和唤醒线程。在阅读 JUC 源码中经常看到，所以很有必要了解一下。
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- JDK 8 新增的 LongAdder，得过来看一下！</title>
-    <link href="https://liuzhihang.com/2020/06/28/source-code-longadder.html"/>
-    <id>https://liuzhihang.com/2020/06/28/source-code-longadder.html</id>
-    <published>2020-06-28T15:50:20.000Z</published>
-    <updated>2020-09-12T17:22:04.161Z</updated>
-    
-    <summary type="html">
-    
-      在介绍 AtomicInteger 时，已经说明在高并发下大量线程去竞争更新同一个原子变量时，因为只有一个线程能够更新成功，其他的线程在竞争失败后，只能一直循环，不断的进行 CAS 尝试，从而浪费了 CPU 资源。而在 JDK 8 中新增了 LongAdder 用来解决高并发下变量的原子操作。
     
     </summary>
     
