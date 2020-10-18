@@ -1,3 +1,3 @@
+https://liuzhihang.com/2020/10/18/log-trace-id.html
 https://liuzhihang.com/2020/10/11/work-trans-why-table-id.html
 https://liuzhihang.com/2020/10/04/source-code-linkedblockingqueue.html
-https://liuzhihang.com/2020/10/01/source-code-condition.html
