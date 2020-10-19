@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-10-18T06:27:25.457Z</updated>
+  <updated>2020-10-18T11:45:05.783Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【工作笔记】- APP 莫名崩溃，开始以为是 Header 中 name 大小写的锅，最后发现原来是容器的错！</title>
+    <link href="https://liuzhihang.com/2020/10/19/header-name-case.html"/>
+    <id>https://liuzhihang.com/2020/10/19/header-name-case.html</id>
+    <published>2020-10-18T23:00:00.000Z</published>
+    <updated>2020-10-18T11:45:05.783Z</updated>
+    
+    <summary type="html">
+    
+      在自己模拟过程中，才发现和容器有关系。
+    
+    </summary>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>【工作笔记】- 几行代码轻松实现跨系统传递 traceId，再也不用担心对不上日志了！</title>
@@ -462,31 +483,6 @@
     <summary type="html">
     
       在看完 ReentrantLock 之后，在高并发场景下 ReentrantLock 已经足够使用，但是因为 ReentrantLock 是独占锁，同时只有一个线程可以获取该锁，而很多应用场景都是读多写少，这时候使用 ReentrantLock 就不太合适了。读多写少的场景该如何使用？在 JUC 包下同样提供了读写锁 ReentrantReadWriteLock 来应对读多写少的场景。
-    
-    </summary>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 不能再被问住了！ReentrantLock 源码、画图一起看一看！</title>
-    <link href="https://liuzhihang.com/2020/07/25/source-code-reentrant-lock.html"/>
-    <id>https://liuzhihang.com/2020/07/25/source-code-reentrant-lock.html</id>
-    <published>2020-07-25T01:50:00.000Z</published>
-    <updated>2020-09-12T17:22:04.221Z</updated>
-    
-    <summary type="html">
-    
-      在阅读完 JUC 包下的 AQS 源码之后，其中有很多疑问，最大的疑问就是 state 究竟是什么含义？并且 AQS 主要定义了队列的出入，但是获取资源、释放资源都是交给子类实现的，那子类是怎么实现的呢？ 
     
     </summary>
     
