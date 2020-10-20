@@ -47,7 +47,8 @@ $(function () {
   }
 
   searchClickFn()
-  window.addEventListener('pjax:success', function () {
+
+  window.addEventListener('pjax:complete', function () {
     $('#local-search').is(':visible') && closeSearch()
     searchClickFn()
   })

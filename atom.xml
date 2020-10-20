@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Notes</title>
-  <icon>https://www.gravatar.com/avatar/9a661d73a4ebd8479e19c696ac6daf24</icon>
+  
   <subtitle>Notes</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
   <updated>2020-10-18T11:45:05.783Z</updated>
@@ -11,7 +11,7 @@
   
   <author>
     <name>liuzhihang</name>
-    <email>liuzhihangs@qq.com</email>
+    
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
@@ -23,17 +23,15 @@
     <published>2020-10-18T23:00:00.000Z</published>
     <updated>2020-10-18T11:45:05.783Z</updated>
     
-    <summary type="html">
     
-      在自己模拟过程中，才发现和容器有关系。
-    
-    </summary>
+    <summary type="html">在自己模拟过程中，才发现和容器有关系。</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -44,21 +42,19 @@
     <published>2020-10-18T05:00:00.000Z</published>
     <updated>2020-10-18T06:27:25.457Z</updated>
     
-    <summary type="html">
     
-      新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？
-    
-    </summary>
+    <summary type="html">新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="链路追踪" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="链路追踪" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="链路追踪" scheme="https://liuzhihang.com/tags/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
+    <category term="链路追踪" scheme="https://liuzhihang.com/tags/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
     
   </entry>
   
@@ -69,17 +65,15 @@
     <published>2020-10-11T05:00:00.000Z</published>
     <updated>2020-10-11T05:11:00.786Z</updated>
     
-    <summary type="html">
     
-      建表时一般设置一个 id 为自增，但是同时流水号也是唯一索引，为什么不直接用流水号当做主键呢？
-    
-    </summary>
+    <summary type="html">建表时一般设置一个 id 为自增，但是同时流水号也是唯一索引，为什么不直接用流水号当做主键呢？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -90,21 +84,19 @@
     <published>2020-10-04T06:30:00.000Z</published>
     <updated>2020-10-04T06:48:58.869Z</updated>
     
-    <summary type="html">
     
-      上一节看了基于数据的有界阻塞队列 ArrayBlockingQueue 的源码，通过阅读源码了解到在 ArrayBlockingQueue 中入队列和出队列操作都是用了 ReentrantLock 来保证线程安全。下面咱们看另一种有界阻塞队列：LinkedBlockingQueue。
-    
-    </summary>
+    <summary type="html">上一节看了基于数据的有界阻塞队列 ArrayBlockingQueue 的源码，通过阅读源码了解到在 ArrayBlockingQueue 中入队列和出队列操作都是用了 ReentrantLock 来保证线程安全。下面咱们看另一种有界阻塞队列：LinkedBlockingQueue。</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -115,21 +107,19 @@
     <published>2020-10-01T10:00:00.000Z</published>
     <updated>2020-10-01T10:16:48.650Z</updated>
     
-    <summary type="html">
     
-      在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？
-    
-    </summary>
+    <summary type="html">在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -140,21 +130,19 @@
     <published>2020-09-27T14:50:00.000Z</published>
     <updated>2020-09-27T14:54:57.558Z</updated>
     
-    <summary type="html">
     
-      在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。
-    
-    </summary>
+    <summary type="html">在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -165,21 +153,19 @@
     <published>2020-09-20T23:00:00.000Z</published>
     <updated>2020-09-21T00:04:01.368Z</updated>
     
-    <summary type="html">
     
-      在 JUC 中线程同步器除了 CountDownLatch 和 CycleBarrier ，还有一个叫做 Semaphore （信号量），同样是基于 AQS 实现的。下面来看看信号量的内部原理。
-    
-    </summary>
+    <summary type="html">在 JUC 中线程同步器除了 CountDownLatch 和 CycleBarrier ，还有一个叫做 Semaphore （信号量），同样是基于 AQS 实现的。下面来看看信号量的内部原理。</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -190,17 +176,15 @@
     <published>2020-09-19T02:00:00.000Z</published>
     <updated>2020-09-19T02:02:51.081Z</updated>
     
-    <summary type="html">
     
-      近期做新项目，在设计表结构的时候，突然想起来之前面试的时候遇到的一个问题，那时候也是初出茅庐，对很多东西一知半解（当然现在也是），当时那个小哥哥问我为什么交易和退款要拆成两个表？是基于什么考虑？有什么好处和优点么？
-    
-    </summary>
+    <summary type="html">近期做新项目，在设计表结构的时候，突然想起来之前面试的时候遇到的一个问题，那时候也是初出茅庐，对很多东西一知半解（当然现在也是），当时那个小哥哥问我为什么交易和退款要拆成两个表？是基于什么考虑？有什么好处和优点么？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -211,21 +195,19 @@
     <published>2020-09-12T17:30:00.000Z</published>
     <updated>2020-09-12T18:05:58.207Z</updated>
     
-    <summary type="html">
     
-      看完 CountDownLatch 正准备表示一番，突然看到了一个 CyclicBarrier —— 回环屏障。沃特？回环还屏障？说比 CountDownLatch 要多一个回环，那咱可得瞧一瞧，看一看了！
-    
-    </summary>
+    <summary type="html">看完 CountDownLatch 正准备表示一番，突然看到了一个 CyclicBarrier —— 回环屏障。沃特？回环还屏障？说比 CountDownLatch 要多一个回环，那咱可得瞧一瞧，看一看了！</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -236,17 +218,15 @@
     <published>2020-09-06T09:00:00.000Z</published>
     <updated>2020-09-12T17:22:04.211Z</updated>
     
-    <summary type="html">
     
-      之前推了一篇文章《十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！》，很多小伙伴都比较好奇在文章中的图是用的什么画图软件？看那么明显的手绘风格，当然是手画的啦！（开玩笑），其实我用的是 draw.io ，下面分享我的画图软件 —— draw.io 。
-    
-    </summary>
+    <summary type="html">之前推了一篇文章《十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！》，很多小伙伴都比较好奇在文章中的图是用的什么画图软件？看那么明显的手绘风格，当然是手画的啦！（开玩笑），其实我用的是 draw.io ，下面分享我的画图软件 —— draw.io 。</summary>
     
     
-      <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
     
-      <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
   </entry>
   
@@ -257,21 +237,19 @@
     <published>2020-09-06T04:00:00.000Z</published>
     <updated>2020-09-12T17:22:04.112Z</updated>
     
-    <summary type="html">
     
-      CountDownLatch 一个同步辅助工具，同样是基于 AQS 实现，本篇文件主要是介绍 CountDownLatch 的使用，以及源码。
-    
-    </summary>
+    <summary type="html">CountDownLatch 一个同步辅助工具，同样是基于 AQS 实现，本篇文件主要是介绍 CountDownLatch 的使用，以及源码。</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -282,21 +260,19 @@
     <published>2020-08-28T17:20:00.000Z</published>
     <updated>2020-09-12T17:22:04.165Z</updated>
     
-    <summary type="html">
     
-      说到 Elasticsearch ，其中最明显的一个特点就是 *near real-time* 准实时 —— 当文档存储在Elasticsearch中时，将在1秒内以几乎实时的方式对其进行索引和完全搜索。那为什么说 ES 是准实时的呢？
-    
-    </summary>
+    <summary type="html">说到 Elasticsearch ，其中最明显的一个特点就是 *near real-time* 准实时 —— 当文档存储在Elasticsearch中时，将在1秒内以几乎实时的方式对其进行索引和完全搜索。那为什么说 ES 是准实时的呢？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
@@ -307,21 +283,19 @@
     <published>2020-08-26T12:20:00.000Z</published>
     <updated>2020-09-12T17:22:04.178Z</updated>
     
-    <summary type="html">
     
-      ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？
-    
-    </summary>
+    <summary type="html">ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
@@ -332,21 +306,19 @@
     <published>2020-08-25T16:10:00.000Z</published>
     <updated>2020-09-12T17:22:04.108Z</updated>
     
-    <summary type="html">
     
-      在前面已经介绍了 ES 中常用的一些名词，知道了数据是存储在 shard 中的，而 index 会映射一个或者多个 shard 。那这时候我要存储一条数据到某个索引下，这条数据是在哪个 index 下的呢？
-    
-    </summary>
+    <summary type="html">在前面已经介绍了 ES 中常用的一些名词，知道了数据是存储在 shard 中的，而 index 会映射一个或者多个 shard 。那这时候我要存储一条数据到某个索引下，这条数据是在哪个 index 下的呢？</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
@@ -357,21 +329,19 @@
     <published>2020-08-23T02:00:00.000Z</published>
     <updated>2020-09-12T17:22:04.123Z</updated>
     
-    <summary type="html">
     
-      Elasticsearch 常用的名词
-    
-    </summary>
+    <summary type="html">Elasticsearch 常用的名词</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
@@ -382,21 +352,19 @@
     <published>2020-08-18T05:00:00.000Z</published>
     <updated>2020-09-12T17:22:04.115Z</updated>
     
-    <summary type="html">
     
-      Elasticsearch 从入门到进门
-    
-    </summary>
+    <summary type="html">Elasticsearch 从入门到进门</summary>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
     
     
-      <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
+    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   
@@ -407,21 +375,19 @@
     <published>2020-08-09T07:30:00.000Z</published>
     <updated>2020-09-12T17:22:04.225Z</updated>
     
-    <summary type="html">
     
-      为什么有了 ReentrantLock 和 ReentrantReadWriteLock 之后还要设计一个 StampedLock ？ 
-    
-    </summary>
+    <summary type="html">为什么有了 ReentrantLock 和 ReentrantReadWriteLock 之后还要设计一个 StampedLock ？ </summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
@@ -432,17 +398,15 @@
     <published>2020-08-01T03:58:16.000Z</published>
     <updated>2020-09-12T17:22:04.188Z</updated>
     
-    <summary type="html">
     
-      在看完 IDEA 插件开发简易教程后，小伙伴们是否迫不及待的想自己上手整一个插件了？心里规划好了一二三，但是却不知道从哪里开始下手。下面我分享下自己整理的一些常用的 API。 
-    
-    </summary>
+    <summary type="html">在看完 IDEA 插件开发简易教程后，小伙伴们是否迫不及待的想自己上手整一个插件了？心里规划好了一二三，但是却不知道从哪里开始下手。下面我分享下自己整理的一些常用的 API。 </summary>
     
     
-      <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
+    
+    <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
     
     
-      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
+    <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   
@@ -453,23 +417,21 @@
     <published>2020-07-29T05:00:00.000Z</published>
     <updated>2020-09-12T17:22:04.200Z</updated>
     
-    <summary type="html">
     
-      小伙伴你是否想亲手写一个插件，或者你是否有一些插件的想法，但是找不到插件。那就自己实现一个吧
-    
-    </summary>
+    <summary type="html">小伙伴你是否想亲手写一个插件，或者你是否有一些插件的想法，但是找不到插件。那就自己实现一个吧</summary>
     
     
-      <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
-      <category term="IDEA" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/IDEA/"/>
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="IDEA" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/IDEA/"/>
     
     
-      <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
-      <category term="IDEA" scheme="https://liuzhihang.com/tags/IDEA/"/>
+    <category term="IDEA" scheme="https://liuzhihang.com/tags/IDEA/"/>
     
-      <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
+    <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   
@@ -480,21 +442,19 @@
     <published>2020-07-27T15:50:00.000Z</published>
     <updated>2020-09-12T17:22:04.133Z</updated>
     
-    <summary type="html">
     
-      在看完 ReentrantLock 之后，在高并发场景下 ReentrantLock 已经足够使用，但是因为 ReentrantLock 是独占锁，同时只有一个线程可以获取该锁，而很多应用场景都是读多写少，这时候使用 ReentrantLock 就不太合适了。读多写少的场景该如何使用？在 JUC 包下同样提供了读写锁 ReentrantReadWriteLock 来应对读多写少的场景。
-    
-    </summary>
+    <summary type="html">在看完 ReentrantLock 之后，在高并发场景下 ReentrantLock 已经足够使用，但是因为 ReentrantLock 是独占锁，同时只有一个线程可以获取该锁，而很多应用场景都是读多写少，这时候使用 ReentrantLock 就不太合适了。读多写少的场景该如何使用？在 JUC 包下同样提供了读写锁 ReentrantReadWriteLock 来应对读多写少的场景。</summary>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
     
     
-      <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
