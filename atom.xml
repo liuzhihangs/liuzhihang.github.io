@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-10-25T04:30:55.215Z</updated>
+  <updated>2020-10-31T02:19:44.399Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- 写时复制集合 —— CopyOnWriteArrayList</title>
+    <link href="https://liuzhihang.com/2020/10/31/copyonwritearraylist.html"/>
+    <id>https://liuzhihang.com/2020/10/31/copyonwritearraylist.html</id>
+    <published>2020-10-31T02:00:00.000Z</published>
+    <updated>2020-10-31T02:19:44.399Z</updated>
+    
+    
+    <summary type="html">JUC 下面还有一个系列的类，都是 CopyOnWriteXXX ，意思是写时复制，这个究竟是怎么回事？那就以 CopyOnWriteArrayList 为切入点，一起了解写时复制是怎么回事？</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue</title>
@@ -428,31 +451,6 @@
     
     <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
     
-    
-    <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工具册】- IDEA 插件找不到？看这里！那就自己敲一个！</title>
-    <link href="https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html"/>
-    <id>https://liuzhihang.com/2020/07/29/tool-book-copy-as-json.html</id>
-    <published>2020-07-29T05:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.200Z</updated>
-    
-    
-    <summary type="html">小伙伴你是否想亲手写一个插件，或者你是否有一些插件的想法，但是找不到插件。那就自己实现一个吧</summary>
-    
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="IDEA" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/IDEA/"/>
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="IDEA" scheme="https://liuzhihang.com/tags/IDEA/"/>
     
     <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
