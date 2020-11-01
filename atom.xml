@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-01T07:11:03.109Z</updated>
+  <updated>2020-11-01T08:43:30.447Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
     <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
     <published>2020-11-01T07:00:00.000Z</published>
-    <updated>2020-11-01T07:11:03.109Z</updated>
+    <updated>2020-11-01T08:43:30.447Z</updated>
     
     
     <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
