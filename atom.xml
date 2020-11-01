@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-10-31T02:19:44.399Z</updated>
+  <updated>2020-11-01T07:11:03.109Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【工具册】- 写文档太麻烦，试试这款 IDEA 插件吧！</title>
+    <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
+    <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
+    <published>2020-11-01T07:00:00.000Z</published>
+    <updated>2020-11-01T07:11:03.109Z</updated>
+    
+    
+    <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
+    
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>【JDK源码笔记】- 写时复制集合 —— CopyOnWriteArrayList</title>
@@ -434,25 +453,6 @@
     <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
     <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA插件开发常用API</title>
-    <link href="https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html"/>
-    <id>https://liuzhihang.com/2020/08/01/idea-plugin-development-common-api.html</id>
-    <published>2020-08-01T03:58:16.000Z</published>
-    <updated>2020-09-12T17:22:04.188Z</updated>
-    
-    
-    <summary type="html">在看完 IDEA 插件开发简易教程后，小伙伴们是否迫不及待的想自己上手整一个插件了？心里规划好了一二三，但是却不知道从哪里开始下手。下面我分享下自己整理的一些常用的 API。 </summary>
-    
-    
-    
-    <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
-    
-    
-    <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
     
   </entry>
   
