@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-02T00:30:59.826Z</updated>
+  <updated>2020-11-08T09:35:03.412Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【工作笔记】- Spring 自调用事务失效，你是怎么解决的？</title>
+    <link href="https://liuzhihang.com/2020/11/08/spring-self-call.html"/>
+    <id>https://liuzhihang.com/2020/11/08/spring-self-call.html</id>
+    <published>2020-11-08T09:00:00.000Z</published>
+    <updated>2020-11-08T09:35:03.412Z</updated>
+    
+    
+    <summary type="html">相信大家都遇到一种事务失效场景，那就是 Spring 自调用，就是在 Service 方法内，调用另一个加 `@Transactional` 注解的方法，发现事务失效，这时候你是怎么解决的呢？</summary>
+    
+    
+    
+    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【工具册】- 写文档太麻烦，试试这款 IDEA 插件吧！</title>
     <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
     <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
     <published>2020-11-01T07:00:00.000Z</published>
-    <updated>2020-11-02T00:30:59.826Z</updated>
+    <updated>2020-11-03T05:59:32.728Z</updated>
     
     
     <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
@@ -105,7 +124,7 @@
     <link href="https://liuzhihang.com/2020/10/18/log-trace-id.html"/>
     <id>https://liuzhihang.com/2020/10/18/log-trace-id.html</id>
     <published>2020-10-18T05:00:00.000Z</published>
-    <updated>2020-10-18T06:27:25.457Z</updated>
+    <updated>2020-11-08T09:28:07.451Z</updated>
     
     
     <summary type="html">新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？</summary>
@@ -430,29 +449,6 @@
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
     <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 除了读写锁，JUC 下面还有个 StampedLock！还不过来了解一下么？</title>
-    <link href="https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html"/>
-    <id>https://liuzhihang.com/2020/08/09/source-code-stamped-lock.html</id>
-    <published>2020-08-09T07:30:00.000Z</published>
-    <updated>2020-09-12T17:22:04.225Z</updated>
-    
-    
-    <summary type="html">为什么有了 ReentrantLock 和 ReentrantReadWriteLock 之后还要设计一个 StampedLock ？ </summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
