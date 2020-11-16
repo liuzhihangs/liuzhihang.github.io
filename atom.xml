@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-08T09:35:03.412Z</updated>
+  <updated>2020-11-16T02:15:41.696Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</title>
+    <link href="https://liuzhihang.com/2020/11/15/brew-list-warning.html"/>
+    <id>https://liuzhihang.com/2020/11/15/brew-list-warning.html</id>
+    <published>2020-11-15T02:00:00.000Z</published>
+    <updated>2020-11-16T02:15:41.696Z</updated>
+    
+    
+    <summary type="html">Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</summary>
+    
+    
+    
+    <category term="issue" scheme="https://liuzhihang.com/categories/issue/"/>
+    
+    
+    <category term="issue" scheme="https://liuzhihang.com/tags/issue/"/>
+    
+    <category term="mac" scheme="https://liuzhihang.com/tags/mac/"/>
+    
+    <category term="brew" scheme="https://liuzhihang.com/tags/brew/"/>
+    
+  </entry>
   
   <entry>
     <title>【工作笔记】- Spring 自调用事务失效，你是怎么解决的？</title>
@@ -415,29 +438,6 @@
     
     
     <summary type="html">Elasticsearch 常用的名词</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Elasticsearch 技术分享】—— Elasticsearch ？倒排索引？这都是什么？</title>
-    <link href="https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html"/>
-    <id>https://liuzhihang.com/2020/08/18/technology-sharing-es-1.html</id>
-    <published>2020-08-18T05:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.115Z</updated>
-    
-    
-    <summary type="html">Elasticsearch 从入门到进门</summary>
     
     
     

@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</title>
+      <link href="2020/11/15/brew-list-warning.html"/>
+      <url>2020/11/15/brew-list-warning.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>最近终端总是弹出这么一句话，咱也不懂怎么解决。</p><p>Google baidu 也查不到问题。</p><p>小伙伴帮忙看一下。</p><p>每次新打开终端都会有这个 Warning 。</p><pre><code>Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</code></pre><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/5eDhZb-ptj6gr.png" alt="5eDhZb-ptj6gr"></p><p>最后被逼无奈，在 V 站 发帖求助小伙伴， 结果还真找到了答案</p><h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/HvJSlT-Q0oUVr.png" alt="HvJSlT-Q0oUVr"></p><p>最后找到问题所在，是因为按照网上的教程安装的 <code>Coreutils</code></p><p><code>~/.zshrc </code>里改一下即可。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/hAFz8B-HWsVNg.png" alt="hAFz8B-HWsVNg"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> issue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> issue </tag>
+            
+            <tag> mac </tag>
+            
+            <tag> brew </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【工作笔记】- Spring 自调用事务失效，你是怎么解决的？</title>
       <link href="2020/11/08/spring-self-call.html"/>
       <url>2020/11/08/spring-self-call.html</url>
