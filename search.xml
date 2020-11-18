@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【工具册】- Dubbo 接口，导出 Markdown ，这些功能 DocView 现在都有了！</title>
+      <link href="2020/11/19/doc-view-dubbo.html"/>
+      <url>2020/11/19/doc-view-dubbo.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><br><p>自从 DocView 发布了简陋的第一版之后，就不断地有小伙伴提建议意见等等，希望扩展各种功能。这不，时隔两周，DocView 又发布了新版本，本次的更新主要涉及到支持 Dubbo，以及支持导出单个文档为 Markdown 文件。来一起看看新功能吧！</p></blockquote><h4 id="支持导出-Markdown-文件"><a href="#支持导出-Markdown-文件" class="headerlink" title="支持导出 Markdown 文件"></a>支持导出 Markdown 文件</h4><p>DocView 原版本已经支持复制到剪贴板的功能。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uRAtpo-AJ2kyV.png" alt="原版本"></p><p>而在新版本中增加了 <code>Export</code> 按钮，可以将单个文档导出为 Markdown 文件。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/KLmzHE-Sxlxc6.png" alt="新版本"></p><p>来一张动图，大家看看效果：</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/1111-l7NaTW.gif" alt="1111-l7NaTW"></p><p>导出的 Markdown 文本内容如下：</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/DJCp6X-saP6nE.png" alt="DJCp6X-saP6nE"></p><h4 id="支持-Dubbo-接口"><a href="#支持-Dubbo-接口" class="headerlink" title="支持 Dubbo 接口"></a>支持 Dubbo 接口</h4><p>之前的版本是不支持 Dubbo 接口的，而现在的版本可以在 Dubbo 接口里面使用。</p><p>当然这里并没有校验接口是否为 Dubbo 接口，只是校验了下是否为接口。所以说即使其他接口也是可以生成的。</p><p><strong>这块还是需要完善的!</strong></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/S8M4fB-3ecWbP.png" alt="S8M4fB-3ecWbP"></p><h4 id="DocView-文档地址"><a href="#DocView-文档地址" class="headerlink" title="DocView 文档地址"></a>DocView 文档地址</h4><p>在面板左下角的 <code>help</code> 按钮修改了跳转地址为：<a href="http://docview.liuzhihang.com/">http://docview.liuzhihang.com/</a></p><p>只是粗略搭建了一个 DocView 的说明文档网站，小伙伴们可以发现这个网站连 logo 都没有。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/IQNatL-uWWCqO.png" alt="IQNatL-uWWCqO"></p><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>当然也有一些其他的小改动，比如设置页面（依然不支持自定义设置）。</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/MJjOX4-pRQhfK.png" alt="MJjOX4-pRQhfK"></p><p>DocView 虽然支持了一部分功能，但是距离小伙伴们期望中的文档插件还有很多很多需要迭代的功能。</p><p>比如：</p><ul><li>批量生成（当前仅支持单个类或者方法）</li><li>批量导出</li><li>面板支持查看 Markdown 源文本</li><li>支持从 Swagger 注解获取字段相关信息</li><li>支持 Setting 设置</li><li>支持自定义模版</li><li>支持上传的 YApi</li><li>支持导出其他类型</li><li>…</li></ul><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/cx5PxU-gVxBmM.jpg" alt="cx5PxU-gVxBmM"></p><p>嗯~ 可能大概也许应该会需要迭代很久……</p><p>也确实是个人能力和精力有限，如果小伙伴们有兴趣，可以提交 PR。</p><p>当然如果小伙伴们发现一些 bug 或者有好的意见建议，也可以留言指出来。</p><p>留言推荐大家在 GitHub 提 Issues。</p><p>最后如果小伙伴们觉得插件不错，可以推荐给周围的朋友同事，也记得 <code>一键三连</code>， 来个 <code>【分享、点赞、再看】</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具册 </category>
+          
+          <category> Doc View </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</title>
       <link href="2020/11/15/brew-list-warning.html"/>
       <url>2020/11/15/brew-list-warning.html</url>
@@ -69,12 +98,16 @@
           
           <category> 工具册 </category>
           
+          <category> Doc View </category>
+          
       </categories>
       
       
         <tags>
             
             <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
             
         </tags>
       
@@ -661,11 +694,11 @@
       
         <tags>
             
+            <tag> plugin </tag>
+            
             <tag> 工具册 </tag>
             
             <tag> IDEA </tag>
-            
-            <tag> plugin </tag>
             
         </tags>
       

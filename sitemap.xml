@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2020/11/19/doc-view-dubbo.html</loc>
+    
+    <lastmod>2020-11-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/2020/11/01/doc-view.html</loc>
+    
+    <lastmod>2020-11-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/09/06/source-tool-drawio.html</loc>
     
     <lastmod>2020-11-18</lastmod>
@@ -45,13 +59,6 @@
   
   <url>
     <loc>https://liuzhihang.com/2020/09/19/work-trans-refund-table.html</loc>
-    
-    <lastmod>2020-11-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/2020/11/01/doc-view.html</loc>
     
     <lastmod>2020-11-18</lastmod>
     
@@ -921,6 +928,13 @@
   </url>
   
   <url>
+    <loc>https://liuzhihang.com/tags/plugin/</loc>
+    <lastmod>2020-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
@@ -935,7 +949,14 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/tags/plugin/</loc>
+    <loc>https://liuzhihang.com/tags/Redis/</loc>
+    <lastmod>2020-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/tags/cache/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -949,14 +970,7 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/tags/Redis/</loc>
-    <lastmod>2020-11-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/tags/cache/</loc>
+    <loc>https://liuzhihang.com/tags/Doc-View/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1175,13 +1189,6 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/</loc>
-    <lastmod>2020-11-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://liuzhihang.com/categories/IDEA/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
@@ -1189,7 +1196,7 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/categories/skywalking/</loc>
+    <loc>https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1197,6 +1204,13 @@
   
   <url>
     <loc>https://liuzhihang.com/categories/Redis/</loc>
+    <lastmod>2020-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/categories/skywalking/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1253,6 +1267,13 @@
   
   <url>
     <loc>https://liuzhihang.com/categories/Redis/cache/</loc>
+    <lastmod>2020-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/</loc>
     <lastmod>2020-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
