@@ -44,7 +44,7 @@
     <link href="https://liuzhihang.com/2020/11/08/spring-self-call.html"/>
     <id>https://liuzhihang.com/2020/11/08/spring-self-call.html</id>
     <published>2020-11-08T09:00:00.000Z</published>
-    <updated>2020-11-08T09:35:03.412Z</updated>
+    <updated>2020-11-18T07:57:19.092Z</updated>
     
     
     <summary type="html">相信大家都遇到一种事务失效场景，那就是 Spring 自调用，就是在 Service 方法内，调用另一个加 `@Transactional` 注解的方法，发现事务失效，这时候你是怎么解决的呢？</summary>
@@ -63,7 +63,7 @@
     <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
     <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
     <published>2020-11-01T07:00:00.000Z</published>
-    <updated>2020-11-03T05:59:32.728Z</updated>
+    <updated>2020-11-18T07:57:19.134Z</updated>
     
     
     <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
@@ -82,7 +82,7 @@
     <link href="https://liuzhihang.com/2020/10/31/copyonwritearraylist.html"/>
     <id>https://liuzhihang.com/2020/10/31/copyonwritearraylist.html</id>
     <published>2020-10-31T02:00:00.000Z</published>
-    <updated>2020-10-31T02:19:44.399Z</updated>
+    <updated>2020-11-18T07:57:19.126Z</updated>
     
     
     <summary type="html">JUC 下面还有一个系列的类，都是 CopyOnWriteXXX ，意思是写时复制，这个究竟是怎么回事？那就以 CopyOnWriteArrayList 为切入点，一起了解写时复制是怎么回事？</summary>
@@ -105,7 +105,7 @@
     <link href="https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html"/>
     <id>https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html</id>
     <published>2020-10-25T04:30:00.000Z</published>
-    <updated>2020-10-25T04:30:55.215Z</updated>
+    <updated>2020-11-18T07:57:19.099Z</updated>
     
     
     <summary type="html">JUC 下面的相关源码继续往下阅读，这就看到了非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue，来一起看看吧。</summary>
@@ -128,7 +128,7 @@
     <link href="https://liuzhihang.com/2020/10/19/header-name-case.html"/>
     <id>https://liuzhihang.com/2020/10/19/header-name-case.html</id>
     <published>2020-10-18T23:00:00.000Z</published>
-    <updated>2020-11-13T03:00:24.587Z</updated>
+    <updated>2020-11-18T07:57:19.123Z</updated>
     
     
     <summary type="html">在自己模拟过程中，才发现和容器有关系。</summary>
@@ -147,7 +147,7 @@
     <link href="https://liuzhihang.com/2020/10/18/log-trace-id.html"/>
     <id>https://liuzhihang.com/2020/10/18/log-trace-id.html</id>
     <published>2020-10-18T05:00:00.000Z</published>
-    <updated>2020-11-13T03:00:24.697Z</updated>
+    <updated>2020-11-18T07:57:19.109Z</updated>
     
     
     <summary type="html">新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？</summary>
@@ -189,7 +189,7 @@
     <link href="https://liuzhihang.com/2020/10/04/source-code-linkedblockingqueue.html"/>
     <id>https://liuzhihang.com/2020/10/04/source-code-linkedblockingqueue.html</id>
     <published>2020-10-04T06:30:00.000Z</published>
-    <updated>2020-10-04T06:48:58.869Z</updated>
+    <updated>2020-11-18T07:57:19.105Z</updated>
     
     
     <summary type="html">上一节看了基于数据的有界阻塞队列 ArrayBlockingQueue 的源码，通过阅读源码了解到在 ArrayBlockingQueue 中入队列和出队列操作都是用了 ReentrantLock 来保证线程安全。下面咱们看另一种有界阻塞队列：LinkedBlockingQueue。</summary>
@@ -212,7 +212,7 @@
     <link href="https://liuzhihang.com/2020/10/01/source-code-condition.html"/>
     <id>https://liuzhihang.com/2020/10/01/source-code-condition.html</id>
     <published>2020-10-01T10:00:00.000Z</published>
-    <updated>2020-10-01T10:16:48.650Z</updated>
+    <updated>2020-11-18T07:57:19.131Z</updated>
     
     
     <summary type="html">在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？</summary>
@@ -235,7 +235,7 @@
     <link href="https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html"/>
     <id>https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html</id>
     <published>2020-09-27T14:50:00.000Z</published>
-    <updated>2020-09-27T14:54:57.558Z</updated>
+    <updated>2020-11-18T07:57:19.112Z</updated>
     
     
     <summary type="html">在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。</summary>
@@ -258,7 +258,7 @@
     <link href="https://liuzhihang.com/2020/09/21/source-code-semaphore.html"/>
     <id>https://liuzhihang.com/2020/09/21/source-code-semaphore.html</id>
     <published>2020-09-20T23:00:00.000Z</published>
-    <updated>2020-09-21T00:04:01.368Z</updated>
+    <updated>2020-11-18T07:57:19.119Z</updated>
     
     
     <summary type="html">在 JUC 中线程同步器除了 CountDownLatch 和 CycleBarrier ，还有一个叫做 Semaphore （信号量），同样是基于 AQS 实现的。下面来看看信号量的内部原理。</summary>
@@ -281,7 +281,7 @@
     <link href="https://liuzhihang.com/2020/09/19/work-trans-refund-table.html"/>
     <id>https://liuzhihang.com/2020/09/19/work-trans-refund-table.html</id>
     <published>2020-09-19T02:00:00.000Z</published>
-    <updated>2020-09-19T02:02:51.081Z</updated>
+    <updated>2020-11-18T07:57:19.136Z</updated>
     
     
     <summary type="html">近期做新项目，在设计表结构的时候，突然想起来之前面试的时候遇到的一个问题，那时候也是初出茅庐，对很多东西一知半解（当然现在也是），当时那个小哥哥问我为什么交易和退款要拆成两个表？是基于什么考虑？有什么好处和优点么？</summary>
@@ -300,7 +300,7 @@
     <link href="https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html"/>
     <id>https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html</id>
     <published>2020-09-12T17:30:00.000Z</published>
-    <updated>2020-09-12T18:05:58.207Z</updated>
+    <updated>2020-11-18T07:57:19.140Z</updated>
     
     
     <summary type="html">看完 CountDownLatch 正准备表示一番，突然看到了一个 CyclicBarrier —— 回环屏障。沃特？回环还屏障？说比 CountDownLatch 要多一个回环，那咱可得瞧一瞧，看一看了！</summary>
@@ -323,7 +323,7 @@
     <link href="https://liuzhihang.com/2020/09/06/source-tool-drawio.html"/>
     <id>https://liuzhihang.com/2020/09/06/source-tool-drawio.html</id>
     <published>2020-09-06T09:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.211Z</updated>
+    <updated>2020-11-18T07:57:19.150Z</updated>
     
     
     <summary type="html">之前推了一篇文章《十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！》，很多小伙伴都比较好奇在文章中的图是用的什么画图软件？看那么明显的手绘风格，当然是手画的啦！（开玩笑），其实我用的是 draw.io ，下面分享我的画图软件 —— draw.io 。</summary>
@@ -342,7 +342,7 @@
     <link href="https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html"/>
     <id>https://liuzhihang.com/2020/09/06/source-code-countdownlatch.html</id>
     <published>2020-09-06T04:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.112Z</updated>
+    <updated>2020-11-18T07:57:19.102Z</updated>
     
     
     <summary type="html">CountDownLatch 一个同步辅助工具，同样是基于 AQS 实现，本篇文件主要是介绍 CountDownLatch 的使用，以及源码。</summary>
@@ -365,7 +365,7 @@
     <link href="https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html"/>
     <id>https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html</id>
     <published>2020-08-28T17:20:00.000Z</published>
-    <updated>2020-09-12T17:22:04.165Z</updated>
+    <updated>2020-11-18T07:57:19.138Z</updated>
     
     
     <summary type="html">说到 Elasticsearch ，其中最明显的一个特点就是 *near real-time* 准实时 —— 当文档存储在Elasticsearch中时，将在1秒内以几乎实时的方式对其进行索引和完全搜索。那为什么说 ES 是准实时的呢？</summary>
@@ -388,7 +388,7 @@
     <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html"/>
     <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html</id>
     <published>2020-08-26T12:20:00.000Z</published>
-    <updated>2020-09-12T17:22:04.178Z</updated>
+    <updated>2020-11-18T07:57:19.114Z</updated>
     
     
     <summary type="html">ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？</summary>
@@ -411,7 +411,7 @@
     <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html"/>
     <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html</id>
     <published>2020-08-25T16:10:00.000Z</published>
-    <updated>2020-09-12T17:22:04.108Z</updated>
+    <updated>2020-11-18T07:57:19.117Z</updated>
     
     
     <summary type="html">在前面已经介绍了 ES 中常用的一些名词，知道了数据是存储在 shard 中的，而 index 会映射一个或者多个 shard 。那这时候我要存储一条数据到某个索引下，这条数据是在哪个 index 下的呢？</summary>
@@ -434,7 +434,7 @@
     <link href="https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html"/>
     <id>https://liuzhihang.com/2020/08/23/technology-sharing-es-2.html</id>
     <published>2020-08-23T02:00:00.000Z</published>
-    <updated>2020-09-12T17:22:04.123Z</updated>
+    <updated>2020-11-18T07:57:19.128Z</updated>
     
     
     <summary type="html">Elasticsearch 常用的名词</summary>
