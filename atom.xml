@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-18T16:00:52.340Z</updated>
+  <updated>2020-11-23T14:25:17.285Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【工具册】- DocView 现在支持自定义 Markdown 模版了！</title>
+    <link href="https://liuzhihang.com/2020/11/23/doc-view-template.html"/>
+    <id>https://liuzhihang.com/2020/11/23/doc-view-template.html</id>
+    <published>2020-11-23T14:00:00.000Z</published>
+    <updated>2020-11-23T14:25:17.285Z</updated>
+    
+    
+    <summary type="html">有小伙伴反馈说希望可以自定义 Markdown 模版，这样就可以导出自己想要的样式了！这个功能可以有，毕竟大家不可能都生成一模一样的文档。现在来一起看看如何实现自定义模版吧！</summary>
+    
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【工具册】- Dubbo 接口，导出 Markdown ，这些功能 DocView 现在都有了！</title>
     <link href="https://liuzhihang.com/2020/11/19/doc-view-dubbo.html"/>
     <id>https://liuzhihang.com/2020/11/19/doc-view-dubbo.html</id>
     <published>2020-11-19T15:00:00.000Z</published>
-    <updated>2020-11-18T16:00:52.340Z</updated>
+    <updated>2020-11-23T11:50:47.294Z</updated>
     
     
     <summary type="html">自从 DocView 发布了简陋的第一版之后，就不断地有小伙伴提建议意见等等，希望扩展各种功能。这不，时隔两周，DocView 又发布了新版本，本次的更新主要涉及到支持 Dubbo，以及支持导出单个文档为 Markdown 文件。来一起看看新功能吧！</summary>
@@ -86,7 +109,7 @@
     <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
     <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
     <published>2020-11-01T07:00:00.000Z</published>
-    <updated>2020-11-18T16:00:33.698Z</updated>
+    <updated>2020-11-23T11:50:53.094Z</updated>
     
     
     <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
@@ -419,29 +442,6 @@
     
     
     <summary type="html">ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Elasticsearch 技术分享】—— Elasticsearch 存储一条数据， put 过程是什么样子的？</title>
-    <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html"/>
-    <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-3.html</id>
-    <published>2020-08-25T16:10:00.000Z</published>
-    <updated>2020-11-18T07:57:19.117Z</updated>
-    
-    
-    <summary type="html">在前面已经介绍了 ES 中常用的一些名词，知道了数据是存储在 shard 中的，而 index 会映射一个或者多个 shard 。那这时候我要存储一条数据到某个索引下，这条数据是在哪个 index 下的呢？</summary>
     
     
     

@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【工具册】- DocView 现在支持自定义 Markdown 模版了！</title>
+      <link href="2020/11/23/doc-view-template.html"/>
+      <url>2020/11/23/doc-view-template.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>前言</strong></p><p>有小伙伴反馈说希望可以自定义 Markdown 模版，这样就可以导出自己想要的样式了！这个功能可以有，毕竟大家不可能都生成一模一样的文档。现在来一起看看如何实现自定义模版吧！</p></blockquote><h4 id="设置模版"><a href="#设置模版" class="headerlink" title="设置模版"></a>设置模版</h4><p><code>Settings</code> -&gt; <code>Other Settings</code> -&gt; <code>Doc View</code> -&gt; <code>Markdown Template</code></p><p>打开之后内容如下：</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Xnip-2020-11-23-59-asNWSp.png" alt="Xnip-2020-11-23-59-asNWSp"></p><p>模版这里分两个 <code>Tab</code> 分别是 <code>Spring</code> 、 <code>Dubbo</code> 。</p><p>这两个模版内容就稍微有些区别，如果自定义模版，直接修改保存即可。</p><h4 id="模版变量"><a href="#模版变量" class="headerlink" title="模版变量"></a>模版变量</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/d3VlSJ-Hxz8Tj.png"></p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>非常感谢 <a href="https://github.com/lvgocc">lvgo</a> 小伙伴的参与。</p><p>如果小伙伴们在使用过程中发现一些 bug 或者有好的意见建议，可以在 GitHub 提交 Issues 留言指出来。</p><p>Doc View GitHub：<a href="https://github.com/liuzhihang/doc-view">https://github.com/liuzhihang/doc-view</a></p><p>最后，记得要 <code>一键三连</code>， 来个 <code>【分享、点赞、在看】</code>！</p><h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><ul><li><a href="https://mp.weixin.qq.com/s/rOTm9Kv02xLZZVFzQXf7IA">Dubbo 生成文档，导出 Markdown，这些功能 DocView 现在都有了！</a></li><li><a href="https://mp.weixin.qq.com/s/VgOHLQ_f4E8UlV9sQhyFpQ">头大！写文档太麻烦了！快来试试这款 IDEA 插件啊！爽到飞起~</a></li><li><a href="https://mp.weixin.qq.com/s/G8h5lg-d8SHZ2_ILBE04sQ">小伙伴想写个 IDEA 插件么？这些 API 了解一下！</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具册 </category>
+          
+          <category> Doc View </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【工具册】- Dubbo 接口，导出 Markdown ，这些功能 DocView 现在都有了！</title>
       <link href="2020/11/19/doc-view-dubbo.html"/>
       <url>2020/11/19/doc-view-dubbo.html</url>
@@ -694,11 +723,11 @@
       
         <tags>
             
-            <tag> plugin </tag>
-            
             <tag> 工具册 </tag>
             
             <tag> IDEA </tag>
+            
+            <tag> plugin </tag>
             
         </tags>
       
