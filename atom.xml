@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Notes</title>
+  <title>程序员小航</title>
   
-  <subtitle>Notes</subtitle>
+  
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-23T14:25:17.285Z</updated>
+  <updated>2020-11-24T02:08:13.738Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2020/11/23/doc-view-template.html"/>
     <id>https://liuzhihang.com/2020/11/23/doc-view-template.html</id>
     <published>2020-11-23T14:00:00.000Z</published>
-    <updated>2020-11-23T14:25:17.285Z</updated>
+    <updated>2020-11-24T02:08:13.738Z</updated>
     
     
     <summary type="html">有小伙伴反馈说希望可以自定义 Markdown 模版，这样就可以导出自己想要的样式了！这个功能可以有，毕竟大家不可能都生成一模一样的文档。现在来一起看看如何实现自定义模版吧！</summary>
