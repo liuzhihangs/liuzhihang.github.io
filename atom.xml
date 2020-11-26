@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-26T15:24:19.474Z</updated>
+  <updated>2020-11-26T15:33:03.834Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2020/11/26/source-spring-build.html"/>
     <id>https://liuzhihang.com/2020/11/26/source-spring-build.html</id>
     <published>2020-11-26T15:00:00.000Z</published>
-    <updated>2020-11-26T15:24:19.474Z</updated>
+    <updated>2020-11-26T15:33:03.834Z</updated>
     
     
     <summary type="html">本文记录了 Spring 源码环境的搭建方式，以及踩过的那些坑！当前版本：5.3.2-SNAPSHOT。</summary>
