@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-24T02:08:13.738Z</updated>
+  <updated>2020-11-26T15:24:19.474Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【JDK源码笔记】- Spring 源码阅读环境的搭建</title>
+    <link href="https://liuzhihang.com/2020/11/26/source-spring-build.html"/>
+    <id>https://liuzhihang.com/2020/11/26/source-spring-build.html</id>
+    <published>2020-11-26T15:00:00.000Z</published>
+    <updated>2020-11-26T15:24:19.474Z</updated>
+    
+    
+    <summary type="html">本文记录了 Spring 源码环境的搭建方式，以及踩过的那些坑！当前版本：5.3.2-SNAPSHOT。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>【工具册】- DocView 现在支持自定义 Markdown 模版了！</title>
@@ -67,7 +90,7 @@
     <link href="https://liuzhihang.com/2020/11/15/brew-list-warning.html"/>
     <id>https://liuzhihang.com/2020/11/15/brew-list-warning.html</id>
     <published>2020-11-15T02:00:00.000Z</published>
-    <updated>2020-11-16T02:15:41.696Z</updated>
+    <updated>2020-11-26T07:13:47.125Z</updated>
     
     
     <summary type="html">Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</summary>
@@ -419,29 +442,6 @@
     
     
     <summary type="html">说到 Elasticsearch ，其中最明显的一个特点就是 *near real-time* 准实时 —— 当文档存储在Elasticsearch中时，将在1秒内以几乎实时的方式对其进行索引和完全搜索。那为什么说 ES 是准实时的呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Elasticsearch 技术分享】—— ES 查询检索数据的过程，是什么样子的？</title>
-    <link href="https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html"/>
-    <id>https://liuzhihang.com/2020/08/26/technology-sharing-es-4.html</id>
-    <published>2020-08-26T12:20:00.000Z</published>
-    <updated>2020-11-18T07:57:19.114Z</updated>
-    
-    
-    <summary type="html">ES 使用过程中常用的就是查询以及检索，那查询和检索的过程，什么样的呢？</summary>
     
     
     

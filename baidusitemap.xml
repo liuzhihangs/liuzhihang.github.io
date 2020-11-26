@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liuzhihang.com/2020/11/26/source-spring-build.html</loc>
+    <lastmod>2020-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://liuzhihang.com/2020/11/15/brew-list-warning.html</loc>
+    <lastmod>2020-11-26</lastmod>
+  </url>
+  <url>
     <loc>https://liuzhihang.com/2020/11/23/doc-view-template.html</loc>
     <lastmod>2020-11-24</lastmod>
   </url>
@@ -91,10 +99,6 @@
   <url>
     <loc>https://liuzhihang.com/2020/11/08/spring-self-call.html</loc>
     <lastmod>2020-11-18</lastmod>
-  </url>
-  <url>
-    <loc>https://liuzhihang.com/2020/11/15/brew-list-warning.html</loc>
-    <lastmod>2020-11-16</lastmod>
   </url>
   <url>
     <loc>https://liuzhihang.com/2019/07/22/springsecurity-jwt-springboot-project.html</loc>
