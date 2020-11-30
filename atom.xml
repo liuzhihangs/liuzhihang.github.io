@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-11-26T15:33:03.834Z</updated>
+  <updated>2020-11-30T15:21:55.345Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【JDK源码笔记】- Spring 源码阅读环境的搭建</title>
+    <title>Spring 源码学习 02：关于 Spring IoC 和 Bean 的概念</title>
+    <link href="https://liuzhihang.com/2020/11/30/source-spring-02.html"/>
+    <id>https://liuzhihang.com/2020/11/30/source-spring-02.html</id>
+    <published>2020-11-30T15:00:00.000Z</published>
+    <updated>2020-11-30T15:21:55.345Z</updated>
+    
+    
+    <summary type="html">通过本文简单了解一下 IoC 和 Bean 的概念</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 源码学习 01：源码阅读环境的搭建</title>
     <link href="https://liuzhihang.com/2020/11/26/source-spring-build.html"/>
     <id>https://liuzhihang.com/2020/11/26/source-spring-build.html</id>
     <published>2020-11-26T15:00:00.000Z</published>
-    <updated>2020-11-26T15:33:03.834Z</updated>
+    <updated>2020-11-30T15:20:00.446Z</updated>
     
     
     <summary type="html">本文记录了 Spring 源码环境的搭建方式，以及踩过的那些坑！当前版本：5.3.2-SNAPSHOT。</summary>
@@ -430,29 +453,6 @@
     <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
     <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Elasticsearch 技术分享】—— 十张图带大家看懂 ES 原理 ！明白为什么说：ES 是准实时的！</title>
-    <link href="https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html"/>
-    <id>https://liuzhihang.com/2020/08/29/technology-sharing-es-5.html</id>
-    <published>2020-08-28T17:20:00.000Z</published>
-    <updated>2020-11-18T07:57:19.138Z</updated>
-    
-    
-    <summary type="html">说到 Elasticsearch ，其中最明显的一个特点就是 *near real-time* 准实时 —— 当文档存储在Elasticsearch中时，将在1秒内以几乎实时的方式对其进行索引和完全搜索。那为什么说 ES 是准实时的呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/ELK/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="ELK" scheme="https://liuzhihang.com/tags/ELK/"/>
     
   </entry>
   

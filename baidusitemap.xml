@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liuzhihang.com/2020/11/30/source-spring-02.html</loc>
+    <lastmod>2020-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://liuzhihang.com/2020/05/11/source-code-hashmap-init.html</loc>
+    <lastmod>2020-11-30</lastmod>
+  </url>
+  <url>
     <loc>https://liuzhihang.com/2020/11/26/source-spring-build.html</loc>
-    <lastmod>2020-11-26</lastmod>
+    <lastmod>2020-11-30</lastmod>
   </url>
   <url>
     <loc>https://liuzhihang.com/2020/11/15/brew-list-warning.html</loc>
@@ -150,10 +158,6 @@
   </url>
   <url>
     <loc>https://liuzhihang.com/2020/07/25/source-code-reentrant-lock.html</loc>
-    <lastmod>2020-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://liuzhihang.com/2020/05/11/source-code-hashmap-init.html</loc>
     <lastmod>2020-09-12</lastmod>
   </url>
   <url>

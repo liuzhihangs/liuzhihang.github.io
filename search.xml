@@ -4,7 +4,36 @@
   
     
     <entry>
-      <title>【JDK源码笔记】- Spring 源码阅读环境的搭建</title>
+      <title>Spring 源码学习 02：关于 Spring IoC 和 Bean 的概念</title>
+      <link href="2020/11/30/source-spring-02.html"/>
+      <url>2020/11/30/source-spring-02.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>在前一篇文章中介绍了如何构建源码阅读环境，既然构建好了源码环境，本地也可以正常运行，那就开始阅读源码吧！</p><p>在阅读源码时，会参考<a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core">官方文档</a>，很多概念在官网都可以得到答案，有兴趣的小伙伴们可以继续阅读，当做复习，写的不足之处，希望多多指导。</p><h3 id="IoC-和-DI"><a href="#IoC-和-DI" class="headerlink" title="IoC 和 DI"></a>IoC 和 DI</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Cp1dfI-Yg6zuJ.png" alt="IoC 概念"></p><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><p>IoC（Inversion of Control），即控制反转。</p><p>之前是在对象内部 new 创建其他对象，然后使用。</p><p>而现在 Spring 中有一个容器可以在创建管理这些对象，并且将对象依赖的其他对象注入到这个对象中，这些对象的创建、销毁都由 Spring 进行管理。</p><p>相比以前来说，不再由自己控制其他对象的生命周期，这个过程就叫做控制反转。而负责统一管理这些类的容器就叫做 IoC 容器。</p><h4 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h4><p><code>IoC is also known as dependency injection (DI).</code> </p><p>是不是感觉奇奇怪怪的，为什么说：<code>IoC 也称为 DI</code>。</p><p>其实 IoC 和 DI 是同一个概念的不同角度描述。</p><p>依赖注入是指组件之间的依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。</p><p>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p><p>Spring 是通过 DI 实现 IoC 的。</p><h3 id="容器和-Bean"><a href="#容器和-Bean" class="headerlink" title="容器和 Bean"></a>容器和 Bean</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/4xZKqx-3YpFD2.png" alt="Spring IoC container and Bean"></p><p><code>Bean 是一个由 Spring IoC 容器实例化，组装和管理的对象。</code></p><p>相信大家都写过或者见过下面的代码：</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 从容器中获取对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuzhihang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/4/6 19:02</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomBeanFactory</span> <span class="keyword">implements</span> <span class="title">ApplicationContextAware</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext ctx;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext ac)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line"></span><br><span class="line">        ctx = ac;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String beanName)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ctx.getBean(beanName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>代码逻辑很简单，就是从容器中获取到指定名称的 <code>Bean</code>，而其中 <code>ApplicationContext</code> 接口其实就是 Spring IoC 容器。</p><p>当然 <code>ApplicationContext</code> 是一个接口，它有很多实现，而它也继承了 <code>BeanFactory</code>。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/4PQoiE-WQT8uR.png" alt="BeanFactory or ApplicationContext"></p><p>虽然 <code>BeanFactory</code> 是 IoC 容器的最基本的形式，但是 <code>ApplicationContext</code> 对其进行了很多扩展，并具有 <code>BeanFactory</code> 的所有功能，通常建议优先使用 <code>ApplicationContext</code>。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在通过<a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core">Spring 官网</a> 了解了 IoC 、DI 、容器和 Bean 的概念后，再结合平常的使用基本上可以有个大概流程。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0hWvfR-K15LRP.png" alt="流程猜想"></p><p>当然，这只是一个很粗略的猜想，是否正确，还有待后面继续阅读源码，然后去验证。</p><h3 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h3><ul><li><a href="https://mp.weixin.qq.com/s/gDhJMSPSX2vz68p5X3juow">Spring 源码学习 01：源码阅读环境的搭建</a></li><li><a href="https://mp.weixin.qq.com/s/BORxKatt9qs4rDgmAHbv_A">Spring 自调用事务失效，你是怎么解决的？</a></li><li><a href="https://mp.weixin.qq.com/s/ZJB-2WWeJFG7RQxaksNBuA">APP 莫名崩溃，开始以为是 Header 中 name 大小写的锅，最后发现原来是容器的错</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 源码笔记 </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+            <tag> 源码笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spring 源码学习 01：源码阅读环境的搭建</title>
       <link href="2020/11/26/source-spring-build.html"/>
       <url>2020/11/26/source-spring-build.html</url>
       
