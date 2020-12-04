@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-02T14:14:33.301Z</updated>
+  <updated>2020-12-04T02:09:09.484Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 05：BeanDefinition 概念及其实现</title>
+    <link href="https://liuzhihang.com/2020/12/03/source-spring-05.html"/>
+    <id>https://liuzhihang.com/2020/12/03/source-spring-05.html</id>
+    <published>2020-12-03T15:00:00.000Z</published>
+    <updated>2020-12-04T02:09:09.484Z</updated>
+    
+    
+    <summary type="html">结合官方文档以及源码，一起了解一下 BeanDefinition！</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 04：初始化容器与 DefaultListableBeanFactory</title>
@@ -434,29 +457,6 @@
     
     
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- CyclicBarrier 不就是比 CountDownLatch 多了个回环么？</title>
-    <link href="https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html"/>
-    <id>https://liuzhihang.com/2020/09/13/source-code-cyclicbarrier.html</id>
-    <published>2020-09-12T17:30:00.000Z</published>
-    <updated>2020-11-18T07:57:19.140Z</updated>
-    
-    
-    <summary type="html">看完 CountDownLatch 正准备表示一番，突然看到了一个 CyclicBarrier —— 回环屏障。沃特？回环还屏障？说比 CountDownLatch 要多一个回环，那咱可得瞧一瞧，看一看了！</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
