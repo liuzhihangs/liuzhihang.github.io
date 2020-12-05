@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Spring 源码学习 06：AnnotatedBeanDefinitionReader</title>
+      <link href="2020/12/04/source-spring-06.html"/>
+      <url>2020/12/04/source-spring-06.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>BeanDefinition 的概念也了解了，也知道一个 Bean 在 Spring 中定义的信息有哪些之后，继续言归正传。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/erZhOh-c50rG0.png"></p><h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>在初始化时会先生成一个 reader ，进入方法，其实是走的下面的逻辑：</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/RPkIz4-hjaaG4.png"></p><p>其中 <code>getOrCreateEnvironment(registry)</code> 会返回一个 <code>Environment</code> 用来表示当前的运行环境之类的。</p><p><code>ConditionEvaluator</code> 是用来完成对 <code>@Conditional</code> 这个条件注解的判断。</p><p>这块可以参考官网：<a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-environment">Environment Abstraction 章节</a></p><p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-conditional">Conditionally Include @Configuration Classes or @Bean Methods 章节</a></p><blockquote><p><strong>补充</strong></p><p>BeanDefinitionRegistry：就是对 BeanDefinition 进行注册、移除、获取等操作的一个接口。<br>比如：registerBeanDefinition、removeBeanDefinition、containsBeanDefinition 看名字也能猜个大概意思。</p></blockquote><h4 id="registerAnnotationConfigProcessors"><a href="#registerAnnotationConfigProcessors" class="headerlink" title="registerAnnotationConfigProcessors"></a>registerAnnotationConfigProcessors</h4><p>下面来看最后一行代码：</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AnnotationConfigUtils.registerAnnotationConfigProcessors(<span class="keyword">this</span>.registry);</span><br></pre></td></tr></table></figure><p>这个代码相对较长，还是以截图代替。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/6wAV8a-8qbZoP.png"></p><p>对 beanFactory 添加依赖比较器 和 自动装配解析器 后开始添加各种处理器。</p><p>添加处理器时，下面收缩的代码和唯一展开的 <code>ConfigurationClassPostProcessor</code> 内部逻辑相同，都是调用 <code>registerPostProcessor</code> 方法，下面再介绍下这几个处理器的作用：</p><ul><li>ConfigurationClassPostProcessor 用于对 @Configuration 类进行引导处理。</li><li>AutowiredAnnotationBeanPostProcessor 处理 @Autowired @Value 和 JSR-330的@Inject 还有 @Lookup 注解</li><li>CommonAnnotationBeanPostProcessor 用来处理 @PostConstruct @PreDestroy @Resource。</li><li>PersistenceAnnotationBeanPostProcessor 当支持 JPA 时添加这个。</li><li>EventListenerMethodProcessor 支持 @EventListener。</li></ul><h4 id="registerPostProcessor"><a href="#registerPostProcessor" class="headerlink" title="registerPostProcessor"></a>registerPostProcessor</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uaUJJU-bcIdE3.png"></p><p>registerPostProcessor 方法有两个逻辑：</p><ol><li>将这几个 Processor 注册到 beanFactory；</li><li>处理器封装为 BeanDefinitionHolder 对象。</li></ol><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jdTJln-hqvIeJ.png" alt="BeanDefinitionHolder"></p><p>BeanDefinitionHolder 就是封装了下 BeanDefinition ，说明这个 BeanDefinition 的持有者 name 是谁。 </p><h4 id="大胆猜测"><a href="#大胆猜测" class="headerlink" title="大胆猜测"></a>大胆猜测</h4><p>执行完这一行之后，在 AnnotationConfigApplicationContext 里面有了 这几个 BeanDefinition。</p><h4 id="小心求证"><a href="#小心求证" class="headerlink" title="小心求证"></a>小心求证</h4><p>Debug 走起！</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/wFyqjc-OROaV6.png"></p><p>额……  只有四个，假装是对的。还是一步一步看一看吧！原来是没有 JSR-250 和 JPA，那这个就正常了。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jMZmN5-GpjdYh.png"></p><p>其实简而言之，这一步就是注册了一些 Spring 自己的 PostProcessor。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/b7QhZguNTM_6C83b4IiMdg">Spring 源码学习 05：BeanDefinition 概念及其实现</a></li><li><a href="https://mp.weixin.qq.com/s/JwRsKHqJ0ZcJ6Cgbp5BKiw">Spring 源码学习 04：初始化容器与 DefaultListableBeanFactory</a></li><li><a href="https://mp.weixin.qq.com/s/V7SjmIFKAXyppBF_KHbxXQ">Spring 源码学习 03：创建 IoC 容器的几种方式</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 源码笔记 </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+            <tag> 源码笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring 源码学习 05：BeanDefinition 概念及其实现</title>
       <link href="2020/12/03/source-spring-05.html"/>
       <url>2020/12/03/source-spring-05.html</url>
@@ -868,11 +897,11 @@
       
         <tags>
             
+            <tag> plugin </tag>
+            
             <tag> 工具册 </tag>
             
             <tag> IDEA </tag>
-            
-            <tag> plugin </tag>
             
         </tags>
       
@@ -2506,9 +2535,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> transactional </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
