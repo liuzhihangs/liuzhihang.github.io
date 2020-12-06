@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-06T02:50:24.339Z</updated>
+  <updated>2020-12-06T13:01:39.451Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 08：register 注册配置类</title>
+    <link href="https://liuzhihang.com/2020/12/06/source-spring-08.html"/>
+    <id>https://liuzhihang.com/2020/12/06/source-spring-08.html</id>
+    <published>2020-12-06T15:00:00.000Z</published>
+    <updated>2020-12-06T13:01:39.451Z</updated>
+    
+    
+    <summary type="html">context.register(JavaConfig.class);</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 07：ClassPathBeanDefinitionScanner</title>
@@ -427,29 +450,6 @@
     
     
     <summary type="html">在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 基于数组的有界阻塞队列 —— ArrayBlockingQueue</title>
-    <link href="https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html"/>
-    <id>https://liuzhihang.com/2020/09/27/source-code-arrayblockingqueue.html</id>
-    <published>2020-09-27T14:50:00.000Z</published>
-    <updated>2020-11-18T07:57:19.112Z</updated>
-    
-    
-    <summary type="html">在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。</summary>
     
     
     

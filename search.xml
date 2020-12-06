@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Spring 源码学习 08：register 注册配置类</title>
+      <link href="2020/12/06/source-spring-08.html"/>
+      <url>2020/12/06/source-spring-08.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>看完无参构造的源码及流程之后，后面将会执行 <code>register</code> 方法。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/iURj3q-YF3Fqe.png"></p><p>register 方法，入参是我们的配置类 <code>JavaConfig.class</code> ，下面跟着源码继续往下走！</p><h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/72gJH7-cF6JtX.png"></p><p><code>this.reader.register(componentClasses);</code></p><p>这里执行的是 reader 的方法，入参就是传入的 <code>JavaConfig.class</code>。</p><blockquote><p>reader 在之前初始化，就是注册一些 PostProcessor。</p></blockquote><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/OL9u7q-Y6NATv.png"></p><ol><li>循环，注册所有的配置类；</li><li>doRegisterBean 开始注册。</li></ol><p><code>doRegisterBean</code> 才是真正注册 Bean 的逻辑，从名字也可以有所猜测。下面开始进入 <code>doRegisterBean</code> 的源码阅读：</p><h4 id="doRegisterBean"><a href="#doRegisterBean" class="headerlink" title="doRegisterBean"></a>doRegisterBean</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/OXRMeM-cMgaGt.png"></p><p>此处代码较长，以截图代替。</p><p>通过源码可以看出，这块主要流程：</p><ol><li>校验传入的 <code>JavaConfig.class</code> 的注解（是否需要忽略）；</li><li>处理通用注解；</li><li>封装为 BeanDefinitionHolder 后，注册到容器中。</li></ol><h4 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QfGRrs-tdXZRz.png"></p><p>通过 debug 可以看出，在执行完 <code>register</code> 之后，相当于将 JavaConfig 作为一个 Bean 注册到容器中。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/mcTElg-qWdJKu.png"></p><p>在我看来前面的部分主要涉及到准备工作，至于更深层次的研究，分析，暂时没有深入。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/VnUugIxZkUcqDvt9Yv47iQ">Spring 源码学习 07：ClassPathBeanDefinitionScanner</a></li><li><a href="https://mp.weixin.qq.com/s/u40NdypoO2ow2wdV293eow">Spring 源码学习 06：AnnotatedBeanDefinitionReader</a></li><li><a href="https://mp.weixin.qq.com/s/b7QhZguNTM_6C83b4IiMdg">Spring 源码学习 05：BeanDefinition 概念及其实现</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 源码笔记 </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+            <tag> 源码笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring 源码学习 07：ClassPathBeanDefinitionScanner</title>
       <link href="2020/12/05/source-spring-07.html"/>
       <url>2020/12/05/source-spring-07.html</url>
