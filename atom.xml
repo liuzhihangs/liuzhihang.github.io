@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-04T14:07:36.172Z</updated>
+  <updated>2020-12-06T02:44:07.691Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://liuzhihang.com/2020/12/06/undefined.html"/>
+    <id>https://liuzhihang.com/2020/12/06/undefined.html</id>
+    <published>2020-12-06T02:36:53.384Z</published>
+    <updated>2020-12-06T02:44:07.691Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 06：AnnotatedBeanDefinitionReader</title>
@@ -427,29 +445,6 @@
     
     
     <summary type="html">在阅读完和 AQS 相关的锁以及同步辅助器之后，来一起阅读 JUC 下的和队列相关的源码。先从第一个开始：ArrayBlockingQueue。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 使用递增计数器的线程同步工具 —— 信号量，它的原理是什么样子的？</title>
-    <link href="https://liuzhihang.com/2020/09/21/source-code-semaphore.html"/>
-    <id>https://liuzhihang.com/2020/09/21/source-code-semaphore.html</id>
-    <published>2020-09-20T23:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.119Z</updated>
-    
-    
-    <summary type="html">在 JUC 中线程同步器除了 CountDownLatch 和 CycleBarrier ，还有一个叫做 Semaphore （信号量），同样是基于 AQS 实现的。下面来看看信号量的内部原理。</summary>
     
     
     
