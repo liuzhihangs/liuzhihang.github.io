@@ -40,6 +40,29 @@
   </entry>
   
   <entry>
+    <title>Spring 源码学习 11：invokeBeanFactoryPostProcessors</title>
+    <link href="https://liuzhihang.com/2020/12/27/source-spring-11.html"/>
+    <id>https://liuzhihang.com/2020/12/27/source-spring-11.html</id>
+    <published>2020-12-27T15:00:00.000Z</published>
+    <updated>2020-12-27T10:54:33.891Z</updated>
+    
+    
+    <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring 源码学习 09：refresh 大概流程</title>
     <link href="https://liuzhihang.com/2020/12/16/source-spring-09.html"/>
     <id>https://liuzhihang.com/2020/12/16/source-spring-09.html</id>
@@ -442,25 +465,6 @@
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
     <category term="链路追踪" scheme="https://liuzhihang.com/tags/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工作笔记】- 老大问我：“建表为啥还设置个自增 id ？用流水号当主键不正好么？”</title>
-    <link href="https://liuzhihang.com/2020/10/11/work-trans-why-table-id.html"/>
-    <id>https://liuzhihang.com/2020/10/11/work-trans-why-table-id.html</id>
-    <published>2020-10-11T05:00:00.000Z</published>
-    <updated>2020-12-27T09:23:14.596Z</updated>
-    
-    
-    <summary type="html">建表时一般设置一个 id 为自增，但是同时流水号也是唯一索引，为什么不直接用流水号当做主键呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
