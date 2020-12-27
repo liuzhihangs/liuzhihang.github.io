@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-27T09:28:59.674Z</updated>
+  <updated>2020-12-27T09:49:55.161Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2020/12/27/source-spring-10.html"/>
     <id>https://liuzhihang.com/2020/12/27/source-spring-10.html</id>
     <published>2020-12-27T15:00:00.000Z</published>
-    <updated>2020-12-27T09:28:59.674Z</updated>
+    <updated>2020-12-27T09:49:55.161Z</updated>
     
     
     <summary type="html">根据 refresh 流程，当 obtainFreshBeanFactory 执行结束后，下一步会执行 prepareBeanFactory ，顾名思义，这个方法主要是准备 BeanFactory，下面一起看一看这部分逻辑。</summary>
