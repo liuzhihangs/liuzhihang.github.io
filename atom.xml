@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-06T13:01:39.451Z</updated>
+  <updated>2020-12-27T09:28:59.674Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 10：prepareBeanFactory 和 postProcessBeanFactory</title>
+    <link href="https://liuzhihang.com/2020/12/27/source-spring-10.html"/>
+    <id>https://liuzhihang.com/2020/12/27/source-spring-10.html</id>
+    <published>2020-12-27T15:00:00.000Z</published>
+    <updated>2020-12-27T09:28:59.674Z</updated>
+    
+    
+    <summary type="html">根据 refresh 流程，当 obtainFreshBeanFactory 执行结束后，下一步会执行 prepareBeanFactory ，顾名思义，这个方法主要是准备 BeanFactory，下面一起看一看这部分逻辑。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 源码学习 09：refresh 大概流程</title>
+    <link href="https://liuzhihang.com/2020/12/16/source-spring-09.html"/>
+    <id>https://liuzhihang.com/2020/12/16/source-spring-09.html</id>
+    <published>2020-12-16T15:00:00.000Z</published>
+    <updated>2020-12-27T09:08:55.499Z</updated>
+    
+    
+    <summary type="html">前面的准备工作结束之后，就是进入核心代码 refresh。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 08：register 注册配置类</title>
@@ -339,7 +385,7 @@
     <link href="https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html"/>
     <id>https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html</id>
     <published>2020-10-25T04:30:00.000Z</published>
-    <updated>2020-11-18T07:57:19.099Z</updated>
+    <updated>2020-12-27T09:23:14.600Z</updated>
     
     
     <summary type="html">JUC 下面的相关源码继续往下阅读，这就看到了非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue，来一起看看吧。</summary>
@@ -362,7 +408,7 @@
     <link href="https://liuzhihang.com/2020/10/19/header-name-case.html"/>
     <id>https://liuzhihang.com/2020/10/19/header-name-case.html</id>
     <published>2020-10-18T23:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.123Z</updated>
+    <updated>2020-12-27T09:23:14.596Z</updated>
     
     
     <summary type="html">在自己模拟过程中，才发现和容器有关系。</summary>
@@ -381,7 +427,7 @@
     <link href="https://liuzhihang.com/2020/10/18/log-trace-id.html"/>
     <id>https://liuzhihang.com/2020/10/18/log-trace-id.html</id>
     <published>2020-10-18T05:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.109Z</updated>
+    <updated>2020-12-27T09:23:14.596Z</updated>
     
     
     <summary type="html">新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？</summary>
@@ -404,7 +450,7 @@
     <link href="https://liuzhihang.com/2020/10/11/work-trans-why-table-id.html"/>
     <id>https://liuzhihang.com/2020/10/11/work-trans-why-table-id.html</id>
     <published>2020-10-11T05:00:00.000Z</published>
-    <updated>2020-10-11T05:11:00.786Z</updated>
+    <updated>2020-12-27T09:23:14.596Z</updated>
     
     
     <summary type="html">建表时一般设置一个 id 为自增，但是同时流水号也是唯一索引，为什么不直接用流水号当做主键呢？</summary>
@@ -415,52 +461,6 @@
     
     
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 基于链表的有界阻塞队列 —— LinkedBlockingQueue</title>
-    <link href="https://liuzhihang.com/2020/10/04/source-code-linkedblockingqueue.html"/>
-    <id>https://liuzhihang.com/2020/10/04/source-code-linkedblockingqueue.html</id>
-    <published>2020-10-04T06:30:00.000Z</published>
-    <updated>2020-11-18T07:57:19.105Z</updated>
-    
-    
-    <summary type="html">上一节看了基于数据的有界阻塞队列 ArrayBlockingQueue 的源码，通过阅读源码了解到在 ArrayBlockingQueue 中入队列和出队列操作都是用了 ReentrantLock 来保证线程安全。下面咱们看另一种有界阻塞队列：LinkedBlockingQueue。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- AQS 都看完了，Condition 原理可不能少！</title>
-    <link href="https://liuzhihang.com/2020/10/01/source-code-condition.html"/>
-    <id>https://liuzhihang.com/2020/10/01/source-code-condition.html</id>
-    <published>2020-10-01T10:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.131Z</updated>
-    
-    
-    <summary type="html">在介绍 AQS 时，其中有一个内部类叫做 ConditionObject，当时并没有进行介绍，并且在后续阅读源码时，会发现很多地方用到了 Condition ，这时就会很诧异，这个 Condition 到底有什么作用？那今天就通过阅读 Condition 源码，从而弄清楚 Condition 到底是做什么的？</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
