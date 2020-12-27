@@ -247,33 +247,31 @@ document.addEventListener('DOMContentLoaded', function () {
  * fancybox和 mediumZoom
  */
   const addFancybox = function (ele) {
-    if (ele.length) {
-      const runFancybox = (ele) => {
-        ele.each(function (i, o) {
-          const $this = $(o)
-          const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
-          const dataCaption = $this.attr('alt') || ''
-          $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
-        })
+    const runFancybox = (ele) => {
+      ele.each(function (i, o) {
+        const $this = $(o)
+        const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+        const dataCaption = $this.attr('alt') || ''
+        $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+      })
 
-        $().fancybox({
-          selector: '[data-fancybox]',
-          loop: true,
-          transitionEffect: 'slide',
-          protect: true,
-          buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
-          hash: false
-        })
-      }
+      $().fancybox({
+        selector: '[data-fancybox]',
+        loop: true,
+        transitionEffect: 'slide',
+        protect: true,
+        buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+        hash: false
+      })
+    }
 
-      if (typeof $.fancybox === 'undefined') {
-        $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
-        $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
-          runFancybox($(ele))
-        })
-      } else {
+    if (typeof $.fancybox === 'undefined') {
+      $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+      $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
         runFancybox($(ele))
-      }
+      })
+    } else {
+      runFancybox($(ele))
     }
   }
 
@@ -289,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const jqLoadAndRun = () => {
     const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-      ? document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img') 
+      ? document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img')
       : []
     const fbLengthNoZero = $fancyboxEle.length > 0
     const $jgEle = document.querySelectorAll('#article-container .justified-gallery')
@@ -490,20 +488,7 @@ document.addEventListener('DOMContentLoaded', function () {
  */
   const rightSideFn = {
     switchReadMode: () => { // read-mode
-      const $body = document.body
-      $body.classList.add('read-mode')
-      const newEle = document.createElement('button')
-      newEle.type = 'button'
-      newEle.className = 'fas fa-sign-out-alt exit-readmode'
-      $body.appendChild(newEle)
-
-      function clickFn () {
-        $body.classList.remove('read-mode')
-        newEle.remove()
-        newEle.removeEventListener('click', clickFn)
-      }
-
-      newEle.addEventListener('click', clickFn)
+      document.body.classList.toggle('read-mode')
     },
     switchDarkMode: () => { // Switch Between Light And Dark Mode
       const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
