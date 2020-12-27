@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-27T10:56:55.586Z</updated>
+  <updated>2020-12-27T11:11:55.809Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2020/12/28/source-spring-11.html"/>
     <id>https://liuzhihang.com/2020/12/28/source-spring-11.html</id>
     <published>2020-12-28T00:00:00.000Z</published>
-    <updated>2020-12-27T10:56:55.586Z</updated>
+    <updated>2020-12-27T11:11:55.809Z</updated>
     
     
     <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
