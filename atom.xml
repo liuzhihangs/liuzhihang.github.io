@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-27T09:49:55.161Z</updated>
+  <updated>2020-12-27T10:56:55.586Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,14 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring 源码学习 10：prepareBeanFactory 和 postProcessBeanFactory</title>
-    <link href="https://liuzhihang.com/2020/12/27/source-spring-10.html"/>
-    <id>https://liuzhihang.com/2020/12/27/source-spring-10.html</id>
-    <published>2020-12-27T15:00:00.000Z</published>
-    <updated>2020-12-27T09:49:55.161Z</updated>
+    <title>Spring 源码学习 11：invokeBeanFactoryPostProcessors</title>
+    <link href="https://liuzhihang.com/2020/12/28/source-spring-11.html"/>
+    <id>https://liuzhihang.com/2020/12/28/source-spring-11.html</id>
+    <published>2020-12-28T00:00:00.000Z</published>
+    <updated>2020-12-27T10:56:55.586Z</updated>
     
     
-    <summary type="html">根据 refresh 流程，当 obtainFreshBeanFactory 执行结束后，下一步会执行 prepareBeanFactory ，顾名思义，这个方法主要是准备 BeanFactory，下面一起看一看这部分逻辑。</summary>
+    <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
     
     
     
@@ -40,14 +40,14 @@
   </entry>
   
   <entry>
-    <title>Spring 源码学习 11：invokeBeanFactoryPostProcessors</title>
-    <link href="https://liuzhihang.com/2020/12/27/source-spring-11.html"/>
-    <id>https://liuzhihang.com/2020/12/27/source-spring-11.html</id>
+    <title>Spring 源码学习 10：prepareBeanFactory 和 postProcessBeanFactory</title>
+    <link href="https://liuzhihang.com/2020/12/27/source-spring-10.html"/>
+    <id>https://liuzhihang.com/2020/12/27/source-spring-10.html</id>
     <published>2020-12-27T15:00:00.000Z</published>
-    <updated>2020-12-27T10:54:33.891Z</updated>
+    <updated>2020-12-27T09:49:55.161Z</updated>
     
     
-    <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
+    <summary type="html">根据 refresh 流程，当 obtainFreshBeanFactory 执行结束后，下一步会执行 prepareBeanFactory ，顾名思义，这个方法主要是准备 BeanFactory，下面一起看一看这部分逻辑。</summary>
     
     
     
