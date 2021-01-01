@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2020-12-27T11:11:55.809Z</updated>
+  <updated>2021-01-01T12:52:16.733Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring 源码学习 12：registerBeanPostProcessors</title>
+    <link href="https://liuzhihang.com/2021/01/01/source-spring-12.html"/>
+    <id>https://liuzhihang.com/2021/01/01/source-spring-12.html</id>
+    <published>2021-01-01T12:50:00.000Z</published>
+    <updated>2021-01-01T12:52:16.733Z</updated>
+    
+    
+    <summary type="html">这一步主要的作用是加载 BeanPostProcessor，从名字也可以看出，只是加载，并没有执行。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring 源码学习 11：invokeBeanFactoryPostProcessors</title>
     <link href="https://liuzhihang.com/2020/12/28/source-spring-11.html"/>
     <id>https://liuzhihang.com/2020/12/28/source-spring-11.html</id>
     <published>2020-12-28T00:00:00.000Z</published>
-    <updated>2020-12-27T11:11:55.809Z</updated>
+    <updated>2021-01-01T12:51:45.460Z</updated>
     
     
     <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
@@ -442,29 +465,6 @@
     
     
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工作笔记】- 几行代码轻松实现跨系统传递 traceId，再也不用担心对不上日志了！</title>
-    <link href="https://liuzhihang.com/2020/10/18/log-trace-id.html"/>
-    <id>https://liuzhihang.com/2020/10/18/log-trace-id.html</id>
-    <published>2020-10-18T05:00:00.000Z</published>
-    <updated>2020-12-27T09:23:14.596Z</updated>
-    
-    
-    <summary type="html">新项目查日志太麻烦，多台机器之间查来查去，还不知道是不是同一个请求的。打印日志时使用 MDC 在日志上添加一个 traceId，那这个 traceId 如何跨系统传递呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="链路追踪" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="链路追踪" scheme="https://liuzhihang.com/tags/%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
     
   </entry>
   
