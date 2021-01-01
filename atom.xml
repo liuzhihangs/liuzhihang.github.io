@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-01-01T13:03:50.401Z</updated>
+  <updated>2021-01-01T13:07:42.249Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2021/01/01/source-spring-12.html"/>
     <id>https://liuzhihang.com/2021/01/01/source-spring-12.html</id>
     <published>2021-01-01T12:50:00.000Z</published>
-    <updated>2021-01-01T13:03:50.401Z</updated>
+    <updated>2021-01-01T13:07:42.249Z</updated>
     
     
     <summary type="html">这一步主要的作用是加载 BeanPostProcessor，从名字也可以看出，只是加载，并没有执行。</summary>
