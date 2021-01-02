@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-01-01T13:07:42.249Z</updated>
+  <updated>2021-01-02T09:42:22.126Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 13：initMessageSource</title>
+    <link href="https://liuzhihang.com/2021/01/02/source-spring-13.html"/>
+    <id>https://liuzhihang.com/2021/01/02/source-spring-13.html</id>
+    <published>2021-01-02T09:40:00.000Z</published>
+    <updated>2021-01-02T09:42:22.126Z</updated>
+    
+    
+    <summary type="html">在阅读完 registerBeanPostProcessors 源码之后， 下一步就进入到 initMessageSource，这一步主要作用是初始化国际化文件。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 12：registerBeanPostProcessors</title>
@@ -446,25 +469,6 @@
     <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
     
     <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工作笔记】- APP 莫名崩溃，开始以为是 Header 中 name 大小写的锅，最后发现原来是容器的错！</title>
-    <link href="https://liuzhihang.com/2020/10/19/header-name-case.html"/>
-    <id>https://liuzhihang.com/2020/10/19/header-name-case.html</id>
-    <published>2020-10-18T23:00:00.000Z</published>
-    <updated>2020-12-27T09:23:14.596Z</updated>
-    
-    
-    <summary type="html">在自己模拟过程中，才发现和容器有关系。</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
