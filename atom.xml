@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-01-02T09:42:22.126Z</updated>
+  <updated>2021-01-05T13:40:51.243Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 14：initApplicationEventMulticaster 、onRefresh 和 registerListeners</title>
+    <link href="https://liuzhihang.com/2021/01/05/source-spring-14.html"/>
+    <id>https://liuzhihang.com/2021/01/05/source-spring-14.html</id>
+    <published>2021-01-05T13:40:00.000Z</published>
+    <updated>2021-01-05T13:40:51.243Z</updated>
+    
+    
+    <summary type="html">上一篇介绍了国际化的使用以及初始化消息源的源码，接下来接着往下阅读，将进入 initApplicationEventMulticaster 、onRefresh 和 registerListeners 的相关操作逻辑。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 13：initMessageSource</title>
@@ -435,29 +458,6 @@
     
     
     <summary type="html">JUC 下面还有一个系列的类，都是 CopyOnWriteXXX ，意思是写时复制，这个究竟是怎么回事？那就以 CopyOnWriteArrayList 为切入点，一起了解写时复制是怎么回事？</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue</title>
-    <link href="https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html"/>
-    <id>https://liuzhihang.com/2020/10/25/source-code-concurrentlinkedqueue.html</id>
-    <published>2020-10-25T04:30:00.000Z</published>
-    <updated>2020-12-27T09:23:14.600Z</updated>
-    
-    
-    <summary type="html">JUC 下面的相关源码继续往下阅读，这就看到了非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue，来一起看看吧。</summary>
     
     
     

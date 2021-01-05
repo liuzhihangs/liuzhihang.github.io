@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liuzhihang.com/2021/01/05/source-spring-14.html</loc>
+    <lastmod>2021-01-05</lastmod>
+  </url>
+  <url>
     <loc>https://liuzhihang.com/2021/01/02/source-spring-13.html</loc>
     <lastmod>2021-01-02</lastmod>
   </url>
@@ -181,11 +185,11 @@
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2019/08/04/springcloud-architecture-schematic.html</loc>
+    <loc>https://liuzhihang.com/2019/08/10/trading-system-architecture.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2019/08/10/trading-system-architecture.html</loc>
+    <loc>https://liuzhihang.com/2019/08/04/springcloud-architecture-schematic.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
