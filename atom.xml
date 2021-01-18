@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-01-05T13:40:51.243Z</updated>
+  <updated>2021-01-18T08:19:22.468Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 源码学习 16：单例 Bean 创建</title>
+    <link href="https://liuzhihang.com/2021/01/17/source-spring-16.html"/>
+    <id>https://liuzhihang.com/2021/01/17/source-spring-16.html</id>
+    <published>2021-01-17T13:40:00.000Z</published>
+    <updated>2021-01-18T08:19:22.468Z</updated>
+    
+    
+    <summary type="html">在 finishBeanFactoryInitialization 中介绍了创建 Bean 的流程大概流程，这里进入单例 Bean 的创建过程。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 源码学习 15：finishBeanFactoryInitialization（重点）</title>
+    <link href="https://liuzhihang.com/2021/01/12/source-spring-15.html"/>
+    <id>https://liuzhihang.com/2021/01/12/source-spring-15.html</id>
+    <published>2021-01-12T13:40:00.000Z</published>
+    <updated>2021-01-18T08:18:37.955Z</updated>
+    
+    
+    <summary type="html">可以说前面的都是准备工作，而接下来开始的才是重点，在这一步会完成 BeanFactory 的初始化，同时实例化单例 Bean。</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 14：initApplicationEventMulticaster 、onRefresh 和 registerListeners</title>
@@ -423,52 +469,6 @@
     
     
     <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工具册】- 写文档太麻烦，试试这款 IDEA 插件吧！</title>
-    <link href="https://liuzhihang.com/2020/11/01/doc-view.html"/>
-    <id>https://liuzhihang.com/2020/11/01/doc-view.html</id>
-    <published>2020-11-01T07:00:00.000Z</published>
-    <updated>2020-11-23T11:50:53.094Z</updated>
-    
-    
-    <summary type="html">文档生成插件，支持直接生成 Markdown 格式的接口文档，值得一试！</summary>
-    
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JDK源码笔记】- 写时复制集合 —— CopyOnWriteArrayList</title>
-    <link href="https://liuzhihang.com/2020/10/31/copyonwritearraylist.html"/>
-    <id>https://liuzhihang.com/2020/10/31/copyonwritearraylist.html</id>
-    <published>2020-10-31T02:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.126Z</updated>
-    
-    
-    <summary type="html">JUC 下面还有一个系列的类，都是 CopyOnWriteXXX ，意思是写时复制，这个究竟是怎么回事？那就以 CopyOnWriteArrayList 为切入点，一起了解写时复制是怎么回事？</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/"/>
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="JDK" scheme="https://liuzhihang.com/tags/JDK/"/>
     
   </entry>
   
