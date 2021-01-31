@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-01-18T08:19:22.468Z</updated>
+  <updated>2021-01-31T04:04:37.858Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring 动态代理时是如何解决循环依赖的？为什么要使用三级缓存？</title>
+    <link href="https://liuzhihang.com/2021/01/30/source-spring-circular-dependence-2.html"/>
+    <id>https://liuzhihang.com/2021/01/30/source-spring-circular-dependence-2.html</id>
+    <published>2021-01-30T13:40:00.000Z</published>
+    <updated>2021-01-31T04:04:37.858Z</updated>
+    
+    
+    <summary type="html">循环依赖为什么要使用三级缓存？而不是使用二级缓存？AOP 动态代理对循环依赖的有没有什么影响？</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 是如何解决循环依赖的？</title>
+    <link href="https://liuzhihang.com/2021/01/23/source-spring-circular-dependence-1.html"/>
+    <id>https://liuzhihang.com/2021/01/23/source-spring-circular-dependence-1.html</id>
+    <published>2021-01-23T13:40:00.000Z</published>
+    <updated>2021-01-31T04:05:52.024Z</updated>
+    
+    
+    <summary type="html">什么是循环依赖，以及 Spring 是如何解决循环依赖的？</summary>
+    
+    
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
+    
+    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 源码学习 16：单例 Bean 创建</title>
@@ -44,7 +90,7 @@
     <link href="https://liuzhihang.com/2021/01/12/source-spring-15.html"/>
     <id>https://liuzhihang.com/2021/01/12/source-spring-15.html</id>
     <published>2021-01-12T13:40:00.000Z</published>
-    <updated>2021-01-18T08:18:37.955Z</updated>
+    <updated>2021-01-18T08:23:49.239Z</updated>
     
     
     <summary type="html">可以说前面的都是准备工作，而接下来开始的才是重点，在这一步会完成 BeanFactory 的初始化，同时实例化单例 Bean。</summary>
@@ -427,48 +473,6 @@
     <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
     
     <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</title>
-    <link href="https://liuzhihang.com/2020/11/15/brew-list-warning.html"/>
-    <id>https://liuzhihang.com/2020/11/15/brew-list-warning.html</id>
-    <published>2020-11-15T02:00:00.000Z</published>
-    <updated>2020-11-26T07:13:47.125Z</updated>
-    
-    
-    <summary type="html">Warning: Calling `brew list` to only list formulae is deprecated! Use `brew list --formula` instead.</summary>
-    
-    
-    
-    <category term="issue" scheme="https://liuzhihang.com/categories/issue/"/>
-    
-    
-    <category term="issue" scheme="https://liuzhihang.com/tags/issue/"/>
-    
-    <category term="mac" scheme="https://liuzhihang.com/tags/mac/"/>
-    
-    <category term="brew" scheme="https://liuzhihang.com/tags/brew/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工作笔记】- Spring 自调用事务失效，你是怎么解决的？</title>
-    <link href="https://liuzhihang.com/2020/11/08/spring-self-call.html"/>
-    <id>https://liuzhihang.com/2020/11/08/spring-self-call.html</id>
-    <published>2020-11-08T09:00:00.000Z</published>
-    <updated>2020-11-18T07:57:19.092Z</updated>
-    
-    
-    <summary type="html">相信大家都遇到一种事务失效场景，那就是 Spring 自调用，就是在 Service 方法内，调用另一个加 `@Transactional` 注解的方法，发现事务失效，这时候你是怎么解决的呢？</summary>
-    
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="工作笔记" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

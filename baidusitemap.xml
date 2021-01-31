@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liuzhihang.com/2021/01/17/source-spring-16.html</loc>
-    <lastmod>2021-01-18</lastmod>
+    <loc>https://liuzhihang.com/2021/01/23/source-spring-circular-dependence-1.html</loc>
+    <lastmod>2021-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://liuzhihang.com/2021/01/30/source-spring-circular-dependence-2.html</loc>
+    <lastmod>2021-01-31</lastmod>
   </url>
   <url>
     <loc>https://liuzhihang.com/2021/01/12/source-spring-15.html</loc>
+    <lastmod>2021-01-18</lastmod>
+  </url>
+  <url>
+    <loc>https://liuzhihang.com/2021/01/17/source-spring-16.html</loc>
     <lastmod>2021-01-18</lastmod>
   </url>
   <url>
@@ -65,11 +73,11 @@
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
+    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
+    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
