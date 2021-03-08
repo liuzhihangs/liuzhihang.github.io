@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-02-03T02:32:00.383Z</updated>
+  <updated>2021-03-08T11:32:49.560Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDEA 敏捷开发技巧——实时模版</title>
+    <link href="https://liuzhihang.com/2021/02/15/idea-live-templates.html"/>
+    <id>https://liuzhihang.com/2021/02/15/idea-live-templates.html</id>
+    <published>2021-02-15T07:00:00.000Z</published>
+    <updated>2021-03-08T11:32:49.560Z</updated>
+    
+    
+    <summary type="html">IDEA 实时模版功能介绍</summary>
+    
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA 敏捷开发技巧——后缀完成</title>
+    <link href="https://liuzhihang.com/2021/02/10/idea-postfix-completion.html"/>
+    <id>https://liuzhihang.com/2021/02/10/idea-postfix-completion.html</id>
+    <published>2021-02-10T07:00:00.000Z</published>
+    <updated>2021-03-08T11:31:45.037Z</updated>
+    
+    
+    <summary type="html">IDEA 后缀完成功能介绍</summary>
+    
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring 事务、异步和循环依赖有什么关系？</title>
@@ -427,52 +473,6 @@
     <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
     
     <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 01：源码阅读环境的搭建</title>
-    <link href="https://liuzhihang.com/2020/11/26/source-spring-build.html"/>
-    <id>https://liuzhihang.com/2020/11/26/source-spring-build.html</id>
-    <published>2020-11-26T15:00:00.000Z</published>
-    <updated>2020-11-30T15:20:00.446Z</updated>
-    
-    
-    <summary type="html">本文记录了 Spring 源码环境的搭建方式，以及踩过的那些坑！当前版本：5.3.2-SNAPSHOT。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【工具册】- DocView 现在支持自定义 Markdown 模版了！</title>
-    <link href="https://liuzhihang.com/2020/11/23/doc-view-template.html"/>
-    <id>https://liuzhihang.com/2020/11/23/doc-view-template.html</id>
-    <published>2020-11-23T14:00:00.000Z</published>
-    <updated>2020-11-24T02:08:13.738Z</updated>
-    
-    
-    <summary type="html">有小伙伴反馈说希望可以自定义 Markdown 模版，这样就可以导出自己想要的样式了！这个功能可以有，毕竟大家不可能都生成一模一样的文档。现在来一起看看如何实现自定义模版吧！</summary>
-    
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
-    
-    
-    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
-    
-    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
     
   </entry>
   

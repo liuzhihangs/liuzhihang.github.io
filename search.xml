@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>IDEA 敏捷开发技巧——实时模版</title>
+      <link href="2021/02/15/idea-live-templates.html"/>
+      <url>2021/02/15/idea-live-templates.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文通过自定义模版，在 IDEA 中，通过简单的几个字符，快捷生成既定的代码。</p><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/3-G7xXaS.gif" alt="fori"></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/4-HeyMbU.gif" alt="iter"></p><h3 id="自定义模版"><a href="#自定义模版" class="headerlink" title="自定义模版"></a>自定义模版</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/1-gm9BXy.gif" alt="comment"></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/2-r0vlvT.gif" alt="slf"></p><h4 id="如何自定义模版"><a href="#如何自定义模版" class="headerlink" title="如何自定义模版"></a>如何自定义模版</h4><blockquote><p>Windows and Linux</p><p><code>File</code> -&gt; <code>Settings</code> -&gt; <code>Editor</code> -&gt; <code>Live Templates</code>  </p></blockquote><blockquote><p>macOS</p><p><code>IntelliJ IDEA</code> -&gt; <code>Preferences</code> -&gt; <code>Editor</code> -&gt; <code>Live Templates</code> </p></blockquote><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/mZdGqO-DwKxrE.png" alt="Live Templates 设置"></p><ul><li><strong>先添加一个 group，表示这里都是自己自定义的。</strong></li></ul><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jGlxti-FyRLyk.png" alt="添加 Group"></p><p>这个名字就自己随便取了，只要知道是自己的就可以。比如我的叫 <code>My Template</code>。</p><ul><li><strong>添加 Template 到自己创建的 group 里面</strong></li></ul><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/3ewYTY-hjtzbg.png" alt="添加 Template"></p><p>下面分别介绍里面的变量：</p><table><thead><tr><th align="left">选项</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">Abbreviation</td><td align="left">缩写，需要用什么缩写唤起模版。</td></tr><tr><td align="left">Description</td><td align="left">描述，写不写都行。</td></tr><tr><td align="left">Template Text</td><td align="left">模版内容，这是关键！前后使用 <code>$</code> 包裹的内容即变量 —— <code>$变量$ </code>。</td></tr><tr><td align="left">Applicable in</td><td align="left">就是在哪一块生效，配置了这个就可以使用 <code>⌘+J</code> 快捷唤起所有的在该处生效的模版。</td></tr><tr><td align="left">Edit Variables</td><td align="left">编辑变量，为变量赋予对应的属性。</td></tr><tr><td align="left">Options</td><td align="left">一些选项 <br> 1. Expand with： 展开按键 <br> 2. Reformat according to style：重新格式化  <br> 3. Use static import if possible：使用静态导入 <br> 4. Shorten FQ names：缩短全类名，自动添加 import</td></tr></tbody></table><ul><li><strong>编辑 Template Text</strong></li></ul><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * $END$</span><br><span class="line"> *</span><br><span class="line"> * @author liuzhihang</span><br><span class="line"> * @date $date$ $time$</span><br><span class="line"> */</span><br></pre></td></tr></table></figure><p>其中 <code>$END$</code> 是系统变量，意思是最后光标停留在哪。</p><ul><li><strong>编辑变量 Edit Variables</strong></li></ul><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/wtQ4Dq-l1S3aA.png"></p><p>然后点击确定就可以生成模版了。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>也有一些其他的内置变量，可以参考地址：</p><p><a href="https://www.jetbrains.com/help/idea/edit-template-variables-dialog.html#predefined_functions">https://www.jetbrains.com/help/idea/edit-template-variables-dialog.html#predefined_functions</a></p><p>如果小伙伴有其他的小技巧，小工具，也可以留言分享。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/3FRquSf9kiO_R9G3ZLyHUQ">IDEA 敏捷开发技巧——后缀完成</a></li><li><a href="https://mp.weixin.qq.com/s/ngpTOx4XO0SDeqxH-0Yjgg">给大家介绍下，这是我的流程图软件 —— draw.io</a></li><li><a href="https://mp.weixin.qq.com/s/GBgpiWS6B66XVvX5nLUq8g">头大！写文档太麻烦了！快来试试这款 IDEA 插件啊！爽到飞起~</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具册 </category>
+          
+          <category> Doc View </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IDEA 敏捷开发技巧——后缀完成</title>
+      <link href="2021/02/10/idea-postfix-completion.html"/>
+      <url>2021/02/10/idea-postfix-completion.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>“工欲善其事，必先利其器。”</p><p>所以说今天来看一看如何压榨 IDEA ，让你的 IDEA 使用的更顺手！</p><p>今日技巧：</p><ul><li>后缀完成</li><li>自定义后缀完成模版</li></ul><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/sout-ShVzVM.gif" alt=".sout 示例"></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/if-EkdoN9.gif" alt=".if 示例"></p><p>上面动图使用了 <code>.sout</code> <code>.if</code> 来举例，相信有些小伙伴在工作中经常使用。如果没有使用过，也可以🦑尝试一下。</p><h3 id="自定义后缀模版"><a href="#自定义后缀模版" class="headerlink" title="自定义后缀模版"></a>自定义后缀模版</h3><p>因为打印日志的时候，为了方便日志的查看，一般会将实体打印成 Json <del>（性能问题先忽略）</del>。</p><p>然后就可以使用这个方式来自定义后缀完成的模版。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jsons-lb1HBJ.gif" alt=".jsons 模版"></p><p>是不是瞬间感觉方便很多了。</p><h4 id="如何自定义后缀模版"><a href="#如何自定义后缀模版" class="headerlink" title="如何自定义后缀模版"></a>如何自定义后缀模版</h4><blockquote><p>Windows and Linux</p><p><code>File</code> -&gt; <code>Settings</code> -&gt; <code>Editor</code> -&gt; <code>General</code> -&gt; <code>Postfix Completion</code>  </p></blockquote><blockquote><p>macOS</p><p><code>IntelliJ IDEA</code> -&gt; <code>Preferences</code> -&gt; <code>Editor</code> -&gt; <code>General</code> -&gt; <code>Postfix Completion</code>  </p></blockquote><p>总之，就是设置页面，找到 <code>Postfix Completion</code>， 不是（Live Templates）。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Wfwdxc-FKpNrV.png" alt="Postfix Completion 设置"></p><p>左下角有个  <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/icons.general.add-EI0r5S.svg" alt="Add button"> 可以创建新的模版。</p><p>当然也可以使用 <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/icons.general.remove-Pl6t37.svg" alt="Remove button">、 <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/icons.actions.edit-qVT4eX.svg" alt="Edit button">、 <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/icons.actions.copy-es8UYd.svg" alt="Duplicate button"> 进行删除、编辑、复制。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/BH34d4-xaQdaP.png" alt="配置 .jsons"></p><p>注意：</p><ol><li>用全类名，在生成的时候会自动 <code>import</code>，并且把包名省略掉，</li><li><code>Apply to the topmost expression</code> 没有打勾。</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>小伙伴们，快点配置下试试吧。</p><p>后续也会分享其他的小技巧，提高大家的开（mo）发（🐟）效率。</p><p>如果小伙伴有其他的小技巧，小工具，也可以留言分享。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/ngpTOx4XO0SDeqxH-0Yjgg">给大家介绍下，这是我的流程图软件 —— draw.io</a></li><li><a href="https://mp.weixin.qq.com/s/GBgpiWS6B66XVvX5nLUq8g">头大！写文档太麻烦了！快来试试这款 IDEA 插件啊！爽到飞起~</a></li><li><a href="https://mp.weixin.qq.com/s/75h_j5McIRQ3Z0fB72MZuA">小伙伴想写个 IDEA 插件么？这些 API 了解一下！</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具册 </category>
+          
+          <category> Doc View </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring 事务、异步和循环依赖有什么关系？</title>
       <link href="2021/02/01/spring-sync-translational.html"/>
       <url>2021/02/01/spring-sync-translational.html</url>
