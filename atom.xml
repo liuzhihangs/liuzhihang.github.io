@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-03-08T11:32:49.560Z</updated>
+  <updated>2021-03-25T06:16:01.449Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工作中的设计模式 —— 原型模式</title>
+    <link href="https://liuzhihang.com/2021/03/10/design-patterns-prototype.html"/>
+    <id>https://liuzhihang.com/2021/03/10/design-patterns-prototype.html</id>
+    <published>2021-03-10T07:00:00.000Z</published>
+    <updated>2021-03-25T06:16:01.449Z</updated>
+    
+    
+    <summary type="html">原型模式是一种创建型设计模式， 使你能够复制已有对象， 而又无需使代码依赖它们所属的类。</summary>
+    
+    
+    
+    <category term="设计模式" scheme="https://liuzhihang.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://liuzhihang.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>IDEA 敏捷开发技巧——实时模版</title>
@@ -439,29 +458,6 @@
     
     
     <summary type="html">现在从简图这入手，先来看看如何创建容器！</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 02：关于 Spring IoC 和 Bean 的概念</title>
-    <link href="https://liuzhihang.com/2020/11/30/source-spring-02.html"/>
-    <id>https://liuzhihang.com/2020/11/30/source-spring-02.html</id>
-    <published>2020-11-30T15:00:00.000Z</published>
-    <updated>2020-11-30T15:21:55.345Z</updated>
-    
-    
-    <summary type="html">通过本文简单了解一下 IoC 和 Bean 的概念</summary>
     
     
     
