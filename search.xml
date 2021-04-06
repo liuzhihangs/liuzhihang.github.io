@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【工具册】- IDEA 文档插件 DocView 版本更新：支持编辑文档注释</title>
+      <link href="2021/04/02/doc-view-editor.html"/>
+      <url>2021/04/02/doc-view-editor.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>IDEA 文档插件 Doc View 又更新了新版本，本次更新版本如下：</p><ol><li>支持在方法右键菜单选择 Doc Editor 直接编辑文档<ol><li>编辑接口文档名称</li><li>编辑接口描述</li><li>编辑字段是否必填</li><li>编辑字段注释说明</li><li>点击确定, 会回写到源文件的注释中</li></ol></li><li>支持在 Entity 中通过邮件菜单选择Doc Editor 编辑字段信息<ol><li>编辑字段是否必填</li><li>编辑字段注释说明</li><li>点击确定, 会回写到源文件的注释中</li><li>支持将 Entity 复制为 Json 字符串</li><li>复制 Json 字符串时, 支持 Entity 中包含对象的转换</li></ol></li><li>从 Doc View 预览界面直接跳转到编辑界面</li></ol><p>是不是看着挺多的，下面，咱们就了解下具体都是什么吧！</p><h3 id="Doc-Editor"><a href="#Doc-Editor" class="headerlink" title="Doc Editor"></a>Doc Editor</h3><h4 id="在方法右键菜单"><a href="#在方法右键菜单" class="headerlink" title="在方法右键菜单"></a>在方法右键菜单</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/l3sIe0-7D3bOv.png"></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/HoTgCq-XO0gau.png"></p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/OCNAp3-lO5ujJ.png"></p><p>弹起操作面板，可编辑参数如下：</p><ol><li>接口名称：默认取方法名，当有注释且注释 tag 为 @docName 时，会取 @docName 对应的名称；</li><li>接口描述：取注释的描述内容；</li><li>请求/返回参数：请求返回参数的是否必填、描述。</li></ol><p>下面使用动图演示：</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/doceditor-1-0ILFLN.gif"></p><h4 id="在实体类右键菜单"><a href="#在实体类右键菜单" class="headerlink" title="在实体类右键菜单"></a>在实体类右键菜单</h4><p>在实体类中右键菜单，其实相当于方法中的请求/返回参数那一部分。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/LC0bRs-ZOdH6L.png"></p><p>操作面板操作如下：</p><ol><li>是否必填：将使用注释 tag @required 作为是否必填的标识。当然也支持 <code>javax.validation.constraints</code> 的部分注解；</li><li>描述信息：描述内容为注释内容，修改后会回写到注释中；</li><li>复制为 Json 字符串，支持多级嵌套。</li></ol><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/docview-2-MeKcA8.gif"></p><p>如果上述内容点击 <code>Copy as Json</code> 会将实体转换为 Json 字符串复制到剪贴板。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/doceditor-3-3SonEN.gif"></p><h4 id="直接从预览界面跳转"><a href="#直接从预览界面跳转" class="headerlink" title="直接从预览界面跳转"></a>直接从预览界面跳转</h4><p>当打开 Doc View 文档界面时，左下角可以通过编辑按钮跳转到 Doc Editor 界面。</p><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/sULj8S-O9MBRf.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Doc View 本次更新介绍就到这里就结束了，有兴趣的小伙伴，可以自己安装体验。</p><p>欢迎小伙伴们提出 Issue 和 PR。</p><p>项目地址：<a href="https://github.com/liuzhihang/doc-view">https://github.com/liuzhihang/doc-view</a><br>插件地址：<a href="https://plugins.jetbrains.com/plugin/15305-doc-view">https://plugins.jetbrains.com/plugin/15305-doc-view</a></p><p>【广告】</p><p>为了方便沟通交流，我创建了一个<strong>技术交流群</strong>，在群里可以交流技术，聊天提问，有兴趣的小伙伴可以通过公众号加我好友，发送进群，我会拉你进群。<br>PS：事先说好哦，不准发广告。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具册 </category>
+          
+          <category> Doc View </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具册 </tag>
+            
+            <tag> Doc View </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>工作中的设计模式 —— 原型模式</title>
       <link href="2021/03/10/design-patterns-prototype.html"/>
       <url>2021/03/10/design-patterns-prototype.html</url>

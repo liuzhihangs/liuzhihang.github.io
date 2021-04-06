@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-03-25T06:16:01.449Z</updated>
+  <updated>2021-04-06T07:41:48.614Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【工具册】- IDEA 文档插件 DocView 版本更新：支持编辑文档注释</title>
+    <link href="https://liuzhihang.com/2021/04/02/doc-view-editor.html"/>
+    <id>https://liuzhihang.com/2021/04/02/doc-view-editor.html</id>
+    <published>2021-04-02T14:00:00.000Z</published>
+    <updated>2021-04-06T07:41:48.614Z</updated>
+    
+    
+    <summary type="html">支持在方法右键菜单选择 Doc Editor 直接编辑文档，支持在 Entity 中通过邮件菜单选择Doc Editor 编辑字段信息，从 Doc View 预览界面直接跳转到编辑界面。</summary>
+    
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/"/>
+    
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+    <category term="Doc View" scheme="https://liuzhihang.com/tags/Doc-View/"/>
+    
+  </entry>
+  
+  <entry>
     <title>工作中的设计模式 —— 原型模式</title>
     <link href="https://liuzhihang.com/2021/03/10/design-patterns-prototype.html"/>
     <id>https://liuzhihang.com/2021/03/10/design-patterns-prototype.html</id>
     <published>2021-03-10T07:00:00.000Z</published>
-    <updated>2021-03-25T06:16:01.449Z</updated>
+    <updated>2021-04-06T07:09:34.107Z</updated>
     
     
     <summary type="html">原型模式是一种创建型设计模式， 使你能够复制已有对象， 而又无需使代码依赖它们所属的类。</summary>
@@ -435,29 +458,6 @@
     
     
     <summary type="html">藏着的 DefaultListableBeanFactory</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 03：创建 IoC 容器的几种方式</title>
-    <link href="https://liuzhihang.com/2020/12/01/source-spring-03.html"/>
-    <id>https://liuzhihang.com/2020/12/01/source-spring-03.html</id>
-    <published>2020-12-01T15:00:00.000Z</published>
-    <updated>2020-12-01T15:37:00.752Z</updated>
-    
-    
-    <summary type="html">现在从简图这入手，先来看看如何创建容器！</summary>
     
     
     
