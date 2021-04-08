@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-04-06T07:41:48.614Z</updated>
+  <updated>2021-04-08T07:22:48.031Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工作中的设计模式 —— 策略模式</title>
+    <link href="https://liuzhihang.com/2021/04/07/design-patterns-strategy.html"/>
+    <id>https://liuzhihang.com/2021/04/07/design-patterns-strategy.html</id>
+    <published>2021-04-07T12:00:00.000Z</published>
+    <updated>2021-04-08T07:22:48.031Z</updated>
+    
+    
+    <summary type="html">策略模式是一种行为设计模式，它能让你定义一系列算法，并将每种算法分别放入独立的类中，以使算法的对象能够相互替换。</summary>
+    
+    
+    
+    <category term="设计模式" scheme="https://liuzhihang.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://liuzhihang.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>【工具册】- IDEA 文档插件 DocView 版本更新：支持编辑文档注释</title>
@@ -435,29 +454,6 @@
     
     
     <summary type="html">结合官方文档以及源码，一起了解一下 BeanDefinition！</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 04：初始化容器与 DefaultListableBeanFactory</title>
-    <link href="https://liuzhihang.com/2020/12/02/source-spring-04.html"/>
-    <id>https://liuzhihang.com/2020/12/02/source-spring-04.html</id>
-    <published>2020-12-02T15:00:00.000Z</published>
-    <updated>2020-12-02T14:14:33.301Z</updated>
-    
-    
-    <summary type="html">藏着的 DefaultListableBeanFactory</summary>
     
     
     

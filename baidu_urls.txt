@@ -1,3 +1,3 @@
+https://liuzhihang.com/2021/04/07/design-patterns-strategy.html
 https://liuzhihang.com/2021/04/02/doc-view-editor.html
 https://liuzhihang.com/2021/03/10/design-patterns-prototype.html
-https://liuzhihang.com/2021/02/15/idea-live-templates.html
