@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liuzhihang.com/2021/04/17/idea-plugin-toolkit-0417.html</loc>
+    <lastmod>2021-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://liuzhihang.com/2021/04/15/design-patterns-builder.html</loc>
+    <lastmod>2021-04-18</lastmod>
+  </url>
+  <url>
     <loc>https://liuzhihang.com/2021/04/07/design-patterns-strategy.html</loc>
     <lastmod>2021-04-08</lastmod>
   </url>
@@ -97,11 +105,11 @@
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
+    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
-    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
+    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
     <lastmod>2020-12-27</lastmod>
   </url>
   <url>
