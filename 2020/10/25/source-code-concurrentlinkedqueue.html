@@ -31,7 +31,7 @@ gtag('config', 'UA-126394362-1');
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
   noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: undefined,
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -154,7 +154,7 @@ gtag('config', 'UA-126394362-1');
           document.documentElement.classList.remove('hide-aside')
         }
       }
-    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><link rel="stylesheet" href="/self/atom-one-dark.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
 </head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">119</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/concurrentlinkedqueue-6pf8RL.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员小航</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【JDK源码笔记】- 非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-25T04:30:00.000Z" title="发表于 2020-10-25 12:30:00">2020-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-12-27T09:23:14.600Z" title="更新于 2020-12-27 17:23:14">2020-12-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/">源码笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/JDK/">JDK</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【JDK源码笔记】- 非阻塞的无界线程安全队列 —— ConcurrentLinkedQueue"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/10/25/source-code-concurrentlinkedqueue.html#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p><strong>前言</strong></p>
 <br>
@@ -163,22 +163,110 @@ gtag('config', 'UA-126394362-1');
 </blockquote>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>基于链接节点的无界线程安全队列，对元素FIFO（先进先出）进行排序。 队列的头部是队列中最长时间的元素，队列的尾部是队列中最短时间的元素。 在队列的尾部插入新元素，队列检索操作获取队列头部的元素。</p>
 <p>当许多线程共享对公共集合的访问 ConcurrentLinkedQueue 是一个合适的选择。 与大多数其他并发集合实现一样，此类不允许使用null元素。</p>
-<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConcurrentLinkedQueueTest</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        ConcurrentLinkedQueue&lt;String&gt; queue = <span class="hljs-keyword">new</span> ConcurrentLinkedQueue&lt;String&gt;();<br><br>        <span class="hljs-comment">// 将指定元素插入此队列的尾部。</span><br>        queue.add(<span class="hljs-string">&quot;liuzhihang&quot;</span>);<br>        <span class="hljs-comment">// 将指定元素插入此队列的尾部。</span><br>        queue.offer(<span class="hljs-string">&quot;liuzhihang&quot;</span>);<br><br>        <span class="hljs-comment">// 获取但不移除此队列的头，队列为空返回 null。</span><br>        queue.peek();<br>        <span class="hljs-comment">// 获取并移除此队列的头，此队列为空返回 null。</span><br>        queue.poll();<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><pre><code class="java">public class ConcurrentLinkedQueueTest &#123;
 
+    public static void main(String[] args) &#123;
 
+        ConcurrentLinkedQueue&lt;String&gt; queue = new ConcurrentLinkedQueue&lt;String&gt;();
+
+        // 将指定元素插入此队列的尾部。
+        queue.add(&quot;liuzhihang&quot;);
+        // 将指定元素插入此队列的尾部。
+        queue.offer(&quot;liuzhihang&quot;);
+
+        // 获取但不移除此队列的头，队列为空返回 null。
+        queue.peek();
+        // 获取并移除此队列的头，此队列为空返回 null。
+        queue.poll();
+
+    &#125;
+&#125;</code></pre>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h4 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h4><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/LNKjGH-iwlqrt.png" alt="LNKjGH-iwlqrt"></p>
-<h4 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;<br>    <br>    <span class="hljs-comment">// 节点中的元素</span><br>    <span class="hljs-keyword">volatile</span> E item;<br>    <span class="hljs-comment">// 下一个节点</span><br>    <span class="hljs-keyword">volatile</span> Node&lt;E&gt; next;<br><br>    Node(E item) &#123;<br>        UNSAFE.putObject(<span class="hljs-keyword">this</span>, itemOffset, item);<br>    &#125;<br>    <span class="hljs-comment">// CAS 的方式设置节点元素</span><br>    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">casItem</span><span class="hljs-params">(E cmp, E val)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> UNSAFE.compareAndSwapObject(<span class="hljs-keyword">this</span>, itemOffset, cmp, val);<br>    &#125;<br>    <span class="hljs-comment">// 设置下一个节点</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lazySetNext</span><span class="hljs-params">(Node&lt;E&gt; val)</span> </span>&#123;<br>        UNSAFE.putOrderedObject(<span class="hljs-keyword">this</span>, nextOffset, val);<br>    &#125;<br><br>    <span class="hljs-comment">// CAS 的方式设置下一个节点</span><br>    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">casNext</span><span class="hljs-params">(Node&lt;E&gt; cmp, Node&lt;E&gt; val)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> UNSAFE.compareAndSwapObject(<span class="hljs-keyword">this</span>, nextOffset, cmp, val);<br>    &#125;<br><br>    <span class="hljs-comment">// 省略 ……</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h4><pre><code class="java">private static class Node&lt;E&gt; &#123;
 
+    // 节点中的元素
+    volatile E item;
+    // 下一个节点
+    volatile Node&lt;E&gt; next;
+
+    Node(E item) &#123;
+        UNSAFE.putObject(this, itemOffset, item);
+    &#125;
+    // CAS 的方式设置节点元素
+    boolean casItem(E cmp, E val) &#123;
+        return UNSAFE.compareAndSwapObject(this, itemOffset, cmp, val);
+    &#125;
+    // 设置下一个节点
+    void lazySetNext(Node&lt;E&gt; val) &#123;
+        UNSAFE.putOrderedObject(this, nextOffset, val);
+    &#125;
+
+    // CAS 的方式设置下一个节点
+    boolean casNext(Node&lt;E&gt; cmp, Node&lt;E&gt; val) &#123;
+        return UNSAFE.compareAndSwapObject(this, nextOffset, cmp, val);
+    &#125;
+
+    // 省略 ……
+&#125;</code></pre>
 <p>在 ConcurrentLinkedQueue 内部含有一个内部类 Node，如上所示，这个内部类用来标识链表中的一个节点，通过代码可以看出，在 ConcurrentLinkedQueue 中的链表为<code>单向链表</code>。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConcurrentLinkedQueue</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractQueue</span>&lt;<span class="hljs-title">E</span>&gt;</span><br><span class="hljs-class">        <span class="hljs-keyword">implements</span> <span class="hljs-title">Queue</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span> </span>&#123;<br>        <br>    <span class="hljs-comment">// 其他省略</span><br><br>    <span class="hljs-comment">// 头结点</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">transient</span> <span class="hljs-keyword">volatile</span> Node&lt;E&gt; head;      <br><br>    <span class="hljs-comment">// 尾节点</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">transient</span> <span class="hljs-keyword">volatile</span> Node&lt;E&gt; tail;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="java">public class ConcurrentLinkedQueue&lt;E&gt; extends AbstractQueue&lt;E&gt;
+        implements Queue&lt;E&gt;, java.io.Serializable &#123;
 
+    // 其他省略
+
+    // 头结点
+    private transient volatile Node&lt;E&gt; head;      
+
+    // 尾节点
+    private transient volatile Node&lt;E&gt; tail;
+&#125;</code></pre>
 <p>头尾节点使用 <code>volatile</code> 修饰，保证内存可见性。</p>
-<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConcurrentLinkedQueue</span><span class="hljs-params">()</span> </span>&#123;<br>    head = tail = <span class="hljs-keyword">new</span> Node&lt;E&gt;(<span class="hljs-keyword">null</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code class="java">public ConcurrentLinkedQueue() &#123;
+    head = tail = new Node&lt;E&gt;(null);
+&#125;</code></pre>
 <p>当创建对象时，头尾节点都是指向一个空节点。</p>
 <p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZzpJTa-lOE9g4.png" alt="ZzpJTa-lOE9g4"></p>
-<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> offer(e);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">offer</span><span class="hljs-params">(E e)</span> </span>&#123;<br>    <br>    <span class="hljs-comment">// 验证是否为空</span><br>    checkNotNull(e);<br><br>    <span class="hljs-comment">// 创建节点</span><br>    <span class="hljs-keyword">final</span> Node&lt;E&gt; newNode = <span class="hljs-keyword">new</span> Node&lt;E&gt;(e);<br><br>    <span class="hljs-comment">// 循环入队列</span><br>    <span class="hljs-comment">// t 是当前尾节点，p 初始为 t</span><br>    <span class="hljs-keyword">for</span> (Node&lt;E&gt; t = tail, p = t;;) &#123;<br>        <span class="hljs-comment">// q 为尾节点的下一个节点</span><br>        Node&lt;E&gt; q = p.next;<br>        <span class="hljs-keyword">if</span> (q == <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-comment">// 为空，说明后面没有节点，则 CAS 设置尾节点</span><br>            <span class="hljs-keyword">if</span> (p.casNext(<span class="hljs-keyword">null</span>, newNode)) &#123;<br>                <span class="hljs-comment">// 此时 p.next 是 newNode</span><br>                <span class="hljs-comment">// 如果 p ！= t 说明有并发</span><br>                <span class="hljs-keyword">if</span> (p != t) <br>                    <span class="hljs-comment">// 其他线程已经更新了 tail</span><br>                    <span class="hljs-comment">// q = p.next 所以 q == null 不正确了</span><br>                    <span class="hljs-comment">// q 取到了 t.next</span><br>                    <span class="hljs-comment">// 此时将 tail 更新为 新节点</span><br>                    casTail(t, newNode);  <span class="hljs-comment">// Failure is OK.</span><br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>            &#125;<br>            <span class="hljs-comment">// Lost CAS race to another thread; re-read next</span><br>        &#125;<br>        <span class="hljs-comment">// 多线程情况下， poll ，操作移除元素，可能会导致 p == q </span><br>        <span class="hljs-comment">// 此时要重新查找</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p == q)<br>            <span class="hljs-comment">// </span><br>            p = (t != (t = tail)) ? t : head;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-comment">// 检查 tail 并更新</span><br>            p = (p != t &amp;&amp; t != (t = tail)) ? t : q;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><pre><code class="java">public boolean add(E e) &#123;
+    return offer(e);
+&#125;
+public boolean offer(E e) &#123;
 
+    // 验证是否为空
+    checkNotNull(e);
+
+    // 创建节点
+    final Node&lt;E&gt; newNode = new Node&lt;E&gt;(e);
+
+    // 循环入队列
+    // t 是当前尾节点，p 初始为 t
+    for (Node&lt;E&gt; t = tail, p = t;;) &#123;
+        // q 为尾节点的下一个节点
+        Node&lt;E&gt; q = p.next;
+        if (q == null) &#123;
+            // 为空，说明后面没有节点，则 CAS 设置尾节点
+            if (p.casNext(null, newNode)) &#123;
+                // 此时 p.next 是 newNode
+                // 如果 p ！= t 说明有并发
+                if (p != t) 
+                    // 其他线程已经更新了 tail
+                    // q = p.next 所以 q == null 不正确了
+                    // q 取到了 t.next
+                    // 此时将 tail 更新为 新节点
+                    casTail(t, newNode);  // Failure is OK.
+                return true;
+            &#125;
+            // Lost CAS race to another thread; re-read next
+        &#125;
+        // 多线程情况下， poll ，操作移除元素，可能会导致 p == q 
+        // 此时要重新查找
+        else if (p == q)
+            // 
+            p = (t != (t = tail)) ? t : head;
+        else
+            // 检查 tail 并更新
+            p = (p != t &amp;&amp; t != (t = tail)) ? t : q;
+    &#125;
+&#125;</code></pre>
 <p>画图说明：</p>
 <ul>
 <li>单线程情况下：</li>
@@ -210,8 +298,33 @@ gtag('config', 'UA-126394362-1');
 <ol start="5">
 <li>再次循环就可以成功设置上了。</li>
 </ol>
-<h4 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">poll</span><span class="hljs-params">()</span> </span>&#123;<br>    restartFromHead:<br>    <span class="hljs-comment">// 无限循环</span><br>    <span class="hljs-keyword">for</span> (;;) &#123;<br>        <span class="hljs-keyword">for</span> (Node&lt;E&gt; h = head, p = h, q;;) &#123;<br>            <span class="hljs-comment">// 头结点的 iterm</span><br>            E item = p.item;<br>            <span class="hljs-comment">// 当前节点如果不为 null CAS 设置为 null</span><br>            <span class="hljs-keyword">if</span> (item != <span class="hljs-keyword">null</span> &amp;&amp; p.casItem(item, <span class="hljs-keyword">null</span>)) &#123;<br>                <span class="hljs-comment">// CAS 成功 则标记移除</span><br>                <span class="hljs-keyword">if</span> (p != h) <span class="hljs-comment">// hop two nodes at a time</span><br>                    updateHead(h, ((q = p.next) != <span class="hljs-keyword">null</span>) ? q : p);<br>                <span class="hljs-keyword">return</span> item;<br>            &#125;<br>            <span class="hljs-comment">// 当前队列未空 返回 null</span><br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((q = p.next) == <span class="hljs-keyword">null</span>) &#123;<br>                updateHead(h, p);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>            &#125;<br>            <span class="hljs-comment">// 自引用了， 重新进行循环</span><br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (p == q)<br>                <span class="hljs-keyword">continue</span> restartFromHead;<br>            <span class="hljs-keyword">else</span><br>                p = q;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h4 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h4><pre><code class="java">public E poll() &#123;
+    restartFromHead:
+    // 无限循环
+    for (;;) &#123;
+        for (Node&lt;E&gt; h = head, p = h, q;;) &#123;
+            // 头结点的 iterm
+            E item = p.item;
+            // 当前节点如果不为 null CAS 设置为 null
+            if (item != null &amp;&amp; p.casItem(item, null)) &#123;
+                // CAS 成功 则标记移除
+                if (p != h) // hop two nodes at a time
+                    updateHead(h, ((q = p.next) != null) ? q : p);
+                return item;
+            &#125;
+            // 当前队列未空 返回 null
+            else if ((q = p.next) == null) &#123;
+                updateHead(h, p);
+                return null;
+            &#125;
+            // 自引用了， 重新进行循环
+            else if (p == q)
+                continue restartFromHead;
+            else
+                p = q;
+        &#125;
+    &#125;
+&#125;</code></pre>
 <p>画图过程如下：</p>
 <ol>
 <li>在执行内层循环时，如果队列为空：<code>E item = p.item;</code> 此时，iterm 为 null，会 <code>updateHead(h, p)</code> 并返回 null。</li>
@@ -226,8 +339,15 @@ gtag('config', 'UA-126394362-1');
 <p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/mBNd6o-RS2hU0.png" alt="mBNd6o-RS2hU0"></p>
 <p>这里的情况比较复杂，这里只是列举一种，如果需要可以自己多列举几种。</p>
 <p>而查看元素的代码和获取元素代码类似就不多介绍了。</p>
-<h4 id="size-操作"><a href="#size-操作" class="headerlink" title="size 操作"></a>size 操作</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (Node&lt;E&gt; p = first(); p != <span class="hljs-keyword">null</span>; p = succ(p))<br>        <span class="hljs-keyword">if</span> (p.item != <span class="hljs-keyword">null</span>)<br>            <span class="hljs-comment">// Collection.size() spec says to max out</span><br>            <span class="hljs-keyword">if</span> (++count == Integer.MAX_VALUE)<br>                <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h4 id="size-操作"><a href="#size-操作" class="headerlink" title="size 操作"></a>size 操作</h4><pre><code class="java">public int size() &#123;
+    int count = 0;
+    for (Node&lt;E&gt; p = first(); p != null; p = succ(p))
+        if (p.item != null)
+            // Collection.size() spec says to max out
+            if (++count == Integer.MAX_VALUE)
+                break;
+    return count;
+&#125;</code></pre>
 <p>CAS 没有加锁，所以 size 是不准确的。并且 size 会遍历一遍列表，比较耗费性能。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>ConcurrentLinkedQueue 在工作中使用的相对较少，所以阅读相关源码的时候也只是大概看了一下，了解常用 API，以及底层原理。</p>
 <p>简单总结就是使用<strong>单向链表</strong>来保存队列元素，内部使用非阻塞的 CAS 算法，没有加锁。所以计算 size 时可能不准确，同样 size 会遍历链表，所以并不建议使用。</p>

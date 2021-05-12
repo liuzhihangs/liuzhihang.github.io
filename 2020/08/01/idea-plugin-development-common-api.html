@@ -30,7 +30,7 @@ gtag('config', 'UA-126394362-1');
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
   noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: undefined,
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -153,48 +153,154 @@ gtag('config', 'UA-126394362-1');
           document.documentElement.classList.remove('hide-aside')
         }
       }
-    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><link rel="stylesheet" href="/self/atom-one-dark.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
 </head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">119</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/featureimages/jetbrains.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员小航</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">IDEA插件开发常用API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-01T03:58:16.000Z" title="发表于 2020-08-01 11:58:16">2020-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-12-27T09:23:14.600Z" title="更新于 2020-12-27 17:23:14">2020-12-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/IDEA/">IDEA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="IDEA插件开发常用API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/08/01/idea-plugin-development-common-api.html#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p>在开发Toolkit过程中查阅相关资料和阅读其他开源项目总结的一些常用API.<br>整体内容来源于网络, 以及自己使用开发Toolkit过程中使用到的.<br>总结的不到位的地方欢迎指正.</p>
 </blockquote>
 <h3 id="AnAction操作"><a href="#AnAction操作" class="headerlink" title="AnAction操作"></a>AnAction操作</h3><ol>
 <li>创建Action集成<code>AnAction</code>并实现其<code>actionPerformed</code>方法. 在方法中可以获取到<code>AnActionEvent</code>对象. 代码如下:</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonFormatAction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AnAction</span> </span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(AnActionEvent event)</span> </span>&#123;<br><br>        <span class="hljs-comment">// 获取当前project对象</span><br>        Project project = event.getData(PlatformDataKeys.PROJECT);<br>        <span class="hljs-comment">// 获取当前编辑的文件, 可以进而获取 PsiClass, PsiField 对象</span><br>        PsiFile psiFile = event.getData(CommonDataKeys.PSI_FILE);<br>        Editor editor = event.getData(CommonDataKeys.EDITOR);<br>        <span class="hljs-comment">// 获取Java类或者接口</span><br>        PsiClass psiClass = getTargetClass(editor, psiFile);<br>        <span class="hljs-comment">// 创建并调起 DialogWrapper</span><br>        DialogWrapper dialog = <span class="hljs-keyword">new</span> JsonFormat(project, psiFile, editor, psiClass);<br>        dialog.show();<br>    &#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="java">public class JsonFormatAction extends AnAction &#123;
 
+    @Override
+    public void actionPerformed(AnActionEvent event) &#123;
+
+        // 获取当前project对象
+        Project project = event.getData(PlatformDataKeys.PROJECT);
+        // 获取当前编辑的文件, 可以进而获取 PsiClass, PsiField 对象
+        PsiFile psiFile = event.getData(CommonDataKeys.PSI_FILE);
+        Editor editor = event.getData(CommonDataKeys.EDITOR);
+        // 获取Java类或者接口
+        PsiClass psiClass = getTargetClass(editor, psiFile);
+        // 创建并调起 DialogWrapper
+        DialogWrapper dialog = new JsonFormat(project, psiFile, editor, psiClass);
+        dialog.show();
+    &#125;
+</code></pre>
 <ol start="2">
 <li>其他方式</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 获取project. 内部调用 getData(CommonDataKeys.PROJECT) = getDataContext().getData(CommonDataKeys.PROJECT)</span><br>Project project = e.getProject();<br><span class="hljs-comment">// 获取数据上下文</span><br>DataContext dataContext = e.getDataContext();<br><span class="hljs-comment">// context可以也获取到其他信息, 入参为 PlatformDataKeys 定义的字段</span><br>Project project1 = dataContext.getData(PlatformDataKeys.PROJECT);<br>Editor editor = dataContext.getData(PlatformDataKeys.EDITOR);<br>PsiFile psiFile = dataContext.getData(PlatformDataKeys.PSI_FILE);<br>PsiElement psiElement = dataContext.getData(PlatformDataKeys.PSI_ELEMENT);<br><span class="hljs-comment">// 虚拟文件</span><br>VirtualFile virtualFile = dataContext.getData(PlatformDataKeys.VIRTUAL_FILE);<br></code></pre></td></tr></table></figure>
-
+<pre><code class="java">// 获取project. 内部调用 getData(CommonDataKeys.PROJECT) = getDataContext().getData(CommonDataKeys.PROJECT)
+Project project = e.getProject();
+// 获取数据上下文
+DataContext dataContext = e.getDataContext();
+// context可以也获取到其他信息, 入参为 PlatformDataKeys 定义的字段
+Project project1 = dataContext.getData(PlatformDataKeys.PROJECT);
+Editor editor = dataContext.getData(PlatformDataKeys.EDITOR);
+PsiFile psiFile = dataContext.getData(PlatformDataKeys.PSI_FILE);
+PsiElement psiElement = dataContext.getData(PlatformDataKeys.PSI_ELEMENT);
+// 虚拟文件
+VirtualFile virtualFile = dataContext.getData(PlatformDataKeys.VIRTUAL_FILE);</code></pre>
 <h3 id="获取PsiClass"><a href="#获取PsiClass" class="headerlink" title="获取PsiClass"></a>获取PsiClass</h3><p>PsiClass为java类或者接口</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Nullable</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> PsiClass <span class="hljs-title">getTargetClass</span><span class="hljs-params">(Editor editor, PsiFile file)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> offset = editor.getCaretModel().getOffset();<br>    PsiElement element = file.findElementAt(offset);<br>    <span class="hljs-keyword">if</span> (element == <span class="hljs-keyword">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        PsiClass target = PsiTreeUtil.getParentOfType(element, PsiClass.class);<br>        <span class="hljs-keyword">return</span> target <span class="hljs-keyword">instanceof</span> SyntheticElement ? <span class="hljs-keyword">null</span> : target;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="java">@Nullable
+protected PsiClass getTargetClass(Editor editor, PsiFile file) &#123;
+    int offset = editor.getCaretModel().getOffset();
+    PsiElement element = file.findElementAt(offset);
+    if (element == null) &#123;
+        return null;
+    &#125; else &#123;
+        PsiClass target = PsiTreeUtil.getParentOfType(element, PsiClass.class);
+        return target instanceof SyntheticElement ? null : target;
+    &#125;
+&#125;</code></pre>
 <h3 id="Psixxx操作"><a href="#Psixxx操作" class="headerlink" title="Psixxx操作"></a>Psixxx操作</h3><h4 id="PsiClass操作API"><a href="#PsiClass操作API" class="headerlink" title="PsiClass操作API"></a>PsiClass操作API</h4><p>源码有注释且比较清楚, 此处仅记录我用到的一部分</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 获取全类名</span><br>String qualifiedName = aClass.getQualifiedName();<br><span class="hljs-comment">// 获取所有字段</span><br>PsiField[] fields = aClass.getFields();<br></code></pre></td></tr></table></figure>
-
-<h4 id="PsiField操作"><a href="#PsiField操作" class="headerlink" title="PsiField操作"></a>PsiField操作</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 获取字段名</span><br>String name = psiField.getName()<br></code></pre></td></tr></table></figure>
+<pre><code class="java">// 获取全类名
+String qualifiedName = aClass.getQualifiedName();
+// 获取所有字段
+PsiField[] fields = aClass.getFields();</code></pre>
+<h4 id="PsiField操作"><a href="#PsiField操作" class="headerlink" title="PsiField操作"></a>PsiField操作</h4><pre><code class="java">// 获取字段名
+String name = psiField.getName()</code></pre>
 <h4 id="PsiElement操作"><a href="#PsiElement操作" class="headerlink" title="PsiElement操作"></a>PsiElement操作</h4><p>PsiClass和PsiField都实现了PsiElement</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 删除</span><br>element.delete()<br><span class="hljs-comment">// 添加元素, 向一个类中添加方法, 字段等, 也可以调用 addBefore, addAfter</span><br>add(PsiElement element)<br></code></pre></td></tr></table></figure>
-
+<pre><code class="java">// 删除
+element.delete()
+// 添加元素, 向一个类中添加方法, 字段等, 也可以调用 addBefore, addAfter
+add(PsiElement element)</code></pre>
 <h4 id="PsiType操作"><a href="#PsiType操作" class="headerlink" title="PsiType操作"></a>PsiType操作</h4><p>PsiType支持常用基本类型, 但是当创建对象时则不支持.需要自己创建</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">PsiElementFactory psiElementFactory = JavaPsiFacade.getElementFactory(project);<br><span class="hljs-comment">// String 类型</span><br>PsiType stringPsiType = psiElementFactory.createTypeFromText(<span class="hljs-string">&quot;java.lang.String&quot;</span>, <span class="hljs-keyword">null</span>)<br><span class="hljs-comment">// list</span><br>PsiType listPsiType = psiElementFactory.createTypeFromText(<span class="hljs-string">&quot;java.util.List&lt;String&gt;&quot;</span>, <span class="hljs-keyword">null</span>);<br><span class="hljs-comment">// 自定义list</span><br>PsiType typeFromText = psiElementFactory.createTypeFromText(<span class="hljs-string">&quot;java.util.List&lt;&quot;</span> + className + <span class="hljs-string">&quot;&gt;&quot;</span>, <span class="hljs-keyword">null</span>);<br></code></pre></td></tr></table></figure>
-
+<pre><code class="java">PsiElementFactory psiElementFactory = JavaPsiFacade.getElementFactory(project);
+// String 类型
+PsiType stringPsiType = psiElementFactory.createTypeFromText(&quot;java.lang.String&quot;, null)
+// list
+PsiType listPsiType = psiElementFactory.createTypeFromText(&quot;java.util.List&lt;String&gt;&quot;, null);
+// 自定义list
+PsiType typeFromText = psiElementFactory.createTypeFromText(&quot;java.util.List&lt;&quot; + className + &quot;&gt;&quot;, null);</code></pre>
 <h3 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h3><h4 id="XML-文件操作"><a href="#XML-文件操作" class="headerlink" title="XML 文件操作"></a>XML 文件操作</h4><p>参考地址：<a target="_blank" rel="noopener" href="https://jetbrains.org/intellij/sdk/docs/reference_guide/frameworks_and_external_apis/xml_dom_api.html">https://jetbrains.org/intellij/sdk/docs/reference_guide/frameworks_and_external_apis/xml_dom_api.html</a></p>
 <p>以 Mapper.xml 举例声明接口，继承 DomElement，并配合 @Attribute、@SubTag 、@SubTagsList 注解定义一个 xml model，其中需要注意 @SubTagsList 方法要使用复数形式。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Mapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DomElement</span> </span>&#123;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * namespace</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Attribute(&quot;namespace&quot;)</span><br>    <span class="hljs-function">GenericAttributeValue&lt;String&gt; <span class="hljs-title">getNamespace</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * 增删改查对应的节点</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@SubTagsList(&#123;&quot;select&quot;, &quot;insert&quot;, &quot;update&quot;, &quot;delete&quot;&#125;)</span><br>    <span class="hljs-function">List&lt;Statement&gt; <span class="hljs-title">getStatements</span><span class="hljs-params">()</span></span>;<br>​<br>    <span class="hljs-meta">@SubTagList(&quot;select&quot;)</span><br>    <span class="hljs-function">List&lt;Select&gt; <span class="hljs-title">getSelects</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-meta">@SubTagList(&quot;insert&quot;)</span><br>    <span class="hljs-function">List&lt;Insert&gt; <span class="hljs-title">getInserts</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-meta">@SubTagList(&quot;update&quot;)</span><br>    <span class="hljs-function">List&lt;Update&gt; <span class="hljs-title">getUpdates</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-meta">@SubTagList(&quot;delete&quot;)</span><br>    <span class="hljs-function">List&lt;Delete&gt; <span class="hljs-title">getDeletes</span><span class="hljs-params">()</span></span>;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="java">public interface Mapper extends DomElement &#123;
 
+    /**
+     * namespace
+     *
+     * @return
+     */
+    @Attribute(&quot;namespace&quot;)
+    GenericAttributeValue&lt;String&gt; getNamespace();
+
+    /**
+     *
+     * 增删改查对应的节点
+     *
+     * @return
+     */
+    @SubTagsList(&#123;&quot;select&quot;, &quot;insert&quot;, &quot;update&quot;, &quot;delete&quot;&#125;)
+    List&lt;Statement&gt; getStatements();
+​
+    @SubTagList(&quot;select&quot;)
+    List&lt;Select&gt; getSelects();
+
+    @SubTagList(&quot;insert&quot;)
+    List&lt;Insert&gt; getInserts();
+
+    @SubTagList(&quot;update&quot;)
+    List&lt;Update&gt; getUpdates();
+
+    @SubTagList(&quot;delete&quot;)
+    List&lt;Delete&gt; getDeletes();
+
+&#125;
+</code></pre>
 <h4 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h4><p>比如想搜索项目中的所有 xml 文件，上面使用 Mapper 接口定义了 Mapper.xml 的结构，就可以利用 DomService 搜索所有的 Mapper.xml：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 当前项目的所有元素 mapper, 分别填入类型, 作用域 GlobalSearchScope</span><br>List&lt;DomFileElement&lt;Mapper&gt;&gt; fileElements = DomService.getInstance().getFileElements(Mapper.class, project, GlobalSearchScope.allScope(project));<br></code></pre></td></tr></table></figure>
-
-
+<pre><code class="java">// 当前项目的所有元素 mapper, 分别填入类型, 作用域 GlobalSearchScope
+List&lt;DomFileElement&lt;Mapper&gt;&gt; fileElements = DomService.getInstance().getFileElements(Mapper.class, project, GlobalSearchScope.allScope(project));</code></pre>
 <h3 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h3><p>需要调用<code>WriteCommandAction</code>进行异步写入.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">WriteCommandAction.runWriteCommandAction(project, () -&gt; &#123;<br>    doGenerate(psiClass, jsonObject);<br>&#125;);<br></code></pre></td></tr></table></figure>
-
+<pre><code class="java">WriteCommandAction.runWriteCommandAction(project, () -&gt; &#123;
+    doGenerate(psiClass, jsonObject);
+&#125;);</code></pre>
 <h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p>在操作成功之后，在 IDEA 右下角通知用户，使用 NotificationGroup 类即可。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 静态属性</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> NotificationGroup NOTIFICATION_GROUP = <span class="hljs-keyword">new</span> NotificationGroup(<span class="hljs-string">&quot;Java2Json.NotificationGroup&quot;</span>, NotificationDisplayType.BALLOON, <span class="hljs-keyword">true</span>);<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(<span class="hljs-meta">@NotNull</span> AnActionEvent e)</span> </span>&#123;<br>    <span class="hljs-comment">// 在方法中调用</span><br>    Notification success = NOTIFICATION_GROUP.createNotification(message, NotificationType.INFORMATION);<br>    Notifications.Bus.notify(success, project);<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>也可以定义为工具类，如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * 进行消息通知工具类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> liuzhihang</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/2/28 18:52</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NotificationUtils</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> NotificationGroup notificationGroup = <span class="hljs-keyword">new</span> NotificationGroup(<span class="hljs-string">&quot;ApiDoc.NotificationGroup&quot;</span>, NotificationDisplayType.BALLOON, <span class="hljs-keyword">true</span>);<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">warnNotify</span><span class="hljs-params">(String message, Project project)</span> </span>&#123;<br>        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.WARNING), project);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">infoNotify</span><span class="hljs-params">(String message, Project project)</span> </span>&#123;<br>        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.INFORMATION), project);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">errorNotify</span><span class="hljs-params">(String message, Project project)</span> </span>&#123;<br>        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.ERROR), project);<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="java">// 静态属性
+private static final NotificationGroup NOTIFICATION_GROUP = new NotificationGroup(&quot;Java2Json.NotificationGroup&quot;, NotificationDisplayType.BALLOON, true);
 
+public void actionPerformed(@NotNull AnActionEvent e) &#123;
+    // 在方法中调用
+    Notification success = NOTIFICATION_GROUP.createNotification(message, NotificationType.INFORMATION);
+    Notifications.Bus.notify(success, project);
+
+&#125;</code></pre>
+<p>也可以定义为工具类，如下</p>
+<pre><code class="java">/**
+ *
+ * 进行消息通知工具类
+ *
+ * @author liuzhihang
+ * @date 2020/2/28 18:52
+ */
+public class NotificationUtils &#123;
+
+    private static NotificationGroup notificationGroup = new NotificationGroup(&quot;ApiDoc.NotificationGroup&quot;, NotificationDisplayType.BALLOON, true);
+
+    public static void warnNotify(String message, Project project) &#123;
+        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.WARNING), project);
+    &#125;
+
+    public static void infoNotify(String message, Project project) &#123;
+        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.INFORMATION), project);
+    &#125;
+
+    public static void errorNotify(String message, Project project) &#123;
+        Notifications.Bus.notify(notificationGroup.createNotification(message, NotificationType.ERROR), project);
+    &#125;
+
+&#125;
+</code></pre>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>基本上常用的就是这些了，也可以查找官方文档，官方文档现在还是比较全面的，地址在相关资料中。也可以 Clone Toolkit 这个插件源码，源码中有一些注释。在其他优秀的插件中，同样可有相关使用方法。</p>
 <h4 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h4><ul>
 <li>Toolkit: <a target="_blank" rel="noopener" href="https://github.com/liuzhihang/toolkit">https://github.com/liuzhihang/toolkit</a></li>

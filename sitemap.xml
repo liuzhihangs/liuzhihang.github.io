@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liuzhihang.com/2021/04/07/design-patterns-strategy.html</loc>
+    
+    <lastmod>2021-05-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liuzhihang.com/2020/11/08/spring-self-call.html</loc>
     
     <lastmod>2021-05-11</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://liuzhihang.com/2021/04/15/design-patterns-builder.html</loc>
     
     <lastmod>2021-04-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/2021/04/07/design-patterns-strategy.html</loc>
-    
-    <lastmod>2021-04-08</lastmod>
     
   </url>
   
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
+    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
     
     <lastmod>2020-12-27</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/2020/04/12/no-class-def-found-error-rule-configuration.html</loc>
+    <loc>https://liuzhihang.com/2020/01/05/mac-create-data-directory-failed.html</loc>
     
     <lastmod>2020-12-27</lastmod>
     
@@ -1075,20 +1075,6 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/tags/mac/</loc>
-    <lastmod>2021-05-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liuzhihang.com/tags/brew/</loc>
-    <lastmod>2021-05-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://liuzhihang.com/tags/ip/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
@@ -1097,6 +1083,20 @@
   
   <url>
     <loc>https://liuzhihang.com/tags/error/</loc>
+    <lastmod>2021-05-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/tags/mac/</loc>
+    <lastmod>2021-05-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/tags/brew/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1278,7 +1278,7 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/tags/validation/</loc>
+    <loc>https://liuzhihang.com/tags/serialize/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1292,7 +1292,7 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/tags/serialize/</loc>
+    <loc>https://liuzhihang.com/tags/validation/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1448,13 +1448,6 @@
   </url>
   
   <url>
-    <loc>https://liuzhihang.com/categories/utils/</loc>
-    <lastmod>2021-05-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://liuzhihang.com/categories/%E5%B7%A5%E5%85%B7%E5%86%8C/Doc-View/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
@@ -1463,6 +1456,13 @@
   
   <url>
     <loc>https://liuzhihang.com/categories/Redis/cache/</loc>
+    <lastmod>2021-05-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liuzhihang.com/categories/utils/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

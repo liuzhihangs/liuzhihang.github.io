@@ -30,7 +30,7 @@ hue-6-2: #e6c07b
   --hlexpand-bg: #d3af86      代码框底部展开背景色 【可选】(如果已经关掉 highlight_height_limit,可以不用配置这个)
 */
 
-root {
+:root {
     --hl-color: #abb2bf;
     --hl-bg: #282c34;
     --hltools-bg: #282c34;
