@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-04-18T07:19:00.698Z</updated>
+  <updated>2021-05-25T02:15:57.335Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac 常用软件推荐 —— Java 开发工程师</title>
+    <link href="https://liuzhihang.com/2021/05/25/mac-common-software-java.html"/>
+    <id>https://liuzhihang.com/2021/05/25/mac-common-software-java.html</id>
+    <published>2021-05-25T10:30:30.000Z</published>
+    <updated>2021-05-25T02:15:57.335Z</updated>
+    
+    
+    <summary type="html">记录一下自己用的 Mac 软件，如果小伙伴需要，可以下载体验一下。</summary>
+    
+    
+    
+    <category term="mac" scheme="https://liuzhihang.com/categories/mac/"/>
+    
+    
+    <category term="software" scheme="https://liuzhihang.com/tags/software/"/>
+    
+    <category term="mac" scheme="https://liuzhihang.com/tags/mac/"/>
+    
+    <category term="工具册" scheme="https://liuzhihang.com/tags/%E5%B7%A5%E5%85%B7%E5%86%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>Toolkit 大更新：UI 更美观，用起来更方便！</title>
@@ -423,29 +446,6 @@
     
     
     <summary type="html">context.register(JavaConfig.class);</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 07：ClassPathBeanDefinitionScanner</title>
-    <link href="https://liuzhihang.com/2020/12/05/source-spring-07.html"/>
-    <id>https://liuzhihang.com/2020/12/05/source-spring-07.html</id>
-    <published>2020-12-05T15:00:00.000Z</published>
-    <updated>2020-12-06T02:50:24.339Z</updated>
-    
-    
-    <summary type="html">this.scanner = new ClassPathBeanDefinitionScanner(this);</summary>
     
     
     
