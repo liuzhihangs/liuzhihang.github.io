@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-06-08T02:57:46.775Z</updated>
+  <updated>2021-06-08T03:06:12.243Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://liuzhihang.com/2021/06/07/mysql-next-key-4.html"/>
     <id>https://liuzhihang.com/2021/06/07/mysql-next-key-4.html</id>
     <published>2021-06-07T11:30:30.000Z</published>
-    <updated>2021-06-08T02:57:46.775Z</updated>
+    <updated>2021-06-08T03:06:12.243Z</updated>
     
     
     <summary type="html">总结主键、非主键唯一索引、普通索引、普通字段四个方面的加锁范围。</summary>
@@ -57,6 +57,48 @@
   </entry>
   
   <entry>
+    <title>MySQL普通索引的加锁</title>
+    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-3.html"/>
+    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-3.html</id>
+    <published>2021-06-06T13:30:30.000Z</published>
+    <updated>2021-06-08T03:06:10.758Z</updated>
+    
+    
+    <summary type="html">一起看一下普通索引和普通字段的加锁范围是什么?</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>看来，MySQL next-key lock 的 bug 并没有被修复！</title>
+    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-2.html"/>
+    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-2.html</id>
+    <published>2021-06-06T12:30:30.000Z</published>
+    <updated>2021-06-08T03:06:05.069Z</updated>
+    
+    
+    <summary type="html">非主键唯一索引的锁范围是什么？</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用 Docker 安装并连接 MySQL</title>
     <link href="https://liuzhihang.com/2021/06/06/docker-mysql.html"/>
     <id>https://liuzhihang.com/2021/06/06/docker-mysql.html</id>
@@ -86,48 +128,6 @@
     
     
     <summary type="html">主键索引的锁范围是什么？</summary>
-    
-    
-    
-    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
-    
-    
-    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
-    
-    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>看来，MySQL next-key lock 的 bug 并没有被修复！</title>
-    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-2.html"/>
-    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-2.html</id>
-    <published>2021-06-06T11:30:30.000Z</published>
-    <updated>2021-06-08T02:47:49.292Z</updated>
-    
-    
-    <summary type="html">非主键唯一索引的锁范围是什么？</summary>
-    
-    
-    
-    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
-    
-    
-    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
-    
-    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL普通索引的加锁</title>
-    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-3.html"/>
-    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-3.html</id>
-    <published>2021-06-06T11:30:30.000Z</published>
-    <updated>2021-06-08T02:48:30.640Z</updated>
-    
-    
-    <summary type="html">一起看一下普通索引和普通字段的加锁范围是什么?</summary>
     
     
     
