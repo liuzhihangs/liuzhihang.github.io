@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MySQL普通索引的加锁 | 程序员小航</title><meta name="keywords" content="mysql,next-key"><meta name="author" content="liuzhihang"><meta name="copyright" content="liuzhihang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一起看一下普通索引和普通字段的加锁范围是什么?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL普通索引的加锁">
+<meta property="og:url" content="https://liuzhihang.com/2021/06/06/mysql-next-key-3.html">
+<meta property="og:site_name" content="程序员小航">
+<meta property="og:description" content="一起看一下普通索引和普通字段的加锁范围是什么?">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg">
+<meta property="article:published_time" content="2021-06-06T11:30:30.000Z">
+<meta property="article:modified_time" content="2021-06-08T02:48:30.640Z">
+<meta property="article:author" content="liuzhihang">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="next-key">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/favicon.ico"><link rel="canonical" href="https://liuzhihang.com/2021/06/06/mysql-next-key-3"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//pingjs.qq.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google_site_verification" content="GZshAnnrC-4eCrl5h-e_5Rdk4lOUhRK7ShULoRi2q0E"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-126394362-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-126394362-1');
+</script><script>var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "66540676");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL普通索引的加锁',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-06-08 10:48:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员小航</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL普通索引的加锁</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-06T11:30:30.000Z" title="发表于 2021-06-06 19:30:30">2021-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-08T02:48:30.640Z" title="更新于 2021-06-08 10:48:30">2021-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/mysql/">mysql</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL普通索引的加锁"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/06/06/mysql-next-key-3.html#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>前面已经介绍了主键索引的加锁范围和非主键唯一索引的加锁范围。</p>
+<p>主键索引：</p>
+<ol>
+<li>加锁时，会先给表添加意向锁，IX 或 IS；</li>
+<li>加锁是如果是多个范围，是分开加了多个锁，每个范围都有锁；（这个可以实践下 id &lt; 20 的情况）</li>
+<li>主键等值查询，数据存在时，会对该主键索引的值加行锁 <code>X,REC_NOT_GAP</code>；</li>
+<li>主键等值查询，数据不存在时，会对查询条件主键值所在的间隙添加间隙锁 <code>X,GAP</code>；</li>
+<li>主键等值查询，范围查询时情况则比较复杂：<ol>
+<li>8.0.17 版本是前开后闭，而 8.0.18 版本及以后，修改为了<code>前开后开</code>区间；</li>
+<li>临界 <code>&lt;=</code> 查询时，8.0.17 会锁住下一个 next-key 的前开后闭区间，而 8.0.18 及以后版本，修复了这个 bug。</li>
+</ol>
+</li>
+</ol>
+<p>非主键唯一索引:</p>
+<ol>
+<li>非主键唯一索引等值查询，数据存在，for update 是会在主键加锁的，而 for share 只有在走覆盖索引的情况下，会仅在自己索引上加锁；</li>
+<li>非主键索引等值查询，数据不存在，无论是否索引覆盖，相当于一个范围查询，仅仅会在非主键索引上加锁，加的还是间隙锁，前开后开区间； </li>
+<li>在非主键唯一索引范围查询时，不是覆盖索引的时候，会对相应的范围加前开后闭区间，并且如果存在数据，会对对应的主键加行锁；</li>
+<li>在非主键唯一索引范围查询时，如果是覆盖索引时，会对所有的后闭区间对应的主键，加行锁；</li>
+<li>在非主键唯一索引加锁时，还是存在 next-key 锁住下一个区间的 bug。</li>
+</ol>
+<p>这篇文章来一起看一下普通索引和普通字段的加锁范围是什么?</p>
+<h3 id="数据库表数据"><a href="#数据库表数据" class="headerlink" title="数据库表数据"></a>数据库表数据</h3><pre><code class="mysql">CREATE TABLE `t` (
+  `id` int NOT NULL COMMENT &#39;主键&#39;,
+  `a` int DEFAULT NULL COMMENT &#39;唯一索引&#39;,
+  `c` int DEFAULT NULL COMMENT &#39;普通索引&#39;,
+  `d` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_a` (`a`),
+  KEY `idx_c` (`c`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci</code></pre>
+<p>数据库数据如下：</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/OQIkdN-UySKyv.png"></p>
+<p>思路和非主键唯一索引相同，只不过唯一的区别是这里看的是 c 和 d 字段。</p>
+<p>因为前面小伙伴对 data_locks 应该有了一定的了解，这里就直接分析 data_locks 的数据信息。</p>
+<h3 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h3><h4 id="普通索引等值查询-——-数据存在"><a href="#普通索引等值查询-——-数据存在" class="headerlink" title="普通索引等值查询 —— 数据存在"></a>普通索引等值查询 —— 数据存在</h4><pre><code class="bash">mysql&gt; begin; select * from t where c = 210 for update;</code></pre>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/2uZM0N-XFfgwF.png"></p>
+<p>直接分析 data_locks</p>
+<ol>
+<li>表意向锁；</li>
+<li>索引 idx_c 上添加了 210 区间的前开后闭锁；</li>
+<li>索引 idx_c 上添加了 215 区间的间隙锁，LOCK_MODE 为 <code>X,GAP</code>；</li>
+<li>主键上添加了 15 的行锁 ，LOCK_MODE 为 <code>X,REC_NOT_GAP</code>。</li>
+</ol>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/vXAW0t-nlBAeC.png"></p>
+<p>主要是因为普通索引不能唯一锁定一条记录，所以要锁定该字段的前后范围。</p>
+<h4 id="普通索引等值查询-——-数据不存在"><a href="#普通索引等值查询-——-数据不存在" class="headerlink" title="普通索引等值查询 —— 数据不存在"></a>普通索引等值查询 —— 数据不存在</h4><pre><code class="bash">mysql&gt; begin; select * from t where c = 211 for update;</code></pre>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ovvkVj-D3I4mH.png"></p>
+<p>直接分析 data_locks</p>
+<ol>
+<li>表意向锁；</li>
+<li>索引 idx_c 上添加了 215 区间的间隙锁。</li>
+</ol>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/vXAW0t-nlBAeC.png"></p>
+<p>分析是因为数据不存在，只需要锁住 215 间隙就可以了，因为 215 和 210 肯定不属于这个范围。</p>
+<h4 id="普通索引范围查询"><a href="#普通索引范围查询" class="headerlink" title="普通索引范围查询"></a>普通索引范围查询</h4><pre><code class="bash">mysql&gt; begin; select * from t where c &gt; 210 and c &lt;= 215 for update;</code></pre>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/DqKkhF-CgVYYa.png"></p>
+<p>对于锁住 idx_c 索引的 215 的前开后闭区间是可以理解的，但是锁住了 220 就不太理解了，应该也是那个 bug 没有完全修复。</p>
+<h3 id="普通字段"><a href="#普通字段" class="headerlink" title="普通字段"></a>普通字段</h3><p>普通字段就更好理解了。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/1a7fLd-rmcYQ4.png"></p>
+<p>对普通字段而言，无论是哪个查询，都需要扫描全部记录，所以这个锁直接加在了主键上，并且是锁住全部的区间。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文在基于第一篇和第二篇的基础上，直接通过分析 data_locks 的信息，进行判断加锁范围。</p>
+<pre><code class="sql">select * from performance_schema.data_locks;</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">LOCK_MODE</th>
+<th align="left">LOCK_DATA</th>
+<th align="left">锁范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">X,REC_NOT_GAP</td>
+<td align="left">15</td>
+<td align="left">15 那条数据的行锁</td>
+</tr>
+<tr>
+<td align="left">X,GAP</td>
+<td align="left">15</td>
+<td align="left">15 那条数据之前的间隙，不包含 15</td>
+</tr>
+<tr>
+<td align="left">X</td>
+<td align="left">15</td>
+<td align="left">15 那条数据的间隙，包含 15</td>
+</tr>
+</tbody></table>
+<ol>
+<li><code>LOCK_MODE = X</code> 是前开后闭区间；</li>
+<li><code>X,GAP</code> 是前开后开区间（间隙锁）；</li>
+<li><code>X,REC_NOT_GAP</code> 行锁。</li>
+</ol>
+<p>从而得出普通索引和普通字段的结论。</p>
+<h4 id="普通索引-1"><a href="#普通索引-1" class="headerlink" title="普通索引"></a>普通索引</h4><ol>
+<li>普通索引等值查询，因为不能确定唯一性，所以即使定位到记录，也是会向后查询，直到查询到不为该值的记录，从而锁定该值的区间；</li>
+<li>普通索引的锁也是加载该索引上的，如果涉及到存在的记录，会对该主键加行锁；</li>
+<li>普通索引的范围查询，同样出现 next-key 查询下一个区间的 bug。</li>
+</ol>
+<h4 id="普通字段-1"><a href="#普通字段-1" class="headerlink" title="普通字段"></a>普通字段</h4><p>普通字段查询，会查询全表，这里锁的话就会锁住主键的所有区间。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">liuzhihang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuzhihang.com/2021/06/06/mysql-next-key-3.html">https://liuzhihang.com/2021/06/06/mysql-next-key-3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuzhihang.com" target="_blank">程序员小航</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a><a class="post-meta__tags" href="/tags/next-key/">next-key</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/06/mysql-next-key-2.html"><img class="prev-cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">看来，MySQL next-key lock 的 bug 并没有被修复！</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/25/mac-common-software-java.html"><img class="next-cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/joL7Rg-GFjxrG.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Mac 常用软件推荐 —— Java 开发工程师</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/06/mysql-next-key-1.html" title="MySQL next-key lock 加锁范围是什么？"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-06</div><div class="title">MySQL next-key lock 加锁范围是什么？</div></div></a></div><div><a href="/2021/06/06/mysql-next-key-2.html" title="看来，MySQL next-key lock 的 bug 并没有被修复！"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-06</div><div class="title">看来，MySQL next-key lock 的 bug 并没有被修复！</div></div></a></div><div><a href="/2021/06/07/mysql-next-key-4.html" title="MySQL next-key lock 加锁范围总结"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-07</div><div class="title">MySQL next-key lock 加锁范围总结</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">liuzhihang</div><div class="author-info__description">学，然后知不足；教，然后知困。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">126</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/liuzhihang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/liuzhihang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=Vjo-Iyw_Pz43ODElFicneDU5Ow" target="_blank" title="Email"><i class="fas fa-envelope-open"></i></a><a class="social-icon" href="https://weibo.com/onlyhang" target="_blank" title="Weibo"><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/liuzhihangs" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a><a class="social-icon" href="https://www.infoq.cn/u/liuzhihang/publish" target="_blank" title="InfoQ"><i class="iconfont iconweibiaoti-1"></i></a><a class="social-icon" href="https://juejin.im/user/1987506650493117" target="_blank" title="掘金"><i class="iconfont iconjuejin-1"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_36535538" target="_blank" title="CSDN"><i class="iconfont iconcsdn"></i></a><a class="social-icon" href="https://www.zhihu.com/people/liuzhihang" target="_blank" title="知乎"><i class="iconfont iconzhihu1"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/liuzhihang" target="_blank" title="LeetCode"><i class="iconfont iconleetcode"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">🧑‍💻感谢访问本站，若喜欢请收藏 ^_^ <br> <br> <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/wechat.jpg"> <br> 个人公众号:『 程序员小航 』</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/mysql-next-key-4.html" title="MySQL next-key lock 加锁范围总结"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="MySQL next-key lock 加锁范围总结"/></a><div class="content"><a class="title" href="/2021/06/07/mysql-next-key-4.html" title="MySQL next-key lock 加锁范围总结">MySQL next-key lock 加锁范围总结</a><time datetime="2021-06-07T11:30:30.000Z" title="发表于 2021-06-07 19:30:30">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/ides-plugin-toolkit-lombok.html" title="Toolkit Json 转实体也可以支持 lombok 了！"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/dbzZgg-zDjPI7.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Toolkit Json 转实体也可以支持 lombok 了！"/></a><div class="content"><a class="title" href="/2021/06/07/ides-plugin-toolkit-lombok.html" title="Toolkit Json 转实体也可以支持 lombok 了！">Toolkit Json 转实体也可以支持 lombok 了！</a><time datetime="2021-06-07T11:30:30.000Z" title="发表于 2021-06-07 19:30:30">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/06/docker-mysql.html" title="使用 Docker 安装并连接 MySQL"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/kiUEMZ-BRFqnd.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="使用 Docker 安装并连接 MySQL"/></a><div class="content"><a class="title" href="/2021/06/06/docker-mysql.html" title="使用 Docker 安装并连接 MySQL">使用 Docker 安装并连接 MySQL</a><time datetime="2021-06-06T11:30:30.000Z" title="发表于 2021-06-06 19:30:30">2021-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/06/mysql-next-key-1.html" title="MySQL next-key lock 加锁范围是什么？"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="MySQL next-key lock 加锁范围是什么？"/></a><div class="content"><a class="title" href="/2021/06/06/mysql-next-key-1.html" title="MySQL next-key lock 加锁范围是什么？">MySQL next-key lock 加锁范围是什么？</a><time datetime="2021-06-06T11:30:30.000Z" title="发表于 2021-06-06 19:30:30">2021-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/06/mysql-next-key-2.html" title="看来，MySQL next-key lock 的 bug 并没有被修复！"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZnytZB-FhqOd8.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="看来，MySQL next-key lock 的 bug 并没有被修复！"/></a><div class="content"><a class="title" href="/2021/06/06/mysql-next-key-2.html" title="看来，MySQL next-key lock 的 bug 并没有被修复！">看来，MySQL next-key lock 的 bug 并没有被修复！</a><time datetime="2021-06-06T11:30:30.000Z" title="发表于 2021-06-06 19:30:30">2021-06-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By liuzhihang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="/resources/image/icp.png"><span>备案号：京ICP备20000888号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e48f300349e2ac2d03bd',
+      clientSecret: '001c669e6269dfd9d7d9fef029cc71fd00ea69e3',
+      repo: 'comments',
+      owner: 'liuzhihang',
+      admin: ['liuzhihang'],
+      id: '333590c559a3356de5f442fa1e5ee37d',
+      language: 'en',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

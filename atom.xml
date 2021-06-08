@@ -6,7 +6,7 @@
   <link href="https://liuzhihang.com/atom.xml" rel="self"/>
   
   <link href="https://liuzhihang.com/"/>
-  <updated>2021-05-25T02:15:57.335Z</updated>
+  <updated>2021-06-08T02:57:46.775Z</updated>
   <id>https://liuzhihang.com/</id>
   
   <author>
@@ -15,6 +15,130 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL next-key lock 加锁范围总结</title>
+    <link href="https://liuzhihang.com/2021/06/07/mysql-next-key-4.html"/>
+    <id>https://liuzhihang.com/2021/06/07/mysql-next-key-4.html</id>
+    <published>2021-06-07T11:30:30.000Z</published>
+    <updated>2021-06-08T02:57:46.775Z</updated>
+    
+    
+    <summary type="html">总结主键、非主键唯一索引、普通索引、普通字段四个方面的加锁范围。</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Toolkit Json 转实体也可以支持 lombok 了！</title>
+    <link href="https://liuzhihang.com/2021/06/07/ides-plugin-toolkit-lombok.html"/>
+    <id>https://liuzhihang.com/2021/06/07/ides-plugin-toolkit-lombok.html</id>
+    <published>2021-06-07T11:30:30.000Z</published>
+    <updated>2021-06-08T03:00:08.738Z</updated>
+    
+    
+    <summary type="html">Toolkit Json 转实体也可以支持 lombok 了！</summary>
+    
+    
+    
+    <category term="IDEA" scheme="https://liuzhihang.com/categories/IDEA/"/>
+    
+    
+    <category term="plugin" scheme="https://liuzhihang.com/tags/plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Docker 安装并连接 MySQL</title>
+    <link href="https://liuzhihang.com/2021/06/06/docker-mysql.html"/>
+    <id>https://liuzhihang.com/2021/06/06/docker-mysql.html</id>
+    <published>2021-06-06T11:30:30.000Z</published>
+    <updated>2021-06-08T03:00:46.888Z</updated>
+    
+    
+    <summary type="html">作为开发，在本机捣鼓一下 Docker 还是很有必要的，本篇文章介绍如何使用 Docker 安装 MySQL，并在终端（iTerm2）使用命令连接 MySQL。</summary>
+    
+    
+    
+    <category term="docker" scheme="https://liuzhihang.com/categories/docker/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="docker" scheme="https://liuzhihang.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL next-key lock 加锁范围是什么？</title>
+    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-1.html"/>
+    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-1.html</id>
+    <published>2021-06-06T11:30:30.000Z</published>
+    <updated>2021-06-08T02:47:18.914Z</updated>
+    
+    
+    <summary type="html">主键索引的锁范围是什么？</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>看来，MySQL next-key lock 的 bug 并没有被修复！</title>
+    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-2.html"/>
+    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-2.html</id>
+    <published>2021-06-06T11:30:30.000Z</published>
+    <updated>2021-06-08T02:47:49.292Z</updated>
+    
+    
+    <summary type="html">非主键唯一索引的锁范围是什么？</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL普通索引的加锁</title>
+    <link href="https://liuzhihang.com/2021/06/06/mysql-next-key-3.html"/>
+    <id>https://liuzhihang.com/2021/06/06/mysql-next-key-3.html</id>
+    <published>2021-06-06T11:30:30.000Z</published>
+    <updated>2021-06-08T02:48:30.640Z</updated>
+    
+    
+    <summary type="html">一起看一下普通索引和普通字段的加锁范围是什么?</summary>
+    
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/categories/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://liuzhihang.com/tags/mysql/"/>
+    
+    <category term="next-key" scheme="https://liuzhihang.com/tags/next-key/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 常用软件推荐 —— Java 开发工程师</title>
@@ -308,144 +432,6 @@
     
     
     <summary type="html">上一篇介绍了国际化的使用以及初始化消息源的源码，接下来接着往下阅读，将进入 initApplicationEventMulticaster 、onRefresh 和 registerListeners 的相关操作逻辑。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 13：initMessageSource</title>
-    <link href="https://liuzhihang.com/2021/01/02/source-spring-13.html"/>
-    <id>https://liuzhihang.com/2021/01/02/source-spring-13.html</id>
-    <published>2021-01-02T09:40:00.000Z</published>
-    <updated>2021-01-02T09:42:22.126Z</updated>
-    
-    
-    <summary type="html">在阅读完 registerBeanPostProcessors 源码之后， 下一步就进入到 initMessageSource，这一步主要作用是初始化国际化文件。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 12：registerBeanPostProcessors</title>
-    <link href="https://liuzhihang.com/2021/01/01/source-spring-12.html"/>
-    <id>https://liuzhihang.com/2021/01/01/source-spring-12.html</id>
-    <published>2021-01-01T12:50:00.000Z</published>
-    <updated>2021-01-01T13:07:42.249Z</updated>
-    
-    
-    <summary type="html">这一步主要的作用是加载 BeanPostProcessor，从名字也可以看出，只是加载，并没有执行。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 11：invokeBeanFactoryPostProcessors</title>
-    <link href="https://liuzhihang.com/2020/12/28/source-spring-11.html"/>
-    <id>https://liuzhihang.com/2020/12/28/source-spring-11.html</id>
-    <published>2020-12-28T00:00:00.000Z</published>
-    <updated>2021-01-01T12:51:45.460Z</updated>
-    
-    
-    <summary type="html">invokeBeanFactoryPostProcessors 会执行 BeanFactory 的后置处理器。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 10：prepareBeanFactory 和 postProcessBeanFactory</title>
-    <link href="https://liuzhihang.com/2020/12/27/source-spring-10.html"/>
-    <id>https://liuzhihang.com/2020/12/27/source-spring-10.html</id>
-    <published>2020-12-27T15:00:00.000Z</published>
-    <updated>2020-12-27T09:49:55.161Z</updated>
-    
-    
-    <summary type="html">根据 refresh 流程，当 obtainFreshBeanFactory 执行结束后，下一步会执行 prepareBeanFactory ，顾名思义，这个方法主要是准备 BeanFactory，下面一起看一看这部分逻辑。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 09：refresh 大概流程</title>
-    <link href="https://liuzhihang.com/2020/12/16/source-spring-09.html"/>
-    <id>https://liuzhihang.com/2020/12/16/source-spring-09.html</id>
-    <published>2020-12-16T15:00:00.000Z</published>
-    <updated>2020-12-27T09:08:55.499Z</updated>
-    
-    
-    <summary type="html">前面的准备工作结束之后，就是进入核心代码 refresh。</summary>
-    
-    
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="Spring" scheme="https://liuzhihang.com/categories/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://liuzhihang.com/tags/Spring/"/>
-    
-    <category term="源码笔记" scheme="https://liuzhihang.com/tags/%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 源码学习 08：register 注册配置类</title>
-    <link href="https://liuzhihang.com/2020/12/06/source-spring-08.html"/>
-    <id>https://liuzhihang.com/2020/12/06/source-spring-08.html</id>
-    <published>2020-12-06T15:00:00.000Z</published>
-    <updated>2020-12-06T13:01:39.451Z</updated>
-    
-    
-    <summary type="html">context.register(JavaConfig.class);</summary>
     
     
     
