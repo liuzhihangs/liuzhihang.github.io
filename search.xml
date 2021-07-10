@@ -4,6 +4,325 @@
   
     
     <entry>
+      <title>Redisson 分布式锁源码 10：读写锁</title>
+      <link href="2021/07/07/redisson-10.html"/>
+      <url>2021/07/07/redisson-10.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Redisson 还支持可重入读写锁，允许在分布式场景下，同时有多个读锁和一个写锁处于加锁状态。</p><h3 id="使用读写锁"><a href="#使用读写锁" class="headerlink" title="使用读写锁"></a>使用读写锁</h3><p>Redisson 读写锁实现了 JUC 下的 <code>ReadWriteLock</code>，使用方式基本相同。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/90epaA-GhkijF.jpg"></p><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>加锁源码基本和之前的可重入锁加锁无区别，唯一的差异就是在 Lua 脚本这里。</p><p>所以下面着重分析 Lua 脚本。</p><h4 id="读锁源码"><a href="#读锁源码" class="headerlink" title="读锁源码"></a>读锁源码</h4><p>源码地址：<code>org.redisson.RedissonReadLock#tryLockInnerAsync</code></p><p>参数列表：</p><ol><li>KEYS[1]：锁名字 anyRWLock</li><li>KEYS[2]：锁超时 key <code>&#123;锁名字&#125;:UUID:ThreadId:rwlock_timeout</code> 组成的字符串，{anyRWLock}:e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1:rwlock_timeout</li><li>ARGV[1]：锁时间，默认 30s</li><li>ARGV[2]：当前线程，<code>UUID:ThreadId</code> 组成的字符串，e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1</li><li>ARGV[3]：写锁名字，<code>getWriteLockName(threadId)</code> 写锁名字，<code>UUID:ThreadId:write</code> 组成的字符串， e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1:write</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/6P7sgr-FWvHj8.jpg"></p><h5 id="首次加读锁"><a href="#首次加读锁" class="headerlink" title="首次加读锁"></a>首次加读锁</h5><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/c6JudI-lwO8EK.png"></p><ol><li>锁不存在，直接走第一部分</li><li>设置锁 anyRWLock 的 mode 是 read，表示这是个读锁</li><li>设置锁 anyRWLock 的 e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1（当前线程）值为 1</li><li>设置锁 {anyRWLock}:e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1:rwlock_timeout:1 的值是 1，表示当前线程，当前重入的超时时间</li><li>设置两个 RedisKey 的过期时间</li></ol><h5 id="读锁重入"><a href="#读锁重入" class="headerlink" title="读锁重入"></a>读锁重入</h5><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/g2yz1O-8tdW7L.png"></p><p>如果是重入的情况下：</p><ol><li>锁存在，且是读锁，直接进入第二部分</li><li>对锁 anyRWLock 的 e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1（当前线程）值自增 1 表是重入</li><li>再创建 {anyRWLock}:e70b1307-9ddd-43de-ac9d-9c42b5c99a0d:1:rwlock_timeout:2 表示第二次加锁的超时时间</li></ol><h5 id="读读支持"><a href="#读读支持" class="headerlink" title="读读支持"></a>读读支持</h5><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/lndOZd-rHsuat.png"></p><ol><li>锁存在，进入第二部分</li><li>对当前线程的值自增 1，这里已经是第二个线程了</li><li>设置第二个线程 {anyRWLock}:7c390320-78e3-497f-a3d8-ac34a44d0464:48:rwlock_timeout:1 的超时时间</li></ol><h5 id="写读互斥"><a href="#写读互斥" class="headerlink" title="写读互斥"></a>写读互斥</h5><p>已经加了读锁了，此时写锁进来，不满足第一部分，也不满足第二部分，所以直接返回当前锁的剩余时间。</p><p>然后再 Java 代码中进行 <code>while (true)</code> 自旋等待。</p><p>通过上面可以看出，在读锁的时候：</p><ol><li>锁 anyRWLock 是哈希表结构的</li><li>加锁时，会对哈希表设置 mode 字段来表示这个锁是读锁还是写锁，<code>mode = read</code> 表示读锁</li><li>加锁时，会对哈希表设置当前线程 anyRWLock 的 <code>UUID:ThreadId</code> 字段，值表示重入次数</li><li>每次加锁，会额外维护一个 key 表示这次锁的超时时间，这个 key 的结构是 <code>&#123;锁名字&#125;:UUID:ThreadId:rwlock_timeout:重入次数</code></li></ol><h4 id="写锁源码"><a href="#写锁源码" class="headerlink" title="写锁源码"></a>写锁源码</h4><p>源码地址：<code>org.redisson.RedissonWriteLock#tryLockInnerAsync</code></p><p>参数列表：</p><ol><li>KEYS[1]：当前锁 anyRWLock</li><li>ARGV[1]：锁时间，默认 30s</li><li>ARGV[2]：写锁名字，<code>UUID:ThreadId:write</code> 组成的字符串，c69a9ed4-5c30-4952-814e-c0b94ad03a7f:1:write</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0JDEZM-ZWNh3Y.jpg"></p><p>写锁源码相对比较好理解：</p><ol><li>判断锁的模式，是写锁</li><li>锁不存在直接创建</li><li>锁存在，再判断是不是自己，是自己则重入</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/lhU5N7-uvlZ99.png"></p><p>这么下来，可以看出直接满足，写写互斥，读写互斥，当前线程又可以重入。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>到这里基本上读写锁就看完了，读锁实现的稍微复杂一些，写锁简单明了。</p><p>在读锁的时候：</p><ol><li>锁 anyRWLock 是哈希表结构</li><li>加锁时，会对哈希表设置 mode 字段来表示这个锁是读锁还是写锁，<code>mode = read</code> 表示读锁</li><li>加锁时，会对哈希表设置当前线程 anyRWLock 的 <code>UUID:ThreadId</code> 字段，值表示重入次数</li><li>每次加锁，会额外维护一个 key 表示这次锁的超时时间，这个 key 的结构是 <code>&#123;锁名字&#125;:UUID:ThreadId:rwlock_timeout:重入次数</code></li></ol><p>在写锁的时候：</p><ol><li>锁 anyRWLock 是哈希表结构 </li><li>加锁时，会对哈希表设置 mode 字段来表示这个锁是读锁还是写锁，<code>mode = write</code> 表示写锁</li><li>在 anyRWLock 中再额外维护一个字段 <code>UUID:ThreadId:write</code> 表示重入次数</li></ol><p>至于看门狗，这些都和之前的一样，就不额外介绍了。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/2MsjFXCkSPY0e6Ax0jE3kw">Redisson 分布式锁源码 09：RedLock 红锁的故事</a></li><li><a href="https://mp.weixin.qq.com/s/mlEvFX8nVMNPz5FmuX73WQ">Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/GXYE8-eXcVDRrnU0CimtYg">Redisson 分布式锁源码 07：公平锁释放</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch</title>
+      <link href="2021/07/07/redisson-11.html"/>
+      <url>2021/07/07/redisson-11.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Redisson 除了提供了分布式锁之外，还额外提供了同步组件，Semaphore 和 CountDownLatch。</p><h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/1LOGT4-xNw3Rw.jpg"></p><p>意思就是在分布式场景下，只有 3 个凭证，也就意味着同时只会有三个线程执行业务。</p><h4 id="设置凭证"><a href="#设置凭证" class="headerlink" title="设置凭证"></a>设置凭证</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/7ADtBU-yOtMR3.png"></p><p>参数列表：</p><ol><li>KEYS[1]：指定的 key 这里叫 semaphore</li><li>KEYS[2]：redisson_sc:{semaphore}</li><li>ARGV[1]：凭证数 3</li></ol><p>这块 lua 脚本相对简单，直接设置一个 key 的 value 为 3。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/v1kNPu-PjD1Ap.png"></p><h4 id="获取凭证"><a href="#获取凭证" class="headerlink" title="获取凭证"></a>获取凭证</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/nvzukA-apTIs6.png"></p><p>参数列表：</p><ol><li>KEYS[1]：指定的 key 这里叫 semaphore</li><li>ARGV[1]：要获取的凭证数，默认 1</li></ol><p>这段 lua 脚本就是：</p><ol><li>获取 key semaphore 的值</li><li>如果值大于等于 1（要获取的凭证数），对值进行递减</li><li>成功返回 1，失败返回 0</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/O5yTbh-aCpbv9.png"></p><p>如果成功获取凭证，直接返回，没有获取到凭证，则自旋等待。</p><h4 id="释放凭证"><a href="#释放凭证" class="headerlink" title="释放凭证"></a>释放凭证</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ytlA3e-Wh1t66.png"></p><p>释放凭证直接对 Redis key 的值进行自增即可。</p><h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0kkQcu-8Jbrdf.jpg"></p><p>输出内容如下：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/vszX6P-WAZtHj.png"></p><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>设置门闩数量</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/EmNpQd-z1ryrg.png"></p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/VhSKWG-VZD500.png"></p><p>这块都大同小异。</p><p>减少门闩数量</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/9LYtOI-HdpoEO.png"></p><p>就是对这个值进行递减。</p><p>而 <code>latch.await()</code> 就是自旋获取门闩的值，直到为 0 了，然后继续往下执行。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Redisson 实现分布式的 Semaphore 和 CountDownLatch 基本内容就是如此，仅仅通过在 Redis 维护一个公共的变量，然后进行原子更新即可。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/c6_9Ip3py4SMZyIOuIXlGg">Redisson 分布式锁源码 10：读写锁</a></li><li><a href="https://mp.weixin.qq.com/s/2MsjFXCkSPY0e6Ax0jE3kw">Redisson 分布式锁源码 09：RedLock 红锁的故事</a></li><li><a href="https://mp.weixin.qq.com/s/mlEvFX8nVMNPz5FmuX73WQ">Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 09：RedLock 红锁的故事</title>
+      <link href="2021/07/06/redisson-9.html"/>
+      <url>2021/07/06/redisson-9.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>RedLock 红锁，是分布式锁中必须要了解的一个概念。</p><p>所以本文会先介绍什么是 RedLock，当大家对 RedLock 有一个基本的了解。然后再看 Redisson 中是如何实现 RedLock 的。</p><p><strong>在文章开头先说明 Redisson RedLock 建议不要使用！！！</strong><br><strong>在文章开头先说明 Redisson RedLock 建议不要使用！！！</strong><br><strong>在文章开头先说明 Redisson RedLock 建议不要使用！！！</strong></p><p>重要的事情重复三遍！</p><h3 id="什么是-RedLock？"><a href="#什么是-RedLock？" class="headerlink" title="什么是 RedLock？"></a>什么是 RedLock？</h3><p><a href="http://redis.cn/topics/distlock.html" title="RedLock">RedLock</a>，这块可以从网上搜到很多资料，本文也简单介绍下，当做扫盲。</p><h4 id="单实例加锁"><a href="#单实例加锁" class="headerlink" title="单实例加锁"></a>单实例加锁</h4><pre><code class="text">SET resource_name my_random_value NX PX 30000</code></pre><p>对于单实例 Redis 只需要使用这个命令即可。</p><ul><li>NX：仅在不存在 key 的时候才能被执行成功；</li><li>PX：失效时间，传入 30000，就是 30s 后自动释放锁；</li><li>my_random_value：就是随机值，可以是线程号之类的。主要是为了更安全的释放锁，释放锁的时候使用脚本告诉 Redis: <strong>只有 key 存在并且存储的值和我指定的值一样才能删除成功</strong>。</li></ul><p>可以通过以下 Lua 脚本实现锁释放：</p><pre><code class="lua">if redis.call(&quot;get&quot;,KEYS[1]) == ARGV[1] then    return redis.call(&quot;del&quot;,KEYS[1])else    return 0end</code></pre><p>为什么要设置随机值？</p><p>主要是为了防止锁被其他客户端删除。有这么一种情况：</p><ol><li>客户端 A 获得了锁，还没有执行结束，但是锁超时自动释放了；</li><li>客户端 B 此时过来，是可以获得锁的，加锁成功；</li><li>此时，客户端 A 执行结束了，要去释放锁，如果不对比随机值，就会把客户端 B 的锁给释放了。</li></ol><p>当然前面看过 Redisson 的处理，这个 my_random_value 存放的是 <code>UUID:ThreadId</code> 组合成的一个类似 <code>931573de-903e-42fd-baa7-428ebb7eda80:1</code> 的字符串。</p><h4 id="当锁遇到故障转移"><a href="#当锁遇到故障转移" class="headerlink" title="当锁遇到故障转移"></a>当锁遇到故障转移</h4><p>单实例肯定不是很可靠吧？加锁成功之后，结果 Redis 服务宕机了，这不就凉凉~</p><p>这时候会提出来将 Redis 主从部署。即使是主从，也是存在巧合的！</p><p>主从结构中存在明显的竞态：</p><ol><li>客户端 A 从 master 获取到锁</li><li>在 master 将锁同步到 slave 之前，master 宕掉了。</li><li>slave 节点被晋级为 master 节点</li><li>客户端 B 取得了同一个资源被客户端 A 已经获取到的另外一个锁。<strong>安全失效！</strong></li></ol><p>有时候程序就是这么巧，比如说正好一个节点挂掉的时候，多个客户端同时取到了锁。如果你可以接受这种小概率错误，那用这个基于复制的方案就完全没有问题。</p><p>那我使用集群呢？</p><p>如果还记得前面的内容，应该是知道对集群进行加锁的时候，其实是通过 CRC16 的 hash 函数来对 key 进行取模，将结果路由到预先分配过 slot 的相应节点上。</p><p>发现<strong>其实还是发到单个节点上的</strong>！</p><h4 id="RedLock-概念"><a href="#RedLock-概念" class="headerlink" title="RedLock 概念"></a>RedLock 概念</h4><p>这时候 Redis 作者提出了 RedLock 的概念</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/MSBh06-DJnb5O.png"></p><p>总结一下就是对集群的每个节点进行加锁，如果大多数（N/2+1）加锁成功了，则认为获取锁成功。</p><h4 id="RedLock-的问题"><a href="#RedLock-的问题" class="headerlink" title="RedLock 的问题"></a>RedLock 的问题</h4><p>看着 RedLock 好像是解决问题了：</p><ol><li>客户端 A 锁住了集群的大多数（一半以上）；</li><li>客户端 B 也要锁住大多数；</li><li>这里肯定会冲突，所以 客户端 B 加锁失败。</li></ol><p>那实际解决问题了么？</p><p>推荐大家阅读两篇文章：</p><ul><li><p>Martin Kleppmann：<a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html" title="Martin Kleppmann：How to do distributed locking">How to do distributed locking</a></p></li><li><p>Salvatore（Redis 作者）：<a href="http://antirez.com/news/101" title="Salvatore：Is Redlock safe?">Is Redlock safe?</a></p></li></ul><p>最终，两方各持己见，没有得出结论。</p><p>鉴于本文主要是分析 Redisson 的 RedLock，就不做额外赘述，感兴趣的小伙伴可以自己阅读。</p><h3 id="Redisson-中-RedLock-源码"><a href="#Redisson-中-RedLock-源码" class="headerlink" title="Redisson 中 RedLock 源码"></a>Redisson 中 RedLock 源码</h3><p>这里会简要分析一下 Redisson 中 RedLock 的源码，然后会介绍为什么文章开头不建议大家使用 Redisson 的 RedLock。</p><h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/4jTqzJ-HwSPef.jpg"></p><p>乍一看，感觉和联锁 MultiLock 的使用方式很像啊！</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/UiiR2h-DyV6AA.png"></p><p>实际上就是很像，RedissonRedLock 完全是 RedissonMultiLock 的子类嘛！</p><p>只不过是重写 <code>failedLocksLimit</code> 方法。</p><p>在 MultiLock 中，要所有的锁都锁成功才可以。</p><p>在 RedLock 中，要一半以上的锁成功。</p><p>剩余部分源码都和 MultiLock 一样，就不在重复描述了。</p><h4 id="Redisson-中-RedLock-的问题"><a href="#Redisson-中-RedLock-的问题" class="headerlink" title="Redisson 中 RedLock 的问题"></a>Redisson 中 RedLock 的问题</h4><h5 id="1、加锁-key-的问题"><a href="#1、加锁-key-的问题" class="headerlink" title="1、加锁 key 的问题"></a>1、加锁 key 的问题</h5><p>阅读源码之前，有一个很大的疑问，我加锁 lock1、lock2、lock3，但是 RedissonRedLock 是如何保证这三个 key 是在归属于 Redis 集群中不同的 master 呢？</p><p>因为按照 RedLock 的理论，是需要<strong>在半数以上的 master 节点加锁成功</strong>。</p><p>阅读完源码之后，发现 RedissonRedLock 完全是 RedissonMultiLock 的子类，只是重写了 <code>failedLocksLimit</code> 方法，保证半数以上加锁成功即可。</p><p>所以这三个 key，是需要用户来保证分散在不同的节点上的。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/wUwd2t-frfjKs.png"></p><blockquote><p><a href="https://github.com/redisson/redisson/issues/2436">https://github.com/redisson/redisson/issues/2436</a></p></blockquote><p>在 Redisson 的 issues 也有同样的小伙伴提出这个问题，相关开发者给出的回复是用户来保证 key 分散在不同的 master 上。</p><blockquote><p><a href="https://github.com/redisson/redisson/issues/2127">https://github.com/redisson/redisson/issues/2127</a></p></blockquote><p>更有小伙伴提出使用 5 个客户端。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/XVWtYu-D89ajl.png"></p><p>那我使用 5 个单节点的客户端，然后再使用红锁，听着好像是可以的，并且 RedissonRedLock 可以这样使用。 </p><p>但是那和 Redis 集群还有啥关系啊！</p><p>所以依然没有解决我的问题，还是需要用户自己来“手工定位锁”。</p><p>手工定位锁，这个…… 我考虑了下，还是不用 RedLock 吧！</p><p>当然 DarrenJiang1990 同学应该是怀着打破砂锅问到底的心情，又来了一篇 issue。</p><blockquote><p><a href="https://github.com/redisson/redisson/issues/2437">https://github.com/redisson/redisson/issues/2437</a></p><p>意思就是：不要关闭我的 issues，在 #2436 中说可以“手工定位锁”，但是我要怎么手工定位锁。</p></blockquote><p>后来这个 issue 在 10 月才回复。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Fn8T4n-RYeL07.png"></p><h5 id="2、RedissonRedLock-被弃用"><a href="#2、RedissonRedLock-被弃用" class="headerlink" title="2、RedissonRedLock 被弃用"></a>2、RedissonRedLock 被弃用</h5><p>是的，没有看错，现在 RedissonRedLock 已经被启用了。</p><p>如果是看的英文文档，就会发现：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/UAZa5C-IuuwbR.png"></p><p>而中文文档，应该是没有及时更新。</p><p>来看看更新记录：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ap7Boz-UfalGD.png"></p><p>再找一找 issue：</p><blockquote><p><a href="https://github.com/redisson/redisson/issues/2669">https://github.com/redisson/redisson/issues/2669</a></p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZWyMoM-JMDiOK.png"></p><p>Redisson 的开发者认为 Redis 的红锁也存在争议（前文介绍的那个争议），但是为了保证可用性，RLock 对象执行的每个 Redis 命令执行都通过 Redis 3.0 中引入的 WAIT 命令进行同步。</p><blockquote><p>WAIT 命令会阻塞当前客户端，直到所有以前的写命令都成功的传输并被指定数量的副本确认。如果达到以毫秒为单位指定的超时，则即使尚未达到指定数量的副本，该命令也会返回。<br>WAIT 命令同步复制也并不能保证强一致性，不过在主节点宕机之后，只不过会尽可能的选择最佳的副本（slaves）</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/NUwTjq-Amf1Ij.png"></p><p>源码在这一部分。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/xDHjEE-YeVvjD.png"></p><p>看源码，同时发送了一个 <code>WAIT 1 1000</code> 到 Redis。</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>Redisson RedLock 是基于联锁 MultiLock 实现的，但是使用过程中需要自己判断 key 落在哪个节点上，对使用者不是很友好。</p><p>Redisson RedLock 已经被弃用，直接使用普通的加锁即可，会基于 wait 机制将锁同步到从节点，但是也并不能保证一致性。仅仅是最大限度的保证一致性。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/mlEvFX8nVMNPz5FmuX73WQ">Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/GXYE8-eXcVDRrnU0CimtYg">Redisson 分布式锁源码 07：公平锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/NDeBMgSpOzkhfaPqOAWSFA">Redisson 分布式锁源码 06：公平锁排队加锁</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</title>
+      <link href="2021/07/05/redisson-8.html"/>
+      <url>2021/07/05/redisson-8.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>基于 Redis 的 Redisson 分布式联锁 RedissonMultiLock 对象可以将多个 RLock 对象关联为一个联锁，每个 RLock 对象实例可以来自于不同的 Redisson 实例。</p><p>当然，这是官网的介绍，具体是什么？一起看看联锁 MultiLock 使用以及源码吧！</p><h3 id="MultiLock-使用"><a href="#MultiLock-使用" class="headerlink" title="MultiLock 使用"></a>MultiLock 使用</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/efE44A-2K9aPY.jpg"></p><p>按照官方文档的说法，这里 Redisson 客户端可以不是同一个。当然，一般工作中也不会说不用一个客户端吧。</p><h3 id="加锁"><a href="#加锁" class="headerlink" title="加锁"></a>加锁</h3><p>在阅读 MultiLock 加锁之前，小伙伴应该已经阅读过普通加锁的相关文章。</p><p>源码入口：<code>org.redisson.RedissonMultiLock#lock()</code></p><p>默认超时时间 leaseTime 没有设置，所以为 -1。</p><p>这块方法太长，咱们拆分进行阅读。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/8o0Ppj-4H7eui.png"></p><ol><li>基础等待时间 baseWaitTime = 锁数量 * 1500，在这里就是 4500 毫秒；</li><li><code>leaseTime == -1</code> 所以 waitTime = baseWaitTime，也就是 4500；</li><li><code>while (true)</code> 调用 tryLock 加锁，直到成功。</li></ol><p>调用 <code>tryLock</code> 方法，其中参数 waitTime = 4500，leaseTime = -1，unit = MILLISECONDS。</p><p>下面看一下 <code>tryLock</code> 里面有什么逻辑？</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/yiKg1B-vOkjfQ.png"></p><p><code>leaseTime != -1</code> 不满足，这部分直接跳过。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/xQAttR-xnNjlQ.png"></p><p><code>waitTime != -1</code> 条件满足，remainTime = 4500，lockWaitTime = 4500。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/YsNHmS-rvKQg7.png"></p><p>所以，<code>failedLocksLimit()</code> 这个方法直接返回 0，就是必须全部加锁成功。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/alGCBj-hkMtcB.png"></p><p>这里才是重点：</p><p><strong>遍历所有的锁，依次加锁。</strong> </p><p>加锁逻辑就和可重入锁加锁并无区别了。所以 Lua 脚本就不进行分析了。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/EqHbK1-b1N1YS.png"></p><p>上面就是 <code>tryLock</code> 加锁之后的结果。</p><p>加锁成功，则将成功的锁放进 acquiredLocks 集合中；</p><p>加锁失败，需要判断 failedLocksLimit，因为这里是 0，所以会直接对成功加锁集合 acquiredLocks 中的所有锁执行锁释放，同时清空成功集合，恢复迭代器。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/bghEDw-BP0wUr.png"></p><p>每次加锁之后，会更新锁剩余时间 remainTime，如果 remainTime 小于等于 0 了，则说明加锁超时，直接返回 false。</p><p>这样就会执行外部的 <code>while (true)</code> 逻辑，然后重新再走一遍 <code>RedissonMultiLock#tryLock</code>。</p><h3 id="锁释放"><a href="#锁释放" class="headerlink" title="锁释放"></a>锁释放</h3><p>看完加锁逻辑，锁释放就更容易理解了。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/nDJEjR-qbxvR8.png"></p><p>直接遍历释放锁即可，<code>lock.unlockAsync()</code> 是调用的 <code>RedissonBaseLock#unlockAsync()</code> 方法。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>根据我的理解，画图如下：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png"></p><p>总体而言，就是将 key1、key2、key3 …… keyN 放到一个 List 集合中，然后迭代循环加锁，直到所有的都成功。解锁的时候就是再遍历锁进行释放锁。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/GXYE8-eXcVDRrnU0CimtYg">Redisson 分布式锁源码 07：公平锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/NDeBMgSpOzkhfaPqOAWSFA">Redisson 分布式锁源码 06：公平锁排队加锁</a></li><li><a href="https://mp.weixin.qq.com/s/4EOWFNBIbGOKeW3r3YOKRQ">Redisson 分布式锁源码 05：公平锁加锁</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 07：公平锁释放</title>
+      <link href="2021/07/04/redisson-7.html"/>
+      <url>2021/07/04/redisson-7.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>看门狗机制是在 <code>RedissonBaseLock#scheduleExpirationRenewal</code> 方法中，这块公平锁和非公平锁并无区别。</p><p>前文已经了解到，公平锁加锁失败之后，会将当前放到等待队列中，通过 Java 代码中的循环不断尝试获得锁。</p><h3 id="锁释放"><a href="#锁释放" class="headerlink" title="锁释放"></a>锁释放</h3><h4 id="主动释放"><a href="#主动释放" class="headerlink" title="主动释放"></a>主动释放</h4><p>源码：<code>RedissonFairLock#unlockInnerAsync</code></p><ol><li>KEYS[1]：加锁的名字，<code>anyLock</code>；</li><li>KEYS[2]：加锁等待队列，<code>redisson_lock_queue:&#123;anyLock&#125;</code>；</li><li>KEYS[3]：等待队列中线程锁时间的 set 集合，<code>redisson_lock_timeout:&#123;anyLock&#125;</code>，是按照锁的时间戳存放到集合中的；</li><li>KEYS[4]：<code>redisson_lock__channel:&#123;anyLock&#125;</code>；</li><li>ARGV[1]：LockPubSub.UNLOCK_MESSAGE；</li><li>ARGV[2]：锁超时时间 30000；</li><li>ARGV[3]：UUID:ThreadId 组合 <code>58f6c4a2-9908-4957-b229-283a45359c4b:47</code>；</li><li>ARGV[4]：currentTime 当前时间戳。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Hft4PV-AKdHqo.jpg"></p><p>这块逻辑突出部分已经标出，重点就是释放锁。</p><ol><li>锁在队列中，超时了则直接从队列中移除；</li><li>锁减少重入次数，减少后，如果重入次数大于 0，重置超时时间，如果不大于 0，则直接移除锁。</li></ol><p>这样的话后续就其他线程从等待队列中开始获得锁。</p><h4 id="超时删除"><a href="#超时删除" class="headerlink" title="超时删除"></a>超时删除</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/4Ich9n-3CGDM5.jpg"></p><p>在加锁和释放锁的 lua 脚本中，第一段永远是一个 <code>while true do xxx</code>，作用就是用来移除队列中超时的锁。</p><p>而持锁线程的释放，则和非公平锁没有任何区别，当锁超时或者服务宕机，锁就会被自动释放。（这个是指 anyLock）。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>公平锁的释放同样分为主动释放和超时释放。</p><ol><li>主动释放，即自己调用释放锁。</li><li>超时删除，则分为两种，一种是持锁线程超时删除，这种和非公平锁没有任何区别，因为这个锁也是含有超时时间+看门狗续租的。另一种则是等待队列中的超时删除，是在每次获取锁之前，判断第一个等待线程的时间戳是否超时，从而移除锁。</li></ol><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/NDeBMgSpOzkhfaPqOAWSFA">Redisson 分布式锁源码 06：公平锁排队加锁</a></li><li><a href="https://mp.weixin.qq.com/s/4EOWFNBIbGOKeW3r3YOKRQ">Redisson 分布式锁源码 05：公平锁加锁</a></li><li><a href="https://mp.weixin.qq.com/s/g4j2fMMli8BTViGL9QTPwA">Redisson 分布式锁源码 04：可重入锁释放</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 06：公平锁排队加锁</title>
+      <link href="2021/07/03/redisson-6.html"/>
+      <url>2021/07/03/redisson-6.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>在上一篇文章中已经分析过公平锁的加锁源码，并得出结论：</p><ol><li>Redis Hash 数据结构：存放当前锁，Redis Key 就是锁，Hash 的 field 是加锁线程，Hash 的 value 是 重入次数；</li><li>Redis List 数据结构：充当线程等待队列，新的等待线程会使用 rpush 命令放在队列右边；</li><li>Redis sorted set 有序集合数据结构：存放等待线程的顺序，分数 score 用来是等待线程的超时时间戳。</li></ol><p>现在看一下加锁失败被放到等待队列之后，线程是如何处理的？</p><h3 id="排队等锁"><a href="#排队等锁" class="headerlink" title="排队等锁"></a>排队等锁</h3><p>源码入口：<code>org.redisson.RedissonLock#lock(long, java.util.concurrent.TimeUnit, boolean)</code>。</p><p>线程进入排队之后，在 Java 代码中会 <code>while (true)</code> 一直循环调用 <code>tryAcquire</code>，尝试获取锁。</p><p>最终还是来到 <code>RedissonFairLock#tryLockInnerAsync</code> 方法中。</p><p>方便起见，重新贴一下 Lua 脚本，以及脚本的参数含义。</p><ol><li>KEYS[1]：加锁的名字，<code>anyLock</code>；</li><li>KEYS[2]：加锁等待队列，<code>redisson_lock_queue:&#123;anyLock&#125;</code>；</li><li>KEYS[3]：等待队列中线程锁时间的 set 集合，<code>redisson_lock_timeout:&#123;anyLock&#125;</code>，是按照锁的时间戳存放到集合中的；</li><li>ARGV[1]：锁超时时间 30000</li><li>ARGV[2]：UUID:ThreadId 组合 <code>a3da2c83-b084-425c-a70f-5d9a08b37f31:1</code></li><li>ARGV[3]：threadWaitTime 默认 300000</li><li>ARGV[4]：currentTime 当前时间戳</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/FALjET-I8Vv62.jpg"></p><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/KZyFUT-ujf1yn.jpg"></p><p>第一部分，while 循环：</p><ol><li>从等待队列 <code>redisson_lock_queue:&#123;anyLock&#125;</code> 中获取第一个等待线程；</li><li>从等待线程超时集合 <code>redisson_lock_timeout:&#123;anyLock&#125;</code> 中获取第一个等待线程的分数；</li><li>没有超时，直接结束，超时了，则直接移除。</li></ol><p>第二部分，当前锁存在，直接跳过。</p><p>第三部分，当前锁不是持锁线程，直接跳过。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0SGQAC-VCb7EX.jpg"></p><p>第四部分，</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/xFHACg-SMsiqO.jpg"></p><p>直接返回当前锁还有多久到期。</p><blockquote><p>当前 Redisson 版本为 3.15.6，不同版本的略有不同。</p></blockquote><h4 id="队列重排"><a href="#队列重排" class="headerlink" title="队列重排"></a><del>队列重排</del></h4><p>这里不存在重新排序，因为官方认为这是一个 bug，重新进行了修复。</p><p>具体可以阅读：<a href="https://github.com/redisson/redisson/commit/6dbc972b6c53958512cf4d9b3b763553a6ccbd97">Justin Corpron 2019/5/10, 04:13 Fix timeout drift in RedissonFairLock</a></p><p>最大的变化就是增加了第四部分。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/frdulF-4LKO1z.png"></p><blockquote><p>图仅仅代表两个版本的差别，并不是代表这个版本才修改。</p></blockquote><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jOx74t-WsCHCL.png"></p><p>当线程获取锁失败，进入到等待队列时，<code>ttl != null</code>，在 Java 代码中会不断尝试获取锁。</p><p>当锁不存在且当前线程是在等待队列头时，直接获得锁。这个排队的过程就是公平锁的提现。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/4EOWFNBIbGOKeW3r3YOKRQ">Redisson 分布式锁源码 05：公平锁加锁</a></li><li><a href="https://mp.weixin.qq.com/s/g4j2fMMli8BTViGL9QTPwA">Redisson 分布式锁源码 04：可重入锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/qLTF8UirNJNx1DxRb_BHBA">Redisson 分布式锁源码 03：可重入锁互斥</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 05：公平锁加锁</title>
+      <link href="2021/07/02/redisson-5.html"/>
+      <url>2021/07/02/redisson-5.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>默认的加锁逻辑是非公平的。</p><p>在加锁失败时，线程会进入 while 循环，一直尝试获得锁，这时候是多线程进行竞争。就是说谁抢到就是谁的。</p><p>Redisson 提供了 <a href="https://github.com/redisson/redisson/wiki/8.-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%92%8C%E5%90%8C%E6%AD%A5%E5%99%A8#82-%E5%85%AC%E5%B9%B3%E9%94%81fair-lock">公平锁</a> 机制，使用方式如下：</p><pre><code class="java">RLock fairLock = redisson.getFairLock(&quot;anyLock&quot;);// 最常见的使用方法fairLock.lock();</code></pre><p>下面一起看下公平锁是如何实现的？</p><h3 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h3><p>相信小伙伴们看过前面的文章，已经轻车熟路了，直接定位到源码方法：<code>RedissonFairLock#tryLockInnerAsync</code>。</p><p>好家伙，这一大块代码，我截图也截不完，咱们直接分析 lua 脚本。</p><blockquote><p>PS：虽然咱不懂 lua，但是这一堆堆的 if else 咱们大概还是能看懂的。</p></blockquote><p>因为 debug 发现 <code>command == RedisCommands.EVAL_LONG</code>，所以直接看下面一部分。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/2dYFBe-WrKLSb.jpg"></p><p>这么长，连呼好几声好家伙！</p><p>先来看看参数都有啥？</p><ol><li>KEYS[1]：加锁的名字，<code>anyLock</code>；</li><li>KEYS[2]：加锁等待队列，<code>redisson_lock_queue:&#123;anyLock&#125;</code>；</li><li>KEYS[3]：等待队列中线程锁时间的 set 集合，<code>redisson_lock_timeout:&#123;anyLock&#125;</code>，是按照锁的时间戳存放到集合中的；</li><li>ARGV[1]：锁超时时间 30000；</li><li>ARGV[2]：UUID:ThreadId 组合 <code>a3da2c83-b084-425c-a70f-5d9a08b37f31:1</code>；</li><li>ARGV[3]：threadWaitTime 默认 300000；</li><li>ARGV[4]：currentTime 当前时间戳。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/VKv5hq-T9WCqA.png"></p><blockquote><p>加锁队列和集合是含有大括号的字符串。{XXXX} 是指这个 key 仅使用 XXXX 用来计算 slot 的位置。</p></blockquote><h3 id="Lua-脚本分析"><a href="#Lua-脚本分析" class="headerlink" title="Lua 脚本分析"></a>Lua 脚本分析</h3><p>上面的 lua 脚本是分为几块的，咱们分别从不同的角度看下上面代码的执行。</p><h4 id="首次加锁（Thread1）"><a href="#首次加锁（Thread1）" class="headerlink" title="首次加锁（Thread1）"></a>首次加锁（Thread1）</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QQyD5A-k1aeSp.jpg"></p><p>第一部分，因为是首次加锁，所以等待队列为空，直接 跳出循环。这一部分执行结束。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QgDy0L-kV8nEt.jpg"></p><p>第二部分：</p><ol><li>当锁不存在，等待队列为空或队首是当前线程，两个条件都满足时，进入内部逻辑；</li><li>从等待队列和超时集合中删除当前线程，这时候等待队列和超时集合都是空的，不需要任何操作；</li><li>减少队列中所有等待线程的超时时间，也不需要任何操作；</li><li>加锁并设置超时时间。</li></ol><p>执行完这里就 <code>return</code> 了。所以后面几部分就暂时不看了。</p><p>相当于下面两个命令（整个 lua 脚本都是原子的！）：</p><pre><code class="bash">&gt; hset anyLock a3da2c83-b084-425c-a70f-5d9a08b37f31:1 1&gt; pexpire anyLock 30000</code></pre><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/qY3G7U-bd7ld1.png"></p><h4 id="Thread2-加锁"><a href="#Thread2-加锁" class="headerlink" title="Thread2 加锁"></a>Thread2 加锁</h4><p>当 Thread1 加锁完成之后，此时 Thread2 来加锁。</p><blockquote><p>Thread2 可以是本实例其他线程，也可以是其他实例的线程。</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QQyD5A-k1aeSp.jpg"></p><p>第一部分，虽然锁被 Thread1 占用了，但是等待队列是空的，直接跳出循环。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QgDy0L-kV8nEt.jpg"></p><p>第二部分，锁存在，直接跳过。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/cvVLHW-Ar9XO7.jpg"></p><p>第三部分，线程是否持锁，没有持锁，直接跳过。</p><p>第四部分，线程是否在等待队列中，Thread2 才来加锁，不在里面，直接跳过。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/sbRMxT-b7We6g.jpg"></p><p>Thread2 最后会来到这里：</p><ol><li>从线程等待队列 <code>redisson_lock_queue:&#123;anyLock&#125;</code> 中获取最后一个线程；</li><li>因为等待队列是空的，所以直接获取当前锁的剩余时间 <code>ttl anyLock</code>；</li><li>组装超时时间 timeout = ttl + 300000 + 当前时间戳，这个 300000 是默认 <code>60000*5</code>；</li><li>使用 zadd 将 Thread2 放到等待线程有序集合，然后使用 rpush 将 Thread2 再放到等待队列中。</li></ol><p><code>zadd KEYS[3] timeout ARGV[2]</code></p><p>这里使用 zadd 命令分别放置的是，<code>redisson_lock_timeout:&#123;anyLock&#125;</code>，超时时间戳（1624612689520），线程（UUID2:Thread2）。</p><p>其中超时时间戳当分数，用来在有序集合中排序，表示加锁的顺序。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/zKRPpZ-m0UWwx.png"></p><h4 id="Thread3-加锁"><a href="#Thread3-加锁" class="headerlink" title="Thread3 加锁"></a>Thread3 加锁</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/VKv5hq-T9WCqA.png"></p><p>Thread1 占有了锁，Thread2 在等待，此时线程 3 来了。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/QQyD5A-k1aeSp.jpg"></p><p>获取 firstThreadId2 此时队列是有线程的是 UUID2:Thread2。</p><p>判断 firstThreadId2 的分数（超时时间戳）是不是小于当前时间戳：</p><ol><li>小于等于则说明超时了，移除 firstThreadId2；</li><li>大于，则会进入后续判断。</li></ol><p>第二、三、四部分都不满足条件。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/sbRMxT-b7We6g.jpg"></p><p>Thread3 最后也会来到这里：</p><ol><li>从线程等待队列 <code>redisson_lock_queue:&#123;anyLock&#125;</code> 中获取最后一个线程；</li><li>最后一个线程存在，且不是自己，则 ttl = lastThreadId 超时时间戳 - 当前时间戳，就是看最后一个线程还有多久超时；</li><li>组装超时时间 timeout = ttl + 300000 + 当前时间戳，这个 300000 是默认 <code>60000*5</code>，在最后一个线程的超时时间上加上 300000 以及当前时间戳，就是 Thread3 的超时时间戳。</li><li>使用 zadd 将 Thread3 放到等待线程有序集合，然后使用 rpush 将 Thread3 再放到等待队列中。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Rr6yZC-Lub6NV.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文主要总结了公平锁的加锁逻辑，这涉及到比较多的 Redis 操作，做一下简要总结：</p><ol><li>Redis Hash 数据结构：存放当前锁，Redis Key 就是锁，Hash 的 field 是加锁线程，Hash 的 value 是 重入次数；</li><li>Redis List 数据结构：充当线程等待队列，新的等待线程会使用 rpush 命令放在队列右边；</li><li>Redis sorted set 有序集合数据结构：存放等待线程的顺序，分数 score 用来是等待线程的超时时间戳。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/gGANu9-rQMFDI.png"></p><p>需要理解的就是这里会额外添加一个等待队列，以及有序集合。</p><p>对照着 Java 公平锁源码阅读，理解起来效果更好。</p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/g4j2fMMli8BTViGL9QTPwA">Redisson 分布式锁源码 04：可重入锁释放</a></li><li><a href="https://mp.weixin.qq.com/s/qLTF8UirNJNx1DxRb_BHBA">Redisson 分布式锁源码 03：可重入锁互斥</a></li><li><a href="https://mp.weixin.qq.com/s/ussF5Ox1Q01IYFCwAiyu5Q">Redisson 分布式锁源码 02：看门狗</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 04：可重入锁释放</title>
+      <link href="2021/07/01/redisson-4.html"/>
+      <url>2021/07/01/redisson-4.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>前面已经了解到了，可重入锁加锁，看门狗以及锁的互斥阻塞。</p><p>当锁加锁成功之后，锁是如何释放的？</p><h3 id="主动释放"><a href="#主动释放" class="headerlink" title="主动释放"></a>主动释放</h3><p>源码入口：<code>RedissonLock#unlock</code></p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/gCClpa-8evgQW.png"></p><p>在解锁时会获取当前线程的id。</p><p>一路往里跟，直接来到 <code>RedissonLock#unlockInnerAsync</code>：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/1kBmqO-qnaUnD.png"></p><p>分析一下 lua 脚本的内容：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/hwHhKF-6397WS.jpg"></p><ol><li>如果锁不存在，直接返回 null；</li><li>如果锁存在，则对锁的重入次数 -1；<ol><li>剩余重入次数大于 0，重新设置过期时间，返回 0；</li><li>剩余重入次数不大于 0，删除 redis key 并发布消息，返回 1；</li></ol></li></ol><p>主动释放锁这块考虑的不仅仅是对 key 进行处理，因为可能存在重入锁，所以会先对 redis key 对应的 hash value 进行递减，相当于减去重入次数。</p><h3 id="自动释放"><a href="#自动释放" class="headerlink" title="自动释放"></a>自动释放</h3><p>相比较主动释放，自动释放就比较容易理解了。</p><ol><li>当服务宕机时，看门狗不再看门，那么最多 30s 之后锁被自动释放；</li><li>当设置锁的时间时，锁到了时间，自动释放。</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/lWwK5I-bypFT5.png"></p><p>Redisson 锁的释放分为两种：</p><ol><li>主动释放：自己调用 API unlock 即可；</li><li>宕机/到期自动释放：Redis key 指定时间自动过期。</li></ol><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/qLTF8UirNJNx1DxRb_BHBA">Redisson 分布式锁源码 03：可重入锁互斥</a></li><li><a href="https://mp.weixin.qq.com/s/ussF5Ox1Q01IYFCwAiyu5Q">Redisson 分布式锁源码 02：看门狗</a></li><li><a href="https://mp.weixin.qq.com/s/MBqsOjVKZ7kLjCVylmXemg">Redisson 分布式锁源码 01：可重入锁加锁</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 03：可重入锁互斥</title>
+      <link href="2021/06/30/redisson-3.html"/>
+      <url>2021/06/30/redisson-3.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>看过可重入锁的 Lua 脚本，已经可以知道当锁存在时，是会加锁失败的。</p><p>下面看一下，加锁失败之后是如何处理的呢？</p><h3 id="加锁-Lua-脚本"><a href="#加锁-Lua-脚本" class="headerlink" title="加锁 Lua 脚本"></a>加锁 Lua 脚本</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/qzNUDH-gNOZEN.jpg"></p><p>在 lua 脚本中，前两段 if 分别排除了两种情况：</p><ol><li>锁不存在；</li><li>锁存在且是自己线程（可重入）；</li></ol><p>剩下的情况就是<strong>锁存在，但是不是自己</strong>，也就意味着加锁失败。</p><p>执行 <code>pttl</code> 命令，返回锁的剩余时间。</p><h3 id="加锁失败后的处理"><a href="#加锁失败后的处理" class="headerlink" title="加锁失败后的处理"></a>加锁失败后的处理</h3><p>源码定位：<code>org.redisson.RedissonLock#lock(long, java.util.concurrent.TimeUnit, boolean)</code></p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/YygzEO-WSYQ1h.png"></p><p>先来看开头一部分：</p><p>加锁成功后，会返回 ttl，此处会判断为 null，直接返回。</p><p>所以，下面的部分就是当获取锁失败之后的逻辑。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0TBsxo-xiFpQm.png"></p><p>忽略掉不需要很关注的逻辑，重点则是 <code>while (true)</code> 里面这一小块。</p><p><strong>一直循环调用 tryAcquire 方法，直到加锁成功！</strong></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li>可重入锁的互斥是依靠 Redis Lua 脚本来保证的；</li><li>加锁失败会返回当前锁的剩余时间；</li><li>加锁失败后，会在 Java 代码中使用 while 循环一直尝试加锁。</li></ol><p>大概的流程，如下图：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/KjiQ4g-EFrw6t.png"></p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/ussF5Ox1Q01IYFCwAiyu5Q">Redisson 分布式锁源码 02：看门狗</a></li><li><a href="https://mp.weixin.qq.com/s/MBqsOjVKZ7kLjCVylmXemg">Redisson 分布式锁源码 01：可重入锁加锁</a></li><li><a href="https://mp.weixin.qq.com/s/Hn3C5a_hNPcscB93XlFO8Q">Spring 自调用事务失效，你是怎么解决的？</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 02：看门狗</title>
+      <link href="2021/06/29/redisson-2.html"/>
+      <url>2021/06/29/redisson-2.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>说起 Redisson，比较耳熟能详的就是这个看门狗（Watchdog）机制。</p><p>本文就一起看看加锁成功之后的看门狗（Watchdog）是如何实现的？</p><h3 id="加锁成功"><a href="#加锁成功" class="headerlink" title="加锁成功"></a>加锁成功</h3><p>在前一篇文章中介绍了可重入锁加锁的逻辑，其中 <code>RedissonLock#tryAcquireAsync</code> 方法是进行异步加锁的逻辑。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/B44R8e-KKWGXK.png"></p><p>回顾一下这个方法的入参：</p><ol><li>waitTime：-1；</li><li>leaseTime：-1，加锁时未指定锁时间，则为 -1，如果指定，则是指定的时间；</li><li>unit：null；</li><li>threadId：当前线程 id。</li></ol><p>其中的 <code>tryLockInnerAsync</code> 在之前已经介绍过了。</p><p>当加锁成功时，会返回 null，加锁失败，会返回当前锁的剩余时间。</p><p>所以这块会进入到红框标记的部分。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/RMxrzj-JsDsZj.png"></p><p>leaseTime 为加锁时间，默认不指定，所以会进入到 <code>scheduleExpirationRenewal</code> 方法，也就是今天的主题：看门狗。</p><p>至此可以得出一个结论：</p><p><strong>Redisson 看门狗（Watchdog）在指定加锁时间时，是不会对锁时间自动续租的。</strong></p><h3 id="看门狗"><a href="#看门狗" class="headerlink" title="看门狗"></a>看门狗</h3><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/6y6v9R-t95ZkL.png"></p><p>看门狗的一部分重点逻辑就在 <code>renewExpiration</code> 方法这里：</p><ol><li>延迟调度，延迟时间为：<code>internalLockLeaseTime / 3</code>，就是 10s 左右后会调度这个 TimerTask；</li><li>异步续租：逻辑都在 renewExpirationAsync 里面；</li><li>递归调用：当续租成功之后，重新调用 <code>renewExpiration</code> 自己，从而达到持续续租的目的；</li><li>当然也不能一直无限续租，所以中间有一些判断逻辑，就是用来中断续租的。</li></ol><h4 id="续租逻辑"><a href="#续租逻辑" class="headerlink" title="续租逻辑"></a>续租逻辑</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/A1WqhV-BSII78.png"></p><p>这块也是一个 lua 脚本，就是将之前的 redis key 直接重新设置时间。</p><p>这样一通续租下来，就是<strong>在过了 10s 左右将锁的时间重新设置为 30s</strong>。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>至此，看门狗介绍完毕，简要总结一下内容。</p><ol><li>只有在未指定锁超时时间时才会使用看门狗；</li><li>看门狗默认续租时间是 10s 左右，<code>internalLockLeaseTime / 3</code>；</li><li>可以通过 Config 统一设置看门狗的时间，设置 <code>lockWatchdogTimeout</code> 参数即可。</li></ol><p>最后，同样使用一张图，进行下总结：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/tJb1FR-W0Dm6G.png"></p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/MBqsOjVKZ7kLjCVylmXemg">Redisson 分布式锁源码 01：可重入锁加锁</a></li><li><a href="https://mp.weixin.qq.com/s/UlUQ95gVt8I8wmVOEjn1aw">Spring 是如何解决循环依赖的？</a></li><li><a href="https://mp.weixin.qq.com/s/Hn3C5a_hNPcscB93XlFO8Q">Spring 自调用事务失效，你是怎么解决的？</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redisson 分布式锁源码 01：可重入锁加锁</title>
+      <link href="2021/06/28/redisson-1.html"/>
+      <url>2021/06/28/redisson-1.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>相信小伙伴都是使用分布式服务，那一定绕不开分布式服务中数据并发更新问题！</p><p>单系统很容易想到 Java 的各种锁，像 synchronize、ReentrantLock 等等等，那分布式系统如何处理？</p><p>当然是使用分布式锁。</p><p>如果小伙伴不知道什么是分布式锁，那推荐看看石杉老师的<a href="https://github.com/shishan100/Java-Interview-Advanced#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81">突击课</a>或者在网上搜一搜相关资料。</p><p>当使用 Redis 作为分布式锁时，当前使用较多的框架就是 <a href="https://github.com/redisson/redisson">Redisson</a>。</p><p>当然 Redisson 也不仅仅只能当做锁来使用，也有很多其他的功能，小伙伴们可以看一看官方文档，自己多动手实践一下。</p><p>下面就开始记录 Redisson 的相关笔记！错误之处，欢迎指正。🙏🏻</p><h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul><li>本地环境搭建的伪集群：</li></ul><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ayhMM6-3lUHA7.png"></p><ul><li>redisson 3.15.6</li></ul><p>不同版本可能会有所不同，但是核心思想不会发生太大变化，如果变化很大，希望可以留言。</p><pre><code class="xml">&lt;dependency&gt;    &lt;groupId&gt;org.redisson&lt;/groupId&gt;    &lt;artifactId&gt;redisson&lt;/artifactId&gt;    &lt;version&gt;3.15.6&lt;/version&gt;&lt;/dependency&gt;</code></pre><ul><li>项目准备</li></ul><p>一个简单的 maven 项目，只需要一个 Main 方法即可。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/zBh3ly-A9mxhe.png"></p><h3 id="可重入锁加锁"><a href="#可重入锁加锁" class="headerlink" title="可重入锁加锁"></a>可重入锁加锁</h3><p>在 lock.lock() 断点，作为源码入口。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/SkQZjH-2CrRV0.png"></p><p>默认加锁，什么参数也没有传递。但是这里会设置 <code>leaseTime = -1</code>。这个 leaseTime 的含义是<code>加锁的时间</code>。</p><p>剩下的一路挺进即可。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/h7bpVg-MN8ppQ.png"></p><p>在调用 <code>tryAcquire</code> 方法之前，多了一个参数 <code>threadId</code>，是当前线程的 id，long 型正数。</p><h4 id="异步加锁"><a href="#异步加锁" class="headerlink" title="异步加锁"></a>异步加锁</h4><p>直接来到 <code>tryAcquireAsync</code> 异步加锁方法。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/ZkGzF4-wUkpSv.png" alt="tryAcquireAsync"></p><p>前面已经说了 leaseTime 是 -1，所以这里会走到下面的方法中。</p><p>至此几个参数已经清楚：</p><ol><li>waitTime：-1；</li><li>internalLockLeaseTime：使用默认时间 30000 毫秒；</li><li>TimeUnit.MILLISECONDS：单位毫秒；</li><li>threadId：线程 id；</li><li>RedisCommands.EVAL_LONG：eval。</li></ol><blockquote><p>Redis eval 命令的相关文档可以阅读：<a href="https://redis.io/commands/eval">https://redis.io/commands/eval</a></p></blockquote><h4 id="加锁逻辑"><a href="#加锁逻辑" class="headerlink" title="加锁逻辑"></a>加锁逻辑</h4><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Ae4TrS-b4tbCH.png"></p><p>真正的加锁，其实就是这么一段 lua 脚本。</p><p>先说明一下 lua 脚本的参数信息：</p><ol><li>KEYS[1]：getRawName()，加锁的 key ，比如 anyLock；</li><li>ARGV[1]：unit.toMillis(leaseTime)，锁的毫秒时间，比如 30000；</li><li>ARGV[2]：getLockName(threadId)，是 UUID 和线程 id 拼接起来的字符串，比如 931573de-903e-42fd-baa7-428ebb7eda80:1。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/carbon-IgyBtU.png"></p><p>因为使用的是 lua 脚本，可以保证这一块 lua 脚本的<code>原子性</code>。</p><p>首次加锁分析：</p><ol><li>exists 命令判断 redis anyLock 是否存在；</li><li>不存在，使用 hincrby 命令，创建 anyLock 数据；</li><li>对 anyLock 设置过期时间。</li></ol><p>加锁后 Redis 内的数据格式是：</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/P8PsCW-VB5KlI.png"></p><blockquote><p>关于 Redis 的 Hash 数据结构可以阅读：<a href="https://redis.io/topics/data-types#hashes">https://redis.io/topics/data-types#hashes</a></p></blockquote><p>抽象一点可以理解为 anyLock 下面挂着一个 K-V 结构的数据：</p><pre><code class="json">&quot;anyLock&quot;:&#123;    &quot;f400aad5-4b1f-4246-a81e-80c2717c3afb:1&quot;:&quot;1&quot;&#125;</code></pre><h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><p>后续的内容就是进行请求执行 lua 脚本，唯一需要注意的地方就是有个哈希槽路由。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/LfmF9k-dELCKp.png"></p><p>这块代码是在 <code>CommandAsyncService#evalWriteAsync</code> 方法处调用的，是为了获取一个 NodeSource。</p><p>当然这个 NodeSource 里面只存放了一个 slot（哈希槽值）。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/0dcI46-z1zuQw.png"></p><p>这个 slot 值是对加锁的 key 使用 <code>CRC16</code> 算法计算出来的。</p><pre><code class="java">// MAX_SLOT 默认 16384int result = CRC16.crc16(key.getBytes()) % MAX_SLOT;</code></pre><p>这块计算一个 slot 到底有什么用呢？</p><p>继续追踪！</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/NQvuSu-PiiGLi.png"></p><p><code>BaseRedisBatchExecutor#addBatchCommandData</code> 在这里会从 source 里面获取到 solt，然后获得 MasterSlaveEntry。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Ediy7d-8zm87N.png"></p><p>大概可以理解为这里是获取到这个 Redis key 对应的节点。</p><h4 id="可重入"><a href="#可重入" class="headerlink" title="可重入"></a>可重入</h4><p>既然是可重入锁，这块是支持可重入的，来看下可重入是如何保证的。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/OFIQoj-tBYoXz.jpg"></p><ol><li>exists 命令判断 redis key field 是否存在；</li><li>存在 则通过 hincrby 命令对 key 的 field 对应 value 自增；</li><li>为当前 redis key 设置过期时间。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/81gCr3-6eMPPY.png"></p><h4 id="加锁互斥"><a href="#加锁互斥" class="headerlink" title="加锁互斥"></a>加锁互斥</h4><p>上面已经验证了两种情况：</p><ol><li>redis key 不存在；</li><li>redis key 和 key 的 field 存在。</li></ol><p>剩下的情况就是 key 存在的情况下，但是 field 不存在。</p><p>要知道 key 的 field 放的是 UUID:ThreadId，说明加锁的不是当前线程。这时候直接返回当前锁的剩余时间。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文主要介绍了 Redisson 可重入锁的加锁、锁重入、锁互斥逻辑。</p><p><strong>核心重点在 lua 脚本。</strong> 同时需要理解 Redis 的 Hash 数据结构。</p><p>同时需要记住，<strong>在未指定加锁时间时，默认使用的是 30s。</strong></p><p>最后，一张图介绍本文加锁逻辑。</p><p><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Gu9dFF-SSFLo2.png"></p><h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul><li><a href="https://mp.weixin.qq.com/s/sscl6CtQWCap381bj9Fe2A">Spring 动态代理时是如何解决循环依赖的？为什么要使用三级缓存？</a></li><li><a href="https://mp.weixin.qq.com/s/UlUQ95gVt8I8wmVOEjn1aw">Spring 是如何解决循环依赖的？</a></li><li><a href="https://mp.weixin.qq.com/s/Hn3C5a_hNPcscB93XlFO8Q">Spring 自调用事务失效，你是怎么解决的？</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> redisson </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redisson </tag>
+            
+            <tag> redis </tag>
+            
+            <tag> 分布式锁 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MySQL next-key lock 加锁范围总结</title>
       <link href="2021/06/07/mysql-next-key-4.html"/>
       <url>2021/06/07/mysql-next-key-4.html</url>
@@ -3342,9 +3661,9 @@
       
         <tags>
             
-            <tag> interceptor </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> interceptor </tag>
             
             <tag> servlet </tag>
             

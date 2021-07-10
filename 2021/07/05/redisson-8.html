@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Redisson 分布式锁源码 08：MultiLock 加锁与锁释放 | 程序员小航</title><meta name="keywords" content="redisson,redis,分布式锁"><meta name="author" content="liuzhihang"><meta name="copyright" content="liuzhihang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于 Redis 的 Redisson 分布式联锁 RedissonMultiLock 对象可以将多个 RLock 对象关联为一个联锁，每个 RLock 对象实例可以来自于不同的 Redisson 实例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redisson 分布式锁源码 08：MultiLock 加锁与锁释放">
+<meta property="og:url" content="https://liuzhihang.com/2021/07/05/redisson-8.html">
+<meta property="og:site_name" content="程序员小航">
+<meta property="og:description" content="基于 Redis 的 Redisson 分布式联锁 RedissonMultiLock 对象可以将多个 RLock 对象关联为一个联锁，每个 RLock 对象实例可以来自于不同的 Redisson 实例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png">
+<meta property="article:published_time" content="2021-07-05T13:30:30.000Z">
+<meta property="article:modified_time" content="2021-07-10T02:19:59.019Z">
+<meta property="article:author" content="liuzhihang">
+<meta property="article:tag" content="redisson">
+<meta property="article:tag" content="redis">
+<meta property="article:tag" content="分布式锁">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/favicon.ico"><link rel="canonical" href="https://liuzhihang.com/2021/07/05/redisson-8"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//pingjs.qq.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google_site_verification" content="GZshAnnrC-4eCrl5h-e_5Rdk4lOUhRK7ShULoRi2q0E"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-126394362-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-126394362-1');
+</script><script>var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "66540676");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redisson 分布式锁源码 08：MultiLock 加锁与锁释放',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-07-10 10:19:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_1608878_xsf93f0c1a.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="程序员小航" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">137</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员小航</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> 导航</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bookmark"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 推荐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-address-book"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://juejin.im/user/1987506650493117"><i class="fa-fw iconfont iconjuejin-1"></i><span> 掘金</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuzhihang"><i class="fa-fw iconfont iconzhihu1"></i><span> 知乎</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.infoq.cn/profile/00B8AE08DA916E/publish"><i class="fa-fw iconfont iconweibiaoti-1"></i><span> InfoQ</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36535538"><i class="fa-fw iconfont iconcsdn"></i><span> CSDN</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/liuzhihang/"><i class="fa-fw iconfont iconleetcode"></i><span> LeetCode</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-05T13:30:30.000Z" title="发表于 2021-07-05 21:30:30">2021-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-10T02:19:59.019Z" title="更新于 2021-07-10 10:19:59">2021-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/redisson/">redisson</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">627</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Redisson 分布式锁源码 08：MultiLock 加锁与锁释放"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/07/05/redisson-8.html#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>基于 Redis 的 Redisson 分布式联锁 RedissonMultiLock 对象可以将多个 RLock 对象关联为一个联锁，每个 RLock 对象实例可以来自于不同的 Redisson 实例。</p>
+<p>当然，这是官网的介绍，具体是什么？一起看看联锁 MultiLock 使用以及源码吧！</p>
+<h3 id="MultiLock-使用"><a href="#MultiLock-使用" class="headerlink" title="MultiLock 使用"></a>MultiLock 使用</h3><p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/efE44A-2K9aPY.jpg"></p>
+<p>按照官方文档的说法，这里 Redisson 客户端可以不是同一个。当然，一般工作中也不会说不用一个客户端吧。</p>
+<h3 id="加锁"><a href="#加锁" class="headerlink" title="加锁"></a>加锁</h3><p>在阅读 MultiLock 加锁之前，小伙伴应该已经阅读过普通加锁的相关文章。</p>
+<p>源码入口：<code>org.redisson.RedissonMultiLock#lock()</code></p>
+<p>默认超时时间 leaseTime 没有设置，所以为 -1。</p>
+<p>这块方法太长，咱们拆分进行阅读。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/8o0Ppj-4H7eui.png"></p>
+<ol>
+<li>基础等待时间 baseWaitTime = 锁数量 * 1500，在这里就是 4500 毫秒；</li>
+<li><code>leaseTime == -1</code> 所以 waitTime = baseWaitTime，也就是 4500；</li>
+<li><code>while (true)</code> 调用 tryLock 加锁，直到成功。</li>
+</ol>
+<p>调用 <code>tryLock</code> 方法，其中参数 waitTime = 4500，leaseTime = -1，unit = MILLISECONDS。</p>
+<p>下面看一下 <code>tryLock</code> 里面有什么逻辑？</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/yiKg1B-vOkjfQ.png"></p>
+<p><code>leaseTime != -1</code> 不满足，这部分直接跳过。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/xQAttR-xnNjlQ.png"></p>
+<p><code>waitTime != -1</code> 条件满足，remainTime = 4500，lockWaitTime = 4500。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/YsNHmS-rvKQg7.png"></p>
+<p>所以，<code>failedLocksLimit()</code> 这个方法直接返回 0，就是必须全部加锁成功。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/alGCBj-hkMtcB.png"></p>
+<p>这里才是重点：</p>
+<p><strong>遍历所有的锁，依次加锁。</strong> </p>
+<p>加锁逻辑就和可重入锁加锁并无区别了。所以 Lua 脚本就不进行分析了。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/EqHbK1-b1N1YS.png"></p>
+<p>上面就是 <code>tryLock</code> 加锁之后的结果。</p>
+<p>加锁成功，则将成功的锁放进 acquiredLocks 集合中；</p>
+<p>加锁失败，需要判断 failedLocksLimit，因为这里是 0，所以会直接对成功加锁集合 acquiredLocks 中的所有锁执行锁释放，同时清空成功集合，恢复迭代器。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/bghEDw-BP0wUr.png"></p>
+<p>每次加锁之后，会更新锁剩余时间 remainTime，如果 remainTime 小于等于 0 了，则说明加锁超时，直接返回 false。</p>
+<p>这样就会执行外部的 <code>while (true)</code> 逻辑，然后重新再走一遍 <code>RedissonMultiLock#tryLock</code>。</p>
+<h3 id="锁释放"><a href="#锁释放" class="headerlink" title="锁释放"></a>锁释放</h3><p>看完加锁逻辑，锁释放就更容易理解了。</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/nDJEjR-qbxvR8.png"></p>
+<p>直接遍历释放锁即可，<code>lock.unlockAsync()</code> 是调用的 <code>RedissonBaseLock#unlockAsync()</code> 方法。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>根据我的理解，画图如下：</p>
+<p><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png"></p>
+<p>总体而言，就是将 key1、key2、key3 …… keyN 放到一个 List 集合中，然后迭代循环加锁，直到所有的都成功。解锁的时候就是再遍历锁进行释放锁。</p>
+<h4 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a>相关推荐</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/GXYE8-eXcVDRrnU0CimtYg">Redisson 分布式锁源码 07：公平锁释放</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NDeBMgSpOzkhfaPqOAWSFA">Redisson 分布式锁源码 06：公平锁排队加锁</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/4EOWFNBIbGOKeW3r3YOKRQ">Redisson 分布式锁源码 05：公平锁加锁</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">liuzhihang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuzhihang.com/2021/07/05/redisson-8.html">https://liuzhihang.com/2021/07/05/redisson-8.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuzhihang.com" target="_blank">程序员小航</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/redisson/">redisson</a><a class="post-meta__tags" href="/tags/redis/">redis</a><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/06/redisson-9.html"><img class="prev-cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redisson 分布式锁源码 09：RedLock 红锁的故事</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/04/redisson-7.html"><img class="next-cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jOx74t-WsCHCL.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redisson 分布式锁源码 07：公平锁释放</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/28/redisson-1.html" title="Redisson 分布式锁源码 01：可重入锁加锁"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/Gu9dFF-SSFLo2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-28</div><div class="title">Redisson 分布式锁源码 01：可重入锁加锁</div></div></a></div><div><a href="/2021/07/07/redisson-10.html" title="Redisson 分布式锁源码 10：读写锁"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">Redisson 分布式锁源码 10：读写锁</div></div></a></div><div><a href="/2021/07/07/redisson-11.html" title="Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch"><img class="cover" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/404/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">liuzhihang</div><div class="author-info__description">学，然后知不足；教，然后知困。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">137</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/liuzhihang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/liuzhihang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=Vjo-Iyw_Pz43ODElFicneDU5Ow" target="_blank" title="Email"><i class="fas fa-envelope-open"></i></a><a class="social-icon" href="https://weibo.com/onlyhang" target="_blank" title="Weibo"><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://twitter.com/liuzhihangs" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a><a class="social-icon" href="https://www.infoq.cn/u/liuzhihang/publish" target="_blank" title="InfoQ"><i class="iconfont iconweibiaoti-1"></i></a><a class="social-icon" href="https://juejin.im/user/1987506650493117" target="_blank" title="掘金"><i class="iconfont iconjuejin-1"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_36535538" target="_blank" title="CSDN"><i class="iconfont iconcsdn"></i></a><a class="social-icon" href="https://www.zhihu.com/people/liuzhihang" target="_blank" title="知乎"><i class="iconfont iconzhihu1"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/liuzhihang" target="_blank" title="LeetCode"><i class="iconfont iconleetcode"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">🧑‍💻感谢访问本站，若喜欢请收藏 ^_^ <br> <br> <img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/wechat.jpg"> <br> 个人公众号:『 程序员小航 』</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/07/redisson-10.html" title="Redisson 分布式锁源码 10：读写锁"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Redisson 分布式锁源码 10：读写锁"/></a><div class="content"><a class="title" href="/2021/07/07/redisson-10.html" title="Redisson 分布式锁源码 10：读写锁">Redisson 分布式锁源码 10：读写锁</a><time datetime="2021-07-07T13:30:30.000Z" title="发表于 2021-07-07 21:30:30">2021-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/07/redisson-11.html" title="Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch"/></a><div class="content"><a class="title" href="/2021/07/07/redisson-11.html" title="Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch">Redisson 分布式锁源码 11：Semaphore 和 CountDownLatch</a><time datetime="2021-07-07T13:30:30.000Z" title="发表于 2021-07-07 21:30:30">2021-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/redisson-9.html" title="Redisson 分布式锁源码 09：RedLock 红锁的故事"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Redisson 分布式锁源码 09：RedLock 红锁的故事"/></a><div class="content"><a class="title" href="/2021/07/06/redisson-9.html" title="Redisson 分布式锁源码 09：RedLock 红锁的故事">Redisson 分布式锁源码 09：RedLock 红锁的故事</a><time datetime="2021-07-06T13:30:30.000Z" title="发表于 2021-07-06 21:30:30">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/05/redisson-8.html" title="Redisson 分布式锁源码 08：MultiLock 加锁与锁释放"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/uUWcGk-xJbpNW.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Redisson 分布式锁源码 08：MultiLock 加锁与锁释放"/></a><div class="content"><a class="title" href="/2021/07/05/redisson-8.html" title="Redisson 分布式锁源码 08：MultiLock 加锁与锁释放">Redisson 分布式锁源码 08：MultiLock 加锁与锁释放</a><time datetime="2021-07-05T13:30:30.000Z" title="发表于 2021-07-05 21:30:30">2021-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/04/redisson-7.html" title="Redisson 分布式锁源码 07：公平锁释放"><img src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jOx74t-WsCHCL.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/feature/92776_n5aac6.jpg'" alt="Redisson 分布式锁源码 07：公平锁释放"/></a><div class="content"><a class="title" href="/2021/07/04/redisson-7.html" title="Redisson 分布式锁源码 07：公平锁释放">Redisson 分布式锁源码 07：公平锁释放</a><time datetime="2021-07-04T13:30:30.000Z" title="发表于 2021-07-04 21:30:30">2021-07-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By liuzhihang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src= "https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/loading.gif" data-lazy-src="/resources/image/icp.png"><span>备案号：京ICP备20000888号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e48f300349e2ac2d03bd',
+      clientSecret: '001c669e6269dfd9d7d9fef029cc71fd00ea69e3',
+      repo: 'comments',
+      owner: 'liuzhihang',
+      admin: ['liuzhihang'],
+      id: '218a08ea5676d35bee9bb0cd55b6b467',
+      language: 'en',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
